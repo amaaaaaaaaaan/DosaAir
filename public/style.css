@@ -9,7 +9,6 @@
 
 .logo-img {
   width: 30vw;
-  position: absolute;
   z-index: 5;
 }
 
@@ -69,16 +68,16 @@
 }
 
 .login-btn {
-  background: #09a5ff;
+  background: rgb(255, 231, 198);
   border: none;
   border-radius: 7px;
   padding: 10px;
   font-weight: 900;
-  color: white;
+  color: rgb(205 137 60);
 }
 
 .login-btn:hover {
-  background: #047dc4;
+  background: rgb(244, 207, 154);
 }
 
 .login-reg {
@@ -88,4 +87,15 @@
 .login-link {
   color: white;
   font-weight: 900;
+}
+
+.logo-tag {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-line {
+  color: white;
 }
