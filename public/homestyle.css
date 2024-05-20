@@ -2,7 +2,6 @@
 body {
   margin: 0;
   font-family: "Instrument Sans", sans-serif;
-  height: 400vh;
 }
 
 :root {
@@ -32,19 +31,28 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 20px;
   margin-right: 20px;
 }
 
-.links > a {
+.pages > a {
   text-transform: uppercase;
   font-size: 15px;
   font-weight: 500;
+  margin-left: 10px;
   color: var(--org);
 }
 
-.links > a :hover {
+.pages > a :hover {
   color: var(--sec);
+}
+
+.acc-cont::before {
+  content: "";
+  border: 1px solid var(--org);
+  border-radius: 23px;
+  height: 6vh;
+  margin-right: 10px;
 }
 
 .hero {
@@ -124,6 +132,13 @@ body {
   background: var(--ligh);
 }
 
+.flight {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+
 .flight-destinations {
   background: var(--ligh);
   padding: 10px;
@@ -131,7 +146,44 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 30px;
+  font-size: 2vw;
   border-radius: 15px;
   font-weight: 800;
+}
+
+.flight-info {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.flight-time {
+  font-size: 2em;
+}
+
+.flight-num {
+  font-size: 1.5em;
+  font-weight: 800;
+}
+
+.booking-btn {
+  background: var(--org);
+  padding: 10px;
+  font-size: 1.5em;
+  border: none;
+  border-radius: 10px;
+  color: var(--ligh);
+  font-weight: 900;
+  width: 10vw;
+}
+
+.booking-btn:hover {
+  background: var(--sec);
+  color: var(--org);
+}
+
+.booking-time {
+  font-size: 2em;
+  font-weight: 700;
 }
