@@ -25,6 +25,7 @@ body {
   position: fixed;
   width: 100vw;
   left: 0;
+  z-index: 9;
 }
 
 .links {
@@ -37,7 +38,7 @@ body {
 
 .pages > a {
   text-transform: uppercase;
-  font-size: 15px;
+  font-size: 1.8vh;
   font-weight: 500;
   margin-left: 10px;
   color: var(--org);
@@ -136,7 +137,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 3vh;
 }
 
 .flight-destinations {
@@ -170,7 +171,7 @@ body {
 .booking-btn {
   background: var(--org);
   padding: 10px;
-  font-size: 1.5em;
+  font-size: clamp(2vw, 30vw, 2vw);
   border: none;
   border-radius: 10px;
   color: var(--ligh);
@@ -184,6 +185,6 @@ body {
 }
 
 .booking-time {
-  font-size: 2em;
+  font-size: clamp(2vw, 30vw, 2vw);
   font-weight: 700;
 }
