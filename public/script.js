@@ -4,7 +4,10 @@ async function senduserdata(e) {
   const loginconfirm = await eel.getdata(username, password)();
   if (loginconfirm == false) {
     const ms = document.getElementById("logmess");
+    console.log(loginconfirm);
     ms.innerText = "Password or Username is wrong";
+    ms.classList.add("shake");
+    ms.style.animationPlayState = "initial";
   } else {
     window.location.href = "home.html";
   }
