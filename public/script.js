@@ -4,9 +4,11 @@ async function senduserdata(e) {
   const loginconfirm = await eel.getdata(username, password)();
   if (loginconfirm == false) {
     const ms = document.getElementById("logmess");
+    console.log(loginconfirm);
     ms.innerText = "Password or Username is wrong";
   } else {
     window.location.href = "home.html";
+    loadacc();
   }
 }
 
@@ -25,3 +27,5 @@ document.getElementById("regbut").addEventListener("click", async function () {
     alert(regconfirm);
   }
 });
+
+async function loadacc() {}
