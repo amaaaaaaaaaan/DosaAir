@@ -7,23 +7,22 @@ db = mysql.connector.connect(
     password='xu8xNWxznn'
 )
 
-sha256_hash = hashlib.sha256()
 cursor = db.cursor()
 user ={}
 
 def confirmlogin(cred):
-
+    sha256_hash = hashlib.sha256()
     cursor.execute('select * from users')
     k = cursor.fetchall()
     sha256_hash.update(cred.encode('utf-8'))
     j = sha256_hash.hexdigest()
     for i in k :
-       print(j)
        us = i[0]
        ps = i[1]
        if ps == j : 
            user['name'] = us
            user['pass'] = ps
+           print(ps , j )
            return us
 
 

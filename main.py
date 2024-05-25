@@ -9,7 +9,7 @@ eel.init('public')
 def getdata(u,p):
    l =  back.confirmlogin(p)
    try :
-      if l in u :
+      if l == u :
        return True
       else:
        return False

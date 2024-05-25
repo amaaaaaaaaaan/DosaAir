@@ -6,9 +6,10 @@ async function senduserdata(e) {
     const ms = document.getElementById("logmess");
     console.log(loginconfirm);
     ms.innerText = "Password or Username is wrong";
+    ms.classList.add("shake");
+    ms.style.animationPlayState = "initial";
   } else {
     window.location.href = "home.html";
-    loadacc();
   }
 }
 
@@ -27,5 +28,3 @@ document.getElementById("regbut").addEventListener("click", async function () {
     alert(regconfirm);
   }
 });
-
-async function loadacc() {}
