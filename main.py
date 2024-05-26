@@ -8,10 +8,13 @@ eel.init('public')
 
 def getdata(u,p):
    l =  back.confirmlogin(p)
-   if l == u :
-      return True
-   else:
-      return False
+   try :
+      if l == u :
+       return True
+      else:
+       return False
+   except:
+     return False
 @eel.expose
 def regdata(u,p):
    if u != '' and p !='' :
@@ -20,7 +23,5 @@ def regdata(u,p):
    else:
       return 'Blank user and pass'
    
-   
-
 
 eel.start('login.html' ,size=(1114,654) )
