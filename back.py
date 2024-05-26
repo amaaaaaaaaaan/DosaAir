@@ -1,6 +1,6 @@
 import mysql.connector
 db = mysql.connector.connect(
-        host='sql7.freesqldatabase.com',
+    host='sql7.freesqldatabase.com',
     user='sql7708896',
     database='sql7708896',
     password='xu8xNWxznn'
