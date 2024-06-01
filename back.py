@@ -2,9 +2,9 @@ import mysql.connector
 import hashlib
 db = mysql.connector.connect(
         host='sql7.freesqldatabase.com',
-    user='sql7708896',
-    database='sql7708896',
-    password='xu8xNWxznn'
+    user='sql7711055',
+    database='sql7711055',
+    password='XGGTGnGcsQ'
 )
 
 cursor = db.cursor()
@@ -27,6 +27,7 @@ def confirmlogin(cred):
 
 
 def register(u,p) :
+    sha256_hash = hashlib.sha256()
     print(u,p)
     sha256_hash.update(p.encode('utf-8'))
     p = sha256_hash.hexdigest()
