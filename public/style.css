@@ -1,6 +1,6 @@
 @font-face {
-  font-family: air;
-  src: url(https://www.airindia.com/etc.clientlibs/air-india/clientlibs/clientlib-site/resources/fonts/AirIndiaVariable.woff2);
+  font-family: "air";
+  src: url(air.woff2) format("woff2");
 }
 body {
   background: #000;
