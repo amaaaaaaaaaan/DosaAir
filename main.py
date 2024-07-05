@@ -23,6 +23,9 @@ def regdata(u,p):
    else:
       return 'Blank user and pass'
    
+@eel.expose
+def userdata():
+  return back.userdata
 
    
 
