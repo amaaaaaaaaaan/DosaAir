@@ -27,7 +27,6 @@ def confirmlogin(cred,u):
        ps = i[1]
        if ps == l : 
            userdata['name'] = us
-           userdata['pass'] = ps
            print(ps , j )
            return us
 

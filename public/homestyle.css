@@ -5,8 +5,8 @@ body {
 }
 
 :root {
-  --org: rgb(60, 176, 205);
-  --ligh: rgb(230, 251, 255);
+  --org: rgb(23, 112, 137);
+  --ligh: rgb(207, 247, 255);
   --sec: rgb(154, 202, 244);
 }
 
@@ -68,14 +68,13 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 80vh;
+  height: 70vh;
   text-align: center;
 }
 
 .hero-img {
   position: absolute;
   width: 100vw;
-  height: 80vh;
   z-index: -1;
   object-fit: cover;
   /* filter: brightness(50%); */
@@ -134,6 +133,11 @@ body {
 }
 
 .acc-nat {
+  font-weight: 200;
+  font-size: 0.8vw;
+}
+
+.acc-name {
   font-weight: 800;
 }
 
@@ -195,4 +199,31 @@ body {
 .booking-time {
   font-size: clamp(2vw, 30vw, 2vw);
   font-weight: 700;
+}
+
+.top-menu-cont {
+  display: flex;
+  justify-content: center;
+}
+
+.top-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1.8vw;
+  background: white;
+  padding: 10px;
+  width: max-content;
+  border-radius: 7px;
+}
+
+.top-menu > button {
+  border-radius: 10px;
+  background: white;
+  box-shadow: 5px 5px 9px #c4d5d9, -5px -5px 9px #ffffff;
+  border: none;
+  font-weight: 800;
+  font-size: 1.5vw;
+  color: rgb(9, 138, 170);
+  padding: 10px;
 }
