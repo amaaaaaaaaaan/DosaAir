@@ -32,25 +32,44 @@ def confirmlogin(cred,u):
            return us
 
 
-def register(u,p) :
+def register(u,p,name, location, history):
     sha256_hash = hashlib.sha256()
-    print(u,p)
     sha256_hash.update(p.encode('utf-8'))
-    p = sha256_hash.hexdigest()
-    l = ''
-    for i in range(len(p)):
-        if i < len(u):
-            l =l + p[i]+u[i]
-        else:
-            l= l+ p[i]
-    print(l)
+    hashed_password = sha256_hash.hexdigest()
+
     try:
-        cursor.execute(f'insert into users values("{u}" , "{l}")')
+        cursor.execute('INSERT INTO users (username, password, name, preferred_location, history) VALUES (%s, %s, %s, %s, %s)',
+                        (u, hashed_password, name, location, history))
         db.commit()
-    except:
-        return 'something wrong  connection'
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+        return 'Something went wrong with the database operation.'
     else:
         return True
 
 __all__ = ['confirmlogin' , 'register' , 'userdata']
+
+
+def create_flights_table():
+    try:
+        cursor.execute('''CREATE TABLE IF NOT EXISTS flights (
+                            flight_id INT AUTO_INCREMENT PRIMARY KEY,
+                            flight_number VARCHAR(20) NOT NULL,
+                            departure_time DATETIME NOT NULL,
+                            arrival_time DATETIME NOT NULL,
+                            origin VARCHAR(50) NOT NULL,
+                            destination VARCHAR(50) NOT NULL,
+                            seats_available INT NOT NULL,
+                            price DECIMAL(10, 2) NOT NULL
+                            )''')
+        db.commit()
+    except mysql.connector.Error as err:
+        print(f"Error creating flights table: {err}")
+        return 'Something went wrong with creating the flights table.'
+    else:
+        return True  
+    finally:
+        if db:
+            db.close()
+            cursor.close()  # to Close connections even on errors
 
