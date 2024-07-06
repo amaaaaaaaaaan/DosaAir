@@ -1,13 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap");
+
+@font-face {
+  font-family: air;
+  src: url(air.woff2);
+}
+
 body {
   margin: 0;
   font-family: "Instrument Sans", sans-serif;
 }
 
 :root {
-  --org: rgb(23, 112, 137);
-  --ligh: rgb(207, 247, 255);
-  --sec: rgb(154, 202, 244);
+  --ligh: rgb(23, 112, 137);
+  --org: rgb(226, 250, 255);
+  --sec: rgb(154, 231, 244);
 }
 
 .logo-img {
@@ -47,7 +53,7 @@ body {
   font-size: 1.8vh;
   font-weight: 500;
   margin-left: 10px;
-  color: var(--ligh);
+  color: var(--sec);
 }
 
 .pages > a :hover {
@@ -57,7 +63,7 @@ body {
 
 .acc-cont::before {
   content: "";
-  border: 1px solid var(--ligh);
+  border: 1px solid var(--sec);
   border-radius: 23px;
   height: 6vh;
   margin-right: 10px;
@@ -74,6 +80,7 @@ body {
 
 .hero-img {
   position: absolute;
+  height: 70vh;
   width: 100vw;
   z-index: -1;
   object-fit: cover;
@@ -100,10 +107,10 @@ body {
 
 .flight {
   background: white;
-  padding: 40px 50px;
+  padding: 10px 50px;
   color: var(--org);
   border-radius: 15px;
-  margin: 20px;
+  margin: 50px;
 }
 
 .acc-btn {
@@ -111,7 +118,7 @@ body {
   aspect-ratio: 1/1;
   border-radius: 50%;
   border: none;
-  background: var(--ligh);
+  background: var(--sec);
 }
 
 .acc-img {
@@ -129,7 +136,7 @@ body {
   display: flex;
   flex-direction: column;
   text-align: right;
-  color: var(--ligh);
+  color: var(--sec);
 }
 
 .acc-nat {
@@ -150,60 +157,85 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-top: 3vh;
+  color: black;
 }
 
-.flight-destinations {
-  background: var(--ligh);
-  padding: 10px;
-  width: 10vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2vw;
+.flight-inf {
+  background: var(--org);
+  padding: 20px;
   border-radius: 15px;
-  font-weight: 800;
+  display: flex;
+
+  gap: 0.6vw;
+  align-items: center;
+  position: relative;
+  bottom: -2vh;
 }
 
-.flight-info {
-  padding: 10px;
+.flight-dt {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  align-items: center;
 }
 
 .flight-time {
-  font-size: 2em;
+  font-weight: 500;
+  font-family: air;
+  font-size: 1.5vw;
 }
 
-.flight-num {
-  font-size: 1.5em;
-  font-weight: 800;
+.flight-date {
+  font-size: 1vw !important;
 }
 
-.booking-btn {
+.flight-bk {
+  display: flex;
+  flex-direction: column;
+}
+
+.flight-booking {
+  position: relative;
+  bottom: -4vh;
   background: var(--org);
+  border: 2px solid var(--ligh);
   padding: 10px;
-  font-size: clamp(2vw, 30vw, 2vw);
-  border: none;
   border-radius: 10px;
+  font-size: 20px;
+  font-family: air;
   color: var(--ligh);
-  font-weight: 900;
-  width: 10vw;
 }
 
-.booking-btn:hover {
+.flight-booking:hover {
   background: var(--sec);
-  color: var(--org);
-}
-
-.booking-time {
-  font-size: clamp(2vw, 30vw, 2vw);
-  font-weight: 700;
 }
 
 .top-menu-cont {
   display: flex;
   justify-content: center;
+}
+
+.flight-take-off-icon {
+  content: url(https://travel.airindia.com/statics/applications/booking-com/dist/9.2.9-ai-ai-booking.114/material-symbols_flight-takeoff.8aed8e9150106ee4.svg);
+  filter: brightness(0) saturate(100%) invert(33%) sepia(16%) saturate(585%)
+    hue-rotate(164deg) brightness(92%) contrast(92%);
+}
+
+.flight-take-in-icon {
+  content: url(https://travel.airindia.com/statics/applications/booking-com/dist/9.2.9-ai-ai-booking.114/ic_round-flight-land.e3a15d8183491f76.svg);
+  filter: brightness(0) saturate(100%) invert(33%) sepia(16%) saturate(585%)
+    hue-rotate(164deg) brightness(92%) contrast(92%);
+}
+
+.custom-hr {
+  border: none;
+  border-top: 2px dashed #000;
+  width: 25%;
+  margin: 0;
+}
+
+.flight-dash {
+  content: url(https://travel.airindia.com/statics/applications/booking-com/dist/9.2.9-ai-ai-booking.114/dashed-border-boundline.2c848b8e8dbf9a6a.svg);
+  width: 25%;
 }
 
 .top-menu {
@@ -226,4 +258,9 @@ body {
   font-size: 1.5vw;
   color: rgb(9, 138, 170);
   padding: 10px;
+}
+
+.flight-dest {
+  font-family: air;
+  font-size: 2vw;
 }
