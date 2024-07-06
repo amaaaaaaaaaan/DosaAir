@@ -1,9 +1,9 @@
 import mysql.connector
 import hashlib
 db = mysql.connector.connect(
-        host='sql.freedb.tech',
+    host='sql.freedb.tech',
     user='freedb_ranganshooja',
-    database='freedb_dosair',
+    database='freedb_dosaair',
     password='Tu*U7mCup%6MH8K'
 )
 
