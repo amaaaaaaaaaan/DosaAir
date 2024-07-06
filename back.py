@@ -3,7 +3,7 @@ import hashlib
 db = mysql.connector.connect(
         host='sql.freedb.tech',
     user='freedb_ranganshooja',
-    database='freedb _dosair',
+    database='freedb_dosair',
     password='Tu*U7mCup%6MH8K'
 )
 
@@ -12,7 +12,7 @@ userdata ={}
 
 def confirmlogin(cred,u):
     sha256_hash = hashlib.sha256()
-    cursor.execute('select * from users')
+    cursor.execute('select * from Users')
     k = cursor.fetchall()
     sha256_hash.update(cred.encode('utf-8'))
     j = sha256_hash.hexdigest()
@@ -44,7 +44,7 @@ def register(u,p) :
             l= l+ p[i]
     print(l)
     try:
-        cursor.execute(f'insert into users values("{u}" , "{l}")')
+        cursor.execute(f'insert into Users values("{u}" , "{l}")')
         db.commit()
     except:
         return 'something wrong with connection'
