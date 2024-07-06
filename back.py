@@ -1,10 +1,10 @@
 import mysql.connector
 import hashlib
 db = mysql.connector.connect(
-        host='localhost',
-    user='root',
-    database='dosaair',
-    password='divya123'
+        host='sql.freedb.tech',
+    user='freedb_ranganshooja',
+    database='freedb _dosair',
+    password='Tu*U7mCup%6MH8K'
 )
 
 cursor = db.cursor()

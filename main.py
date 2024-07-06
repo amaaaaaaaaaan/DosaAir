@@ -1,6 +1,24 @@
 import eel 
 import back 
+import geocoder
+import airportsdata
 eel.init('public')
+
+
+def get_airport_code(city_name):
+    print(city_name)
+    airports = airportsdata.load("IATA")
+    for code, airport in airports.items():
+        if airport['city'].lower() == city_name.lower():
+            return code
+    return None
+
+
+def get_current_city():
+    g = geocoder.ip('me')
+    city = g.city
+    return city.split(' ')[0]
+
 
 
 
@@ -25,6 +43,7 @@ def regdata(u,p):
    
 @eel.expose
 def userdata():
+  back.userdata['ploc'] = get_current_city()
   return back.userdata
 
    
