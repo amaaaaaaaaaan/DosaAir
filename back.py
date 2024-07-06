@@ -3,7 +3,7 @@ import hashlib
 db = mysql.connector.connect(
     host='sql.freedb.tech',
     user='freedb_ranganshooja',
-    database='dosaair',
+    database='freedb_dosaair',
     password='Tu*U7mCup%6MH8K'
 )
 
