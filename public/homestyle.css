@@ -196,12 +196,17 @@ body {
 .flight-booking {
   position: relative;
   bottom: -7vh;
-  background: var(--sec);
-  border: none;
+  background: var(--org);
+  border: 2px solid var(--ligh);
   padding: 10px;
   border-radius: 10px;
   font-size: 20px;
   font-family: air;
+  color: var(--ligh);
+}
+
+.flight-booking:hover {
+  background: var(--sec);
 }
 
 .top-menu-cont {
