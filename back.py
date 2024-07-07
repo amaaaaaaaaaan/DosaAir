@@ -3,7 +3,7 @@ import hashlib
 db = mysql.connector.connect(
     host='sql.freedb.tech',
     user='freedb_ranganshooja',
-    database='freedb_dosaair',
+    database='freedb_dosair',
     password='Tu*U7mCup%6MH8K'
 )
 
@@ -44,7 +44,7 @@ def register(u,p) :
             l= l+ p[i]
     print(l)
     try:
-        cursor.execute(f'insert into Users values("{u}" , "{l}")')
+        cursor.execute(f'insert into Users (Name , Pass) values("{u}" , "{l}")')
         db.commit()
     except:
         return 'something wrong with connection'
