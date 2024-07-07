@@ -1,5 +1,9 @@
 import mysql.connector
 import hashlib
+import geocoder
+import airportsdata
+
+
 db = mysql.connector.connect(
     host='sql.freedb.tech',
     user='freedb_ranganshooja',
@@ -9,6 +13,21 @@ db = mysql.connector.connect(
 
 cursor = db.cursor()
 userdata ={}
+
+
+def get_airport_code(city_name):
+    print(city_name)
+    airports = airportsdata.load("IATA")
+    for code, airport in airports.items():
+        if airport['city'].lower() == city_name.lower():
+            return code
+    return None
+
+
+def get_current_city():
+    g = geocoder.ip('me')
+    city = g.city
+    return city.split(' ')[0]
 
 def confirmlogin(cred,u):
     sha256_hash = hashlib.sha256()
@@ -27,7 +46,7 @@ def confirmlogin(cred,u):
        ps = i[1]
        if ps == l : 
            userdata['name'] = us
-           print(ps , j )
+           userdata['ploc'] = get_current_city()
            return us
 
 

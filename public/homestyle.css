@@ -26,7 +26,10 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 20px;
-  opacity: 0;
+  background: rgba(0, 66, 84, 0.488);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 .float {
@@ -35,10 +38,6 @@ body {
   left: 0;
   opacity: 100;
   z-index: 9;
-  background: rgba(0, 66, 84, 0.488);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
 }
 
 .links {
@@ -107,7 +106,12 @@ body {
 }
 
 .flight {
-  background: white;
+  background: linear-gradient(
+    to top left,
+    rgb(177, 254, 255),
+    rgb(255, 255, 255),
+    white
+  );
   padding: 10px 50px;
   color: var(--org);
   border-radius: 15px;
@@ -170,6 +174,9 @@ body {
   gap: 0.6vw;
   align-items: center;
   position: relative;
+}
+
+.dw {
   bottom: -2vh;
 }
 
@@ -196,7 +203,7 @@ body {
 
 .flight-booking {
   position: relative;
-  bottom: -4vh;
+  bottom: -35px;
   background: var(--org);
   border: 2px solid var(--ligh);
   padding: 10px;
