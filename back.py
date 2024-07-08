@@ -73,7 +73,7 @@ def register(u,p) :
     
 def mk_dict():
     ca = "Sharjah"
-    cu.execute(f'SELECT * FROM flights WHERE FromDest="{ca}"')
+    cu.execute(f'SELECT * FROM flights WHERE FromDest="{get_current_city()}"')
     x = cu.fetchall()
     for u, i in enumerate(x):
         flight_dict = {
