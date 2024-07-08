@@ -11,8 +11,9 @@ db = mysql.connector.connect(
     password='Tu*U7mCup%6MH8K'
 )
 
-cursor = db.cursor()
+cu = db.cursor()
 userdata ={}
+dic_lst = []
 
 
 def get_airport_code(city_name):
@@ -31,8 +32,8 @@ def get_current_city():
 
 def confirmlogin(cred,u):
     sha256_hash = hashlib.sha256()
-    cursor.execute('select * from Users')
-    k = cursor.fetchall()
+    cu.execute('select * from Users')
+    k = cu.fetchall()
     sha256_hash.update(cred.encode('utf-8'))
     j = sha256_hash.hexdigest()
     l = ''
@@ -63,12 +64,26 @@ def register(u,p) :
             l= l+ p[i]
     print(l)
     try:
-        cursor.execute(f'insert into Users (Name , Pass) values("{u}" , "{l}")')
+        cu.execute(f'insert into Users (Name , Pass) values("{u}" , "{l}")')
         db.commit()
     except:
         return 'something wrong with connection'
     else:
         return True
+    
+def mk_dict():
+    ca = "Sharjah"
+    cu.execute(f'SELECT * FROM flights WHERE FromDest="{ca}"')
+    x = cu.fetchall()
+    for u, i in enumerate(x):
+        flight_dict = {
+            "Fno":i[0],
+            "FromDest":i[1],
+            "ToDest":i[2],
+            "Price":i[3]
+        }
+        dic_lst.append(flight_dict)
+    return dic_lst
 
 __all__ = ['confirmlogin' , 'register' , 'userdata']
 
