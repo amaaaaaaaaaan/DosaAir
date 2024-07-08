@@ -82,6 +82,8 @@ h3 {
   background: rgb(6, 83, 108);
 }
 
-select {
+select,
+option {
   appearance: none;
+  text-align: center;
 }
