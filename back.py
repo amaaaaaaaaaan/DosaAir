@@ -13,11 +13,10 @@ db = mysql.connector.connect(
 
 cu = db.cursor()
 userdata ={}
-dic_lst = []
+
 
 
 def get_airport_code(city_name):
-    print(city_name)
     airports = airportsdata.load("IATA")
     for code, airport in airports.items():
         if airport['city'].lower() == city_name.lower():
@@ -28,7 +27,7 @@ def get_airport_code(city_name):
 def get_current_city():
     g = geocoder.ip('me')
     city = g.city
-    return city.split(' ')[0]
+    return 'Sharjah' #will change this after testing 🐈
 
 def confirmlogin(cred,u):
     sha256_hash = hashlib.sha256()
@@ -72,18 +71,20 @@ def register(u,p) :
         return True
     
 def mk_dict():
-    ca = "Sharjah"
+    dic_lst = []
+    ca = "Sharjah" #is this line used ?
     cu.execute(f'SELECT * FROM flights WHERE FromDest="{get_current_city()}"')
     x = cu.fetchall()
     for u, i in enumerate(x):
         flight_dict = {
             "Fno":i[0],
-            "FromDest":i[1],
-            "ToDest":i[2],
-            "Price":i[3]
+            "FromDest":get_airport_code(i[1]) ,
+            "ToDest":get_airport_code(i[2]) ,
+            "Price": i[3]
         }
         dic_lst.append(flight_dict)
     return dic_lst
 
-__all__ = ['confirmlogin' , 'register' , 'userdata']
+
+__all__ = ['confirmlogin' , 'register' , 'userdata' , 'mk_dict']
 

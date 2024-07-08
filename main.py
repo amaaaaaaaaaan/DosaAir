@@ -26,6 +26,10 @@ def regdata(u,p):
 def userdata():
   return back.userdata
 
+@eel.expose
+def smartRoutes():
+  return back.mk_dict()
+
    
 
 eel.start('login.html' ,size=(1114,654) )
