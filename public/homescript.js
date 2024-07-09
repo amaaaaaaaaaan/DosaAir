@@ -4,11 +4,17 @@ async function updateUserData() {
   document.querySelector(".acc-name").innerText = userdata.name;
   document.querySelector("#ploc").innerText = userdata.ploc;
   const smartRoutes = await eel.smartRoutes()();
+  if (smartRoutes) {
+    document.querySelector(".waiting").classList.add("hid");
+  }
   console.log(smartRoutes);
   smartRoutes.forEach((flight) => {
     const htm = `<div class="flight">
-          <span class="flight-dest">${flight.FromDest}</span>
-          <div class="flight-take-off-icon"></div>
+<div class="flight-dest-cont">
+            <span class="flight-date flight-time">${flight.from}</span>
+            <span class="flight-dest">${flight.FromDest}</span>
+
+          </div>          <div class="flight-take-off-icon"></div>
           <hr class="custom-hr">
           <div class="flight-bk">
             <div class="flight-inf dw">
@@ -28,10 +34,15 @@ async function updateUserData() {
           
           <hr class="custom-hr">
           <div class="flight-take-in-icon"></div>
-          <span class="flight-dest">${flight.ToDest}</span>
-          </div>`;
+<div class="flight-dest-cont">
+            <span class="flight-date flight-time">${flight.to}</span>
+            <span class="flight-dest">${flight.ToDest}</span>
+
+          </div>           </div>`;
     document.querySelector("#startkaro").insertAdjacentHTML("beforebegin", htm);
   });
 }
 
-document.onload(updateUserData());
+document.addEventListener("DOMContentLoaded", function () {
+  updateUserData();
+});

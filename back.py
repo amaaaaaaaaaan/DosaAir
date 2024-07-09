@@ -79,7 +79,6 @@ def mk_dict():
     ca = "Sharjah" #is this line used ?
     cu.execute(f'SELECT * FROM flights f,Schedule s WHERE s.fno = f.fno and  FromDest="{get_current_city()}"')
     x = cu.fetchall()
-    print(x)
     for u, i in enumerate(x):
         time = i[6]
         time = time.split(':')
@@ -89,6 +88,8 @@ def mk_dict():
             "Fno":i[0],
             "FromDest":get_airport_code(i[1]) ,
             "ToDest":get_airport_code(i[2]) ,
+            "from" : i[1],
+            "to" : i[2],
             "Price": i[3],
             'duration': i[4],
             'date' : i[7],
