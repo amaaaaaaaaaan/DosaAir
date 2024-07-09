@@ -15,9 +15,10 @@ async function updateUserData() {
             
             
               <div class="flight-dt">
-                <span class="flight-date">Monday 20 May</span>
+                <span class="flight-date">${flight.date}</span>
+                           <span class="flight-date flight-time">${flight.time}</span>      
   <span class="flight-time">$${flight.Price}</span>
-  <span class="flight-date flight-time">4H 24Mins</span>
+  <span class="flight-date flight-time">${flight.duration}</span>
             </div>
             
             
@@ -29,7 +30,7 @@ async function updateUserData() {
           <div class="flight-take-in-icon"></div>
           <span class="flight-dest">${flight.ToDest}</span>
           </div>`;
-    document.querySelector("#startkaro").insertAdjacentHTML("afterend", htm);
+    document.querySelector("#startkaro").insertAdjacentHTML("beforebegin", htm);
   });
 }
 

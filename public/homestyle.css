@@ -66,7 +66,7 @@ body {
   border: 1px solid var(--sec);
   border-radius: 23px;
   height: 6vh;
-  margin-right: 10px;
+  /* margin-right: 10px; */
 }
 
 .hero {
@@ -131,7 +131,8 @@ body {
 }
 
 .acc-cont {
-  margin: 10px;
+  /* margin: 10px; */
+  padding: 10px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -140,7 +141,7 @@ body {
 .acc-inf {
   display: flex;
   flex-direction: column;
-  text-align: right;
+  text-align: left;
   color: var(--sec);
 }
 

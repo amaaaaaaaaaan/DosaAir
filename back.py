@@ -9,6 +9,10 @@ db = mysql.connector.connect(
     user='freedb_ranganshooja',
     database='freedb_dosair',
     password='Tu*U7mCup%6MH8K'
+    # host='localhost',
+    # user='root',
+    # password='divya123',
+    # database = 'dosaair'
 )
 
 cu = db.cursor()
@@ -73,14 +77,22 @@ def register(u,p) :
 def mk_dict():
     dic_lst = []
     ca = "Sharjah" #is this line used ?
-    cu.execute(f'SELECT * FROM flights WHERE FromDest="{get_current_city()}"')
+    cu.execute(f'SELECT * FROM flights f,Schedule s WHERE s.fno = f.fno and  FromDest="{get_current_city()}"')
     x = cu.fetchall()
+    print(x)
     for u, i in enumerate(x):
+        time = i[6]
+        time = time.split(':')
+        time.pop()
+        time = ":".join(time)
         flight_dict = {
             "Fno":i[0],
             "FromDest":get_airport_code(i[1]) ,
             "ToDest":get_airport_code(i[2]) ,
-            "Price": i[3]
+            "Price": i[3],
+            'duration': i[4],
+            'date' : i[7],
+            'time' : time
         }
         dic_lst.append(flight_dict)
     return dic_lst
