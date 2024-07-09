@@ -106,7 +106,7 @@ def mk_dict():
 
 
 def book(data):
-    cu.execute(f'select * from flights where Fno = {data['fno']}') 
+    cu.execute(f'select * from flights where Fno = {data["fno"]}') 
     i = cu.fetchone()
     global bkdFlight
     bkdFlight = {
