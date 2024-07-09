@@ -9,7 +9,8 @@ async function updateUserData() {
   }
   console.log(smartRoutes);
   smartRoutes.forEach((flight) => {
-    const htm = `<div class="flight">
+    const htm = `<div class="flight" >
+    <span class='fno' style='display:none'>${flight.Fno}</span>
 <div class="flight-dest-cont">
             <span class="flight-date flight-time">${flight.from}</span>
             <span class="flight-dest">${flight.FromDest}</span>
@@ -29,7 +30,7 @@ async function updateUserData() {
             
             
           </div>
-          <button class="flight-booking">BOOK</button>
+          <button class="flight-booking" onclick="book(this)">BOOK</button>
           </div>
           
           <hr class="custom-hr">
@@ -46,3 +47,30 @@ async function updateUserData() {
 document.addEventListener("DOMContentLoaded", function () {
   updateUserData();
 });
+
+function book(e) {
+  const flightContainer = e.closest(".flight");
+
+  const dateElement = flightContainer.querySelector(".flight-dt .flight-date");
+  const timeElement = flightContainer.querySelector(".flight-dt .flight-time");
+  const fnoelement = flightContainer.querySelector(".fno");
+
+  if (dateElement && timeElement) {
+    const date = dateElement.textContent;
+    const time = timeElement.textContent;
+    const fno = fnoelement.textContent;
+    const flightDetails = {
+      fno: fno,
+      date: date,
+      time: time,
+    };
+
+    console.log(flightDetails);
+    // this object contains booking data 🐈
+    return flightDetails;
+  } else {
+    console.error(
+      "Date or time element not found within the flight container."
+    );
+  }
+}
