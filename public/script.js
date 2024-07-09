@@ -10,6 +10,8 @@ async function senduserdata(e) {
     ms.style.animationPlayState = "initial";
   } else {
     window.location.href = "home.html";
+    // console.log(eel.userdatapull);
+    updateUserData();
   }
 }
 

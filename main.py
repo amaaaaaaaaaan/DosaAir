@@ -1,8 +1,7 @@
 import eel 
 import back 
+
 eel.init('public')
-
-
 
 @eel.expose
 
@@ -22,6 +21,15 @@ def regdata(u,p):
       return l
    else:
       return 'Blank user and pass'
+   
+@eel.expose
+def userdata():
+  return back.userdata
+
+@eel.expose
+def smartRoutes():
+  return back.mk_dict()
+
    
 
 eel.start('login.html' ,size=(1114,654) )

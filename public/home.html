@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script type="text/javascript" src="/eel.js"></script>
     <link rel="stylesheet" href="homestyle.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,7 +11,7 @@
     <div class="main">
       <div class="head float">
         <div class="logo-cont">
-          <img class="logo-img" src="whitelogo.png" alt="" />
+          <img class="logo-img" src="logo.png" alt="" />
         </div>
         <div class="links">
           <!-- <a>Contact</a>
@@ -23,220 +24,64 @@
           </div>
           <div class="acc-cont">
             <div class="acc-inf">
-              <span class="acc-name" id="accountName">Arjun Theyyath</span>
-              <span class="acc-nat" id="accountName">India</span>
+              <span class="acc-name" id="accountName">Aman</span>
+              <span class="acc-nat" id="ploc">Dubai</span>
             </div>
-            <button class="acc-btn">
+            <!-- <button class="acc-btn">
               <img
                 class="acc-img"
                 src="https://cdn-icons-png.flaticon.com/512/3276/3276535.png"
                 alt=""
               />
-            </button>
+            </button> -->
           </div>
         </div>
       </div>
-      <div class="head">
-        <div class="logo-cont">
-          <img class="logo-img" src="whitelogo.png" alt="" />
-        </div>
-        <div class="links">
-          <a>Contact</a>
-          <a>Menu</a>
-          <a>Flights</a>
-        </div>
-      </div>
+
       <div class="hero">
-        <img
-          class="hero-img"
-          src="https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-1798755354.jpg?c=16x9&q=h_833,w_1480,c_fill"
-          alt=""
-        />
-        <span class="hero-text"
-          >Come for the flight <br />
-          Stay for the Dosa</span
-        >
+        <img class="hero-img" src="airback.png" alt="" />
       </div>
+
       <div class="cont">
-        <span class="flight-head"> Flight Routes </span>
-        <div class="flight">
-          <div class="flight-info">
-            <div class="flight-destinations">
-              <span>DXB</span>
-              <span>-></span>
-              <span>SHJ</span>
-            </div>
-
-            <span class="flight-time" id="time">Monday 20 May</span>
-            <span class="flight-num" id="num">AI 930</span>
-          </div>
-          <span class="booking-time">12:30 -> 4:40</span>
-          <div class="flight-booking">
-            <button class="booking-btn">Book</button>
+        <div class="top-menu-cont">
+          <div class="top-menu">
+            <button>Smart Routes</button>
+            <button>Search Flights</button>
+            <button>Bookings Routes</button>
           </div>
         </div>
-        <div class="flight">
-          <div class="flight-info">
-            <div class="flight-destinations">
-              <span>DXB</span>
-              <span>-></span>
-              <span>SHJ</span>
-            </div>
 
-            <span class="flight-time" id="time">Monday 20 May</span>
-            <span class="flight-num" id="num">AI 930</span>
-          </div>
-          <span class="booking-time">12:30 -> 4:40</span>
-          <div class="flight-booking">
-            <button class="booking-btn">Book</button>
-          </div>
-        </div>
-        <div class="flight">
-          <div class="flight-info">
-            <div class="flight-destinations">
-              <span>DXB</span>
-              <span>-></span>
-              <span>SHJ</span>
+        <span class="flight-head"> Smart Routes </span>
+        <div class="flight" style="display: none;">
+          <span class="flight-dest">DXB</span>
+          <div class="flight-take-off-icon"></div>
+          <hr class="custom-hr">
+          <div class="flight-bk">
+            <div class="flight-inf dw">
+            
+            
+              <div class="flight-dt">
+                <span class="flight-date">Monday 20 May</span>
+  <span class="flight-time">4H 15Min</span>
+  <span class="flight-date flight-time">A25354</span>
             </div>
+            
+            
+          </div>
+          <button class="flight-booking">BOOK</button>
+          </div>
+          
+          <hr class="custom-hr">
+          <div class="flight-take-in-icon"></div>
+          <span class="flight-dest">COK</span>
+          </div>
+          <div id="startkaro"></div>
+      
+        
+      </div>
 
-            <span class="flight-time" id="time">Monday 20 May</span>
-            <span class="flight-num" id="num">AI 930</span>
-          </div>
-          <span class="booking-time">12:30 -> 4:40</span>
-          <div class="flight-booking">
-            <button class="booking-btn">Book</button>
-          </div>
-        </div>
-        <div class="flight">
-          <div class="flight-info">
-            <div class="flight-destinations">
-              <span>DXB</span>
-              <span>-></span>
-              <span>SHJ</span>
-            </div>
-
-            <span class="flight-time" id="time">Monday 20 May</span>
-            <span class="flight-num" id="num">AI 930</span>
-          </div>
-          <span class="booking-time">12:30 -> 4:40</span>
-          <div class="flight-booking">
-            <button class="booking-btn">Book</button>
-          </div>
-        </div>
-        <div class="flight">
-          <div class="flight-info">
-            <div class="flight-destinations">
-              <span>DXB</span>
-              <span>-></span>
-              <span>SHJ</span>
-            </div>
-
-            <span class="flight-time" id="time">Monday 20 May</span>
-            <span class="flight-num" id="num">AI 930</span>
-          </div>
-          <span class="booking-time">12:30 -> 4:40</span>
-          <div class="flight-booking">
-            <button class="booking-btn">Book</button>
-          </div>
-        </div>
-        <div class="flight">
-          <div class="flight-info">
-            <div class="flight-destinations">
-              <span>DXB</span>
-              <span>-></span>
-              <span>SHJ</span>
-            </div>
-
-            <span class="flight-time" id="time">Monday 20 May</span>
-            <span class="flight-num" id="num">AI 930</span>
-          </div>
-          <span class="booking-time">12:30 -> 4:40</span>
-          <div class="flight-booking">
-            <button class="booking-btn">Book</button>
-          </div>
-        </div>
-        <div class="flight">
-          <div class="flight-info">
-            <div class="flight-destinations">
-              <span>DXB</span>
-              <span>-></span>
-              <span>SHJ</span>
-            </div>
-
-            <span class="flight-time" id="time">Monday 20 May</span>
-            <span class="flight-num" id="num">AI 930</span>
-          </div>
-          <span class="booking-time">12:30 -> 4:40</span>
-          <div class="flight-booking">
-            <button class="booking-btn">Book</button>
-          </div>
-        </div>
-        <div class="flight">
-          <div class="flight-info">
-            <div class="flight-destinations">
-              <span>DXB</span>
-              <span>-></span>
-              <span>SHJ</span>
-            </div>
-
-            <span class="flight-time" id="time">Monday 20 May</span>
-            <span class="flight-num" id="num">AI 930</span>
-          </div>
-          <span class="booking-time">12:30 -> 4:40</span>
-          <div class="flight-booking">
-            <button class="booking-btn">Book</button>
-          </div>
-        </div>
-        <div class="flight">
-          <div class="flight-info">
-            <div class="flight-destinations">
-              <span>DXB</span>
-              <span>-></span>
-              <span>SHJ</span>
-            </div>
-
-            <span class="flight-time" id="time">Monday 20 May</span>
-            <span class="flight-num" id="num">AI 930</span>
-          </div>
-          <span class="booking-time">12:30 -> 4:40</span>
-          <div class="flight-booking">
-            <button class="booking-btn">Book</button>
-          </div>
-        </div>
-        <div class="flight">
-          <div class="flight-info">
-            <div class="flight-destinations">
-              <span>DXB</span>
-              <span>-></span>
-              <span>SHJ</span>
-            </div>
-
-            <span class="flight-time" id="time">Monday 20 May</span>
-            <span class="flight-num" id="num">AI 930</span>
-          </div>
-          <span class="booking-time">12:30 -> 4:40</span>
-          <div class="flight-booking">
-            <button class="booking-btn">Book</button>
-          </div>
-        </div>
-        <div class="flight">
-          <div class="flight-info">
-            <div class="flight-destinations">
-              <span>DXB</span>
-              <span>-></span>
-              <span>SHJ</span>
-            </div>
-
-            <span class="flight-time" id="time">Monday 20 May</span>
-            <span class="flight-num" id="num">AI 930</span>
-          </div>
-          <span class="booking-time">12:30 -> 4:40</span>
-          <div class="flight-booking">
-            <button class="booking-btn">Book</button>
-          </div>
-        </div>
       </div>
     </div>
   </body>
 </html>
-<script src="script.js"></script>
+<script src="homescript.js"></script>
