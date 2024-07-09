@@ -28,6 +28,7 @@ h3 {
   font-family: air;
   color: var(--ligh);
   font-weight: 900;
+  font-size: 2vw !important;
 }
 
 .ticket-passenger {
@@ -61,6 +62,15 @@ h3 {
   /* border: 2px solid rgba(16, 179, 204, 0.27); */
 }
 
+.login-text {
+  background: linear-gradient(
+    to top left,
+    rgb(177, 254, 255),
+    rgb(255, 255, 255),
+    white
+  );
+}
+
 .login-inf {
   display: flex;
   flex-direction: column;
@@ -86,4 +96,99 @@ select,
 option {
   appearance: none;
   text-align: center;
+}
+
+.overlay {
+  background: #0000008f;
+  width: 100vw;
+  height: 100%;
+  position: fixed;
+  z-index: 999;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  transition: 2s;
+  opacity: 0;
+}
+
+.menu {
+  position: fixed;
+  z-index: 9999;
+  background: linear-gradient(
+    to top left,
+    rgb(177, 254, 255),
+    rgb(255, 255, 255),
+    white
+  );
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  padding: 20px 50px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+  max-height: 90vh;
+}
+
+.menu-top {
+  width: 100%;
+  font-size: 3vw !important;
+  margin: 0;
+  background: linear-gradient(120deg, rgb(37, 196, 228), rgb(0, 0, 0));
+  background-clip: text;
+  font-family: air;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.menu-head {
+  text-align: left;
+  width: 100%;
+  font-weight: 800;
+  font-size: 1.4vw;
+  background: linear-gradient(120deg, rgb(37, 196, 228), rgb(0, 0, 0));
+  background-clip: text;
+  background-size: 40% 10%;
+  font-family: air;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 10px;
+}
+
+.menu-cat {
+  border: 2px solid var(--sec);
+  padding: 10px 30px;
+  border-radius: 10px;
+  background: linear-gradient(120deg, rgb(2, 188, 255), rgb(23, 90, 223));
+  font-family: air;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* overflow: scroll;
+  width: 75vw; */
+  gap: 10px;
+}
+
+.dosa {
+  border: none;
+  background: linear-gradient(
+    to top left,
+    rgb(177, 254, 255),
+    rgb(255, 255, 255),
+    white
+  );
+  padding: 10px;
+  border-radius: 10px;
+  font-family: air;
+  width: 10vw;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dosa:hover {
+  background: rgb(177, 254, 255);
 }

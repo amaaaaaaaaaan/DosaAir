@@ -10,10 +10,30 @@
     <title>DosaAir</title>
   </head>
   <body>
+    <div class="menu hid">
+      <h1 class='menu-top'>Menu</h1>
+      <span class="menu-head">Signature Dosas</span>
+
+      <div class="menu-cat" id="weird">
+ 
+      </div>
+      <span class="menu-head">Non-Veg</span>
+
+      <div class="menu-cat" id="non-veg">
+     
+             </div>
+             <span class="menu-head">Veg</span>
+
+             <div class="menu-cat" id="veg">
+            
+                    </div>
+    </div>
+    <div class="overlay hid" onclick="hidemenu()"></div>
+
     <div class="main">
       <div class="head ">
         <div class="logo-cont">
-          <img class="logo-img" src="../logo.png" alt="" />
+          <img class="logo-img" src="../logo.png" onclick="window.location.href = '../home.html'" alt="" />
         </div>
         <div class="links">
        
@@ -42,38 +62,19 @@
 
       <div class="cont">
         <div class="ticket">
-            <div class="flight">
-                <span class="flight-dest">DXB</span>
-                <div class="flight-take-off-icon"></div>
-                <hr class="custom-hr">
-                <div class="flight-bk">
-                  <div class="flight-inf">
-                  
-                  
-                    <div class="flight-dt">
-                      <span class="flight-date">Monday 20 May</span>
-        <span class="flight-time">4H 15Min</span>
-        <span class="flight-date flight-time">A25354</span>
-                  </div>
-                  
-                  
-                </div>
-                </div>
-                
-                <hr class="custom-hr">
-                <div class="flight-take-in-icon"></div>
-                <span class="flight-dest">COK</span>
-                </div>
+           
                 <div class="ticket-passenger flight">
                     <h2>PASSENGER DETAILS</h2>
                     <div class="passenger">
                         <div class="login-inf">
                             <span>Title</span>
                             <select class="login-text" >
-                                <option>Mr</option>
-                                <option>Mrs</option>
-                                <option>Ms</option>
-                                <option>Miss</option>
+                              <option value="">Select</option>
+
+                                <option value="Mr">Mr</option>
+                                <option value="Mrs">Mrs</option>
+                                <option value="Ms">Ms</option>
+                                <option value="Miss">Miss</option>
 
                             </select>
                           </div>
@@ -82,51 +83,25 @@
                             <input class="login-text" id="username" type="text" name="" id="" />
                           </div>
                           <div class="login-inf">
-                            <span>Second Name</span>
-                            <input class="login-text" id="username" type="text" name="" id="" />
+                            <span>Food Choice</span>
+                            <button class="login-text btn" onclick="showmenu(this)" >Menu</button>
                           </div>
                           <div class="login-inf">
                             <span>Age group</span>
                             <select class="login-text" >
-                                <option>Child (0 - 13)</option>
-                                <option>Adult (14 - 60)</option>
-                                <option>Senior Citizen (60+)</option>
+                              <option value="">Select</option>
+                                <option value="child">Child (0 - 13)</option>
+                                <option value="adult">Adult (14 - 60)</option>
+                                <option value="old">Senior Citizen (60+)</option>
 
                             </select>
                           </div>
                     </div>
-                    <div class="passenger">
-                        <div class="login-inf">
-                            <span>Title</span>
-                            <select class="login-text" >
-                                <option>Mr</option>
-                                <option>Mrs</option>
-                                <option>Ms</option>
-                                <option>Miss</option>
-
-                            </select>
-                          </div>
-                        <div class="login-inf">
-                            <span>First Name</span>
-                            <input class="login-text" id="username" type="text" name="" id="" />
-                          </div>
-                          <div class="login-inf">
-                            <span>Second Name</span>
-                            <input class="login-text" id="username" type="text" name="" id="" />
-                          </div>
-                          <div class="login-inf">
-                            <span>Age group</span>
-                            <select class="login-text" >
-                                <option>Child (0 - 13)</option>
-                                <option>Adult (14 - 60)</option>
-                                <option>Senior Citizen (60+)</option>
-
-                            </select>
-                          </div>
-                    </div>
-                    <button class="login-btn">Add Passenger</button>
+                    
+                    <div id="passengers"></div>
+                    <button class="login-btn" onclick="addform()">Add Passenger</button>
                 </div>
-                <button class="login-btn">Confirm</button>
+                <button class="login-btn" onclick="bookpassengers()">Confirm</button>
         </div>
       </div>
 

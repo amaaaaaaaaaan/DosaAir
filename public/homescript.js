@@ -65,7 +65,8 @@ function book(e) {
       time: time,
     };
 
-    console.log(flightDetails);
+    eel.bookFlight(flightDetails)();
+    window.location.href = "bookings/index.html";
     // this object contains booking data 🐈
     return flightDetails;
   } else {

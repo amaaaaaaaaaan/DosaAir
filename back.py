@@ -1,23 +1,29 @@
+import glob
 import mysql.connector
 import hashlib
 import geocoder
 import airportsdata
 
+try: 
 
-db = mysql.connector.connect(
-    host='sql.freedb.tech',
-    user='freedb_ranganshooja',
-    database='freedb_dosair',
-    password='Tu*U7mCup%6MH8K'
-    # host='localhost',
-    # user='root',
-    # password='divya123',
-    # database = 'dosaair'
-)
+    db = mysql.connector.connect(
+        host='sql.freedb.tech',
+        user='freedb_ranganshooja',
+        database='freedb_dosair',
+        password='Tu*U7mCup%6MH8K'
+        # host='localhost',
+        # user='root',
+        # password='divya123',
+        # database = 'dosaair'
+    )
+    cu = db.cursor()
+except:
+    print('db not connected')
+    db = ''
 
-cu = db.cursor()
+
 userdata ={}
-
+bkdFlight = {}
 
 
 def get_airport_code(city_name):
@@ -99,5 +105,57 @@ def mk_dict():
     return dic_lst
 
 
-__all__ = ['confirmlogin' , 'register' , 'userdata' , 'mk_dict']
+def book(data):
+    cu.execute(f'select * from flights where Fno = {data['fno']}') 
+    i = cu.fetchone()
+    global bkdFlight
+    bkdFlight = {
+        "fno":i[0],
+            "from":get_airport_code(i[1]) ,
+            "to":get_airport_code(i[2]) ,
+            "price": i[3],
+            'duration': i[4],
+            "time" : data['time'],
+            "date" : data['date']
+    }
+    
+def pullbooked():
+    return bkdFlight
+
+
+nonvegdosa = [
+    { "name": "Chicken Dosa", "price": 150 },
+    { "name": "Mutton Keema Dosa", "price": 200 },
+    { "name": "Egg Dosa", "price": 100 },
+    { "name": "Pepper Chicken Dosa", "price": 170 },
+    { "name": "Spicy Chicken Dosa", "price": 160 },
+    { "name": "Chicken Tikka Dosa", "price": 190 },
+    
+]
+
+vegdosa = [
+    { "name": "Masala Dosa", "price": 80 },
+    { "name": "Paneer Dosa", "price": 120 },
+    { "name": "Mysore Masala Dosa", "price": 90 },
+    { "name": "Cheese Dosa", "price": 110 },
+    { "name": "Rava Dosa", "price": 70 },
+        { "name": "Ghee Dosa", "price": 90 }
+
+]
+
+weirddosa = [
+    { "name": "Chocolate Dosa", "price": 150 },
+    { "name": "Avocado Dosa", "price": 180 },
+    { "name": "Pineapple Dosa", "price": 160 },
+    { "name": "Noodles Dosa", "price": 170 },
+    { "name": "Paneer Tikka Dosa", "price": 200 },
+    { "name": "Vegan Dosa", "price": 1200 }
+
+]
+
+dosamenu = [weirddosa , nonvegdosa , vegdosa]
+
+
+
+__all__ = ['confirmlogin' , 'register' , 'userdata' , 'mk_dict' , 'dosamenu' , 'pullbooked' , 'bkdFlight']
 

@@ -1,6 +1,7 @@
 import eel 
 import back 
 
+
 eel.init('public')
 
 @eel.expose
@@ -30,6 +31,19 @@ def userdata():
 def smartRoutes():
   return back.mk_dict()
 
-   
+@eel.expose
+def dosamenu ():
+  return back.dosamenu
 
-eel.start('login.html' ,size=(1114,654) )
+@eel.expose
+def bookFlight(data):
+  back.book(data)
+  print(data)
+
+@eel.expose
+def bookedFlight():
+  return back.bkdFlight
+
+  
+
+eel.start('login.html' ,size=(1024, 768) )
