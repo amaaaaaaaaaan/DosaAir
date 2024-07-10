@@ -108,7 +108,7 @@ def mk_dict():
 def book(data):
     cu.execute(f'select * from flights where Fno = {data["fno"]}') 
     i = cu.fetchone()
-    global bkdFlight
+    global bkdFlight #stores the currently selected flight data
     bkdFlight = {
         "fno":i[0],
             "from":get_airport_code(i[1]) ,
