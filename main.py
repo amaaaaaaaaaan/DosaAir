@@ -15,6 +15,10 @@ def getdata(u,p):
        return False
    except:
      return False
+
+@eel.expose
+def ticket(nambiar)
+  
 @eel.expose
 def regdata(u,p):
    if u != '' and p !='' :
