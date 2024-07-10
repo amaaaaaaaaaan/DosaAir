@@ -12,7 +12,7 @@ async function updateUserData() {
     const htm = `<div class="flight" >
     <span class='fno' style='display:none'>${flight.Fno}</span>
 <div class="flight-dest-cont">
-            <span class="flight-date flight-time">${flight.from}</span>
+            <span class="flight-date flight-time" style='text-align:left'>${flight.from}</span>
             <span class="flight-dest">${flight.FromDest}</span>
 
           </div>          <div class="flight-take-off-icon"></div>

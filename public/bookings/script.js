@@ -139,5 +139,6 @@ function bookpassengers() {
     });
   });
   console.log(passengerDetails);
+
   return passengerDetails;
 }

@@ -122,6 +122,9 @@ def book(data):
 def pullbooked():
     return bkdFlight
 
+def ticketcalc(catlover):
+    pass #howzat
+
 
 nonvegdosa = [
     { "name": "Chicken Dosa", "price": 150 },

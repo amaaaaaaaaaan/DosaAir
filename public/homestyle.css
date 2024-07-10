@@ -301,12 +301,12 @@ body {
 
 .waiting-smart {
   text-transform: capitalize;
-  background: linear-gradient(120deg, rgb(2, 188, 255), rgb(23, 90, 223));
+  background: linear-gradient(to top left, rgb(35, 189, 192), white);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: 400% 400%;
-  animation: gradient 5s ease infinite;
+  animation: gradient 2s ease infinite;
 }
 
 @keyframes gradient {

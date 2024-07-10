@@ -17,7 +17,8 @@ def getdata(u,p):
      return False
 
 @eel.expose
-def ticket(nambiar)
+def ticket(nambiar):
+  back.ticketcalc(nambiar)
   
 @eel.expose
 def regdata(u,p):
