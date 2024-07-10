@@ -160,5 +160,5 @@ dosamenu = [weirddosa , nonvegdosa , vegdosa]
 
 
 
-__all__ = ['confirmlogin' , 'register' , 'userdata' , 'mk_dict' , 'dosamenu' , 'pullbooked' , 'bkdFlight']
+__all__ = ['confirmlogin' , 'register' , 'userdata' , 'mk_dict' , 'dosamenu' , 'pullbooked' , 'bkdFlight','ticketcalc']
 
