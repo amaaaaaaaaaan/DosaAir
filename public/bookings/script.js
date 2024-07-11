@@ -119,7 +119,7 @@ function addform() {
   document.querySelector("#passengers").insertAdjacentHTML("beforebegin", html);
 }
 
-function bookpassengers() {
+async function bookpassengers() {
   const passengers = document.querySelectorAll(".passenger");
   const passengerDetails = [];
 
@@ -138,6 +138,7 @@ function bookpassengers() {
       food: food,
     });
   });
-  eel.ticket(passengerDetails)();
+  const totoalPrice = await eel.ticket(passengerDetails)();
+  console.log(totoalPrice);
   return passengerDetails;
 }

@@ -69,3 +69,7 @@ select:focus {
 .show-btn:hover {
   background: rgb(9, 92, 120);
 }
+
+.hid {
+  display: none;
+}

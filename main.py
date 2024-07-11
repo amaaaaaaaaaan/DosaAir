@@ -18,7 +18,7 @@ def getdata(u,p):
 
 @eel.expose
 def ticket(nambiar):
-  back.ticketcalc(nambiar)
+  return back.ticketcalc(nambiar)
   
 @eel.expose
 def regdata(u,p):
@@ -48,5 +48,9 @@ def bookFlight(data):
 @eel.expose
 def bookedFlight():
   return back.bkdFlight
+
+@eel.expose
+def searchflight(fro , to ,date):
+  return back.search(fro , to , date)
 
 eel.start('login.html' ,size=(1024, 768) )

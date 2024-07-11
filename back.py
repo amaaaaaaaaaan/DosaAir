@@ -14,7 +14,7 @@ try:
         # host='localhost',
         # user='root',
         # password='divya123',
-        # database = 'dosaair'
+        # database = 'dosair'
     )
     cu = db.cursor()
 except:
@@ -141,6 +141,31 @@ def ticketcalc(catlover): #calculation to be done here
     return tiktprice
 
 
+def search(fro  , to , date):
+    dic_lst = []
+    cu.execute(f'SELECT * FROM flights f,Schedule s WHERE s.fno = f.fno and  FromDest="{fro}" and ToDest ="{to}" and new_date >= "{date}"')
+    x = cu.fetchall()
+    print(x)
+    for i in x:
+        time = i[6]
+        time = time.split(':')
+        time.pop()
+        time = ":".join(time)
+        flight_dict = {
+            "Fno":i[0],
+            "FromDest":get_airport_code(i[1]) ,
+            "ToDest":get_airport_code(i[2]) ,
+            "from" : i[1],
+            "to" : i[2],
+            "Price": i[3],
+            'duration': i[4],
+            'date' : i[7],
+            'time' : time
+        }
+        dic_lst.append(flight_dict)
+    return dic_lst
+
+
 nonvegdosa = [
     { "name": "Chicken Dosa", "price": 150 },
     { "name": "Mutton Keema Dosa", "price": 200 },
@@ -175,5 +200,5 @@ dosamenu = [weirddosa , nonvegdosa , vegdosa]
 
 
 
-__all__ = ['confirmlogin' , 'register' , 'userdata' , 'mk_dict' , 'dosamenu' , 'pullbooked' , 'bkdFlight','ticketcalc']
+__all__ = ['confirmlogin' , 'register' , 'userdata' , 'mk_dict' , 'dosamenu' , 'pullbooked' , 'bkdFlight','ticketcalc','search']
 

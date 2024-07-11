@@ -54,9 +54,7 @@
 
         <span class="flight-head" style="margin: 0;"> Routes </span>
         
-          <div id="startkaro" class="waiting hid">
-<h1 class="waiting-ms waiting-smart">Loading Data</h1>
-          </div>
+          
           <div class="flight" style="display: none;">
             <div class="flight-dest-cont">
               <span class="flight-date flight-time">Dubai</span>
@@ -91,14 +89,14 @@
   
             </div>
             </div>
-      <div class="flight">
+      <div class="flight" style="display: flex !important;">
         <div class="destinations">
-          <select class="flight-dest" type="text" name="" id="" >
+          <select class="flight-dest" type="text" name="" id="from" >
             <option value="">From</option>
               <option value="Sharjah">Sharjah</option>
               <option value="Dubai">Dubai</option>
               <option value="Paris">Paris</option>
-              <option value="NewYork">New York</option>
+              <option value="New York">New York</option>
               <option value="Cairo">Cairo</option>
               <option value="London">London</option>
               <option value="Sydney">Sydney</option>
@@ -108,10 +106,10 @@
           <span class="material-symbols-outlined">
             swap_horiz
             </span>
-          <select type="text" class="flight-dest" name="" id="" >
+          <select type="text" class="flight-dest" name="" id="to" >
             <option value="">To</option>
             <option value="London">London</option>
-  <option value="NewYork">New York</option>
+  <option value="New York">New York</option>
   <option value="Mumbai">Mumbai</option>
   <option value="Delhi">Delhi</option>
   <option value="Tokyo">Tokyo</option>
@@ -122,20 +120,23 @@
           </select>
         </div>
         <div class="book-inf">
-          <select name="" id=""> 
-            <option>One Way</option>
-            <option>Round Trip</option>
+          <select name="" id="trip"> 
+            <option value="one">One Way</option>
+            <option value="round">Round Trip</option>
             
           </select>
         <div class="book-date">
           <span class="inf-label">Date</span>
-          <input type="date" >
+          <input type="date" id="date">
 
         </div>
         </div>
-        <button class="show-btn"> Show Flights</button>
+        <button class="show-btn" onclick="showflights()"> Show Flights</button>
       </div>
-        
+      <div class=""></div>
+      <div id="startkaro" class="waiting hid">
+        <h1 class="waiting-ms waiting-smart">Loading Data</h1>
+                  </div>
       </div>
 
       </div>
@@ -143,6 +144,7 @@
   </body>
 </html>
 <script src="homescript.js"></script>
+<script src="script.js"></script>
 
 
 
