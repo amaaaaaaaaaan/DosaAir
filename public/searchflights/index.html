@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script type="text/javascript" src="/eel.js"></script>
     <link rel="stylesheet" href="../homestyle.css" />
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DosaAir</title>
@@ -11,8 +13,7 @@
     <div class="main">
       <div class="head float">
         <div class="logo-cont">
-          <img class="logo-img" src="../logo.png" alt="" />
-        </div>
+          <img class="logo-img" src="../logo.png" onclick="window.location.href = '../home.html'" alt="" />        </div>
         <div class="links">
           <!-- <a>Contact</a>
           <a>Menu</a>
@@ -45,51 +46,92 @@
       <div class="cont">
         <div class="top-menu-cont">
           <div class="top-menu">
-            <button>Smart Routes</button>
-            <button>Search Flights</button>
-            <button >Booked Flights</button>
+            <button onclick="window.location.href = '/home.html'" >Smart Routes</button>
+            <button onclick="window.location.href = 'searchflights/index.html'" >Search Flights</button>
+            <button onclick="window.location.href = 'booked/index.html'" >Booked Flights</button>
           </div>
         </div>
 
         <span class="flight-head" style="margin: 0;"> Routes </span>
-        <div class="flight" style="display: none;">
-          <div class="flight-dest-cont">
-            <span class="flight-date flight-time">Dubai</span>
-            <span class="flight-dest">DXB</span>
-
-          </div>
-          <div class="flight-take-off-icon"></div>
-          <hr class="custom-hr">
-          <div class="flight-bk">
-            <div class="flight-inf dw">
-            
-            
-              <div class="flight-dt">
-                <span class="flight-date">Monday 20 May</span>
-                <span class="flight-date flight-time">02:22</span>
-
-  <span class="flight-time">$700</span>
-  <span class="flight-date flight-time">4H 15Mins</span>
-            </div>
-            
-            
-          </div>
-          <button class="flight-booking">BOOK</button>
-          </div>
-          
-          <hr class="custom-hr">
-          <div class="flight-take-in-icon"></div>
-          <div class="flight-dest-cont">
-            <span class="flight-date flight-time" >Cochin</span>
-
-            <span class="flight-dest">COK</span>
-
-          </div>
-          </div>
-          <div id="startkaro" class="waiting">
+        
+          <div id="startkaro" class="waiting hid">
 <h1 class="waiting-ms waiting-smart">Loading Data</h1>
           </div>
-      
+          <div class="flight" style="display: none;">
+            <div class="flight-dest-cont">
+              <span class="flight-date flight-time">Dubai</span>
+              <span class="flight-dest">DXB</span>
+  
+            </div>
+            <div class="flight-take-off-icon"></div>
+            <hr class="custom-hr">
+            <div class="flight-bk">
+              <div class="flight-inf dw">
+              
+              
+                <div class="flight-dt">
+                  <span class="flight-date">Monday 20 May</span>
+                  <span class="flight-date flight-time">02:22</span>
+  
+    <span class="flight-time">$700</span>
+    <span class="flight-date flight-time">4H 15Mins</span>
+              </div>
+              
+              
+            </div>
+            <button class="flight-booking">BOOK</button>
+            </div>
+            
+            <hr class="custom-hr">
+            <div class="flight-take-in-icon"></div>
+            <div class="flight-dest-cont">
+              <span class="flight-date flight-time" >Cochin</span>
+  
+              <span class="flight-dest">COK</span>
+  
+            </div>
+            </div>
+      <div class="flight">
+        <div class="destinations">
+          <select class="flight-dest" type="text" name="" id="" >
+            <option value="">From</option>
+              <option value="Sharjah">Sharjah</option>
+              <option value="Dubai">Dubai</option>
+              <option value="Paris">Paris</option>
+              <option value="NewYork">New York</option>
+              <option value="Cairo">Cairo</option>
+              <option value="London">London</option>
+              <option value="Sydney">Sydney</option>
+              <option value="Tokyo">Tokyo</option>
+            </select>
+                      </select>
+          <span class="material-symbols-outlined">
+            swap_horiz
+            </span>
+          <select type="text" class="flight-dest" name="" id="" >
+            <option value="">To</option>
+            <option value="London">London</option>
+  <option value="NewYork">New York</option>
+  <option value="Mumbai">Mumbai</option>
+  <option value="Delhi">Delhi</option>
+  <option value="Tokyo">Tokyo</option>
+  <option value="Bangkok">Bangkok</option>
+  <option value="Sydney">Sydney</option>
+  <option value="Toronto">Toronto</option>
+  <option value="Paris">Paris</option>
+          </select>
+        </div>
+        <div class="book-inf">
+          <select name="" id=""> 
+            <option>One Way</option>
+            <option>Round Trip</option>
+            
+          </select>
+        
+          <input type="date" >
+        </div>
+        <button class="show-btn"> Show Flights</button>
+      </div>
         
       </div>
 
@@ -98,3 +140,9 @@
   </body>
 </html>
 <script src="homescript.js"></script>
+
+
+
+
+
+

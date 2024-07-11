@@ -1,0 +1,55 @@
+.flight {
+  display: flex;
+  justify-content: space-evenly !important;
+  /* padding: 50px 30px; */
+}
+.destinations {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 1vw;
+}
+
+select {
+  /* width: 200px; */
+  border: none;
+  text-align: center;
+  color: var(--ligh);
+  appearance: none;
+}
+
+.book-inf {
+  padding: 10px 20px;
+  display: flex;
+  gap: 1.5vw;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 800, "GRAD" 0, "opsz" 24;
+  color: var(--ligh);
+}
+
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+.book-inf > select {
+  font-size: 1vw;
+  font-family: air;
+}
+
+.show-btn {
+  background: rgb(3, 77, 93);
+  border: none;
+  border-radius: 7px;
+  padding: 10px;
+  /* font-weight: 900; */
+  font-family: air;
+  font-size: 1vw;
+  color: rgb(255, 255, 255);
+}
+
+.login-btn:hover {
+  background: rgb(6, 83, 108);
+}
