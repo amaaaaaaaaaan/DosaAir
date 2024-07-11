@@ -138,7 +138,6 @@ function bookpassengers() {
       food: food,
     });
   });
-  console.log(passengerDetails);
-
+  eel.ticket(passengerDetails)();
   return passengerDetails;
 }

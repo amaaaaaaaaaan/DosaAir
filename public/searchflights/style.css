@@ -29,7 +29,7 @@ select {
   color: var(--ligh);
 }
 
-textarea:focus,
+input:focus,
 select:focus {
   outline: none;
 }
@@ -37,6 +37,22 @@ select:focus {
 .book-inf > select {
   font-size: 1vw;
   font-family: air;
+}
+
+.book-date {
+  display: flex;
+  flex-direction: column;
+}
+
+.inf-label {
+  font-size: 0.5vw;
+}
+
+.book-date > input {
+  font-size: 1.5vw;
+  font-family: air;
+  color: var(--ligh);
+  border: none;
 }
 
 .show-btn {
@@ -50,6 +66,6 @@ select:focus {
   color: rgb(255, 255, 255);
 }
 
-.login-btn:hover {
-  background: rgb(6, 83, 108);
+.show-btn:hover {
+  background: rgb(9, 92, 120);
 }
