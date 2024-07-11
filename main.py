@@ -49,6 +49,4 @@ def bookFlight(data):
 def bookedFlight():
   return back.bkdFlight
 
-  
-
 eel.start('login.html' ,size=(1024, 768) )

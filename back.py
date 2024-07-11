@@ -122,8 +122,23 @@ def book(data):
 def pullbooked():
     return bkdFlight
 
-def ticketcalc(catlover):
-    pass #howzat
+def ticketcalc(catlover): #calculation to be done here
+    fn=bkdFlight["fno"]
+    cu.execute(f"select Price from flights where Fno={fn}")
+    f_price=cu.fetchone()[0]
+    age=""
+    food_price=0
+    tiktprice=0
+    for i in catlover:
+        food_lst=i['food']
+        food_price+=food_lst[1]
+        age+=i['ageGroup']
+    if age=="child":
+        f_price=(f_price*50)/100
+    elif age=="old":
+        f_price=(f_price*20)/100
+    tiktprice=f_price+food_price
+    return tiktprice
 
 
 nonvegdosa = [
