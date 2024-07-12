@@ -46,9 +46,9 @@
       <div class="cont">
         <div class="top-menu-cont">
           <div class="top-menu">
-            <button onclick="window.location.href = '/home.html'" >Smart Routes</button>
+            <button onclick="window.location.href = '../home.html'" >Smart Routes</button>
             <button onclick="window.location.href = 'searchflights/index.html'" >Search Flights</button>
-            <button onclick="window.location.href = 'booked/index.html'" >Booked Flights</button>
+            <button onclick="window.location.href = '../booked/index.html'" >Booked Flights</button>
           </div>
         </div>
 
@@ -126,9 +126,12 @@
             
           </select>
         <div class="book-date">
-          <span class="inf-label">Date</span>
+          <span class="inf-label">Flight Date</span>
           <input type="date" id="date">
-
+        </div>
+        <div class="book-date hid"  id="date2cont">
+          <span class="inf-label">Return Date</span>
+          <input type="date" id="date2" >
         </div>
         </div>
         <button class="show-btn" onclick="showflights()"> Show Flights</button>
@@ -143,7 +146,6 @@
     </div>
   </body>
 </html>
-<script src="homescript.js"></script>
 <script src="script.js"></script>
 
 

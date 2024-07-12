@@ -50,7 +50,11 @@ def bookedFlight():
   return back.bkdFlight
 
 @eel.expose
-def searchflight(fro , to ,date):
+def searchflight(fro , to ,date ):
   return back.search(fro , to , date)
+
+@eel.expose
+def searchroundflight(fro , to ,date , date2):
+  return back.search(fro , to , date ,date2)
 
 eel.start('login.html' ,size=(1024, 768) )

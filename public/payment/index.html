@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script type="text/javascript" src="/eel.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../homestyle.css" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DosaAir</title>
+  </head>
+  <body>
+    <div class="menu hid">
+      <h1 class='menu-top'>Menu</h1>
+      <span class="menu-head">Signature Dosas</span>
+
+      <div class="menu-cat" id="weird">
+ 
+      </div>
+      <span class="menu-head">Non-Veg</span>
+
+      <div class="menu-cat" id="non-veg">
+     
+             </div>
+             <span class="menu-head">Veg</span>
+
+             <div class="menu-cat" id="veg">
+            
+                    </div>
+    </div>
+    <div class="overlay hid" onclick="hidemenu()"></div>
+
+    <div class="main">
+      <div class="head ">
+        <div class="logo-cont">
+          <img class="logo-img" src="../logo.png" onclick="window.location.href = '../home.html'" alt="" />
+        </div>
+        <div class="links">
+       
+          <div class="pages">
+            <a>Manage Bookings</a>
+            <a>Contact</a>
+            <a>Flight Routes</a>
+          </div>
+          <div class="acc-cont">
+            <div class="acc-inf">
+              <span class="acc-name" id="accountName">Aman</span>
+              <span class="acc-nat" id="ploc">Dubai</span>
+            </div>
+            <button class="acc-btn">
+              <img
+                class="acc-img"
+                src="https://cdn-icons-png.flaticon.com/512/3276/3276535.png"
+                alt=""
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+
+  
+
+      <div class="cont">
+        <div class="ticket">
+           
+                <div class="ticket-passenger flight">
+                    <h2>Booking Confirmed</h2>
+                    <div class="passenger">
+                        <div class="login-inf">
+                            <span>Title</span>
+                            <span class="login-text">Mr</span>
+                          </div>
+                        <div class="login-inf">
+                            <span>First Name</span>
+                            <span class="login-text" id="username" type="text" name="" id="" >Ranga Shooja</span>
+                          </div>
+                          <div class="login-inf">
+                            <span>Food Choice</span>
+                            <span class="login-text btn" onclick="showmenu(this)" >Chicken Dosa</span>
+                          </div>
+                          <div class="login-inf">
+                            <span>Age group</span>
+                            <span class="login-text" >
+                                Adult
+                            </span>
+                          </div>
+                    </div>
+                    
+                    <div id="passengers"></div>
+                   
+                </div>
+                <button class="login-btn" onclick="bookpassengers()">Go Back</button>
+        </div>
+        
+      </div>
+
+      </div>
+    </div>
+  </body>
+</html>
+<script src="script.js"></script>

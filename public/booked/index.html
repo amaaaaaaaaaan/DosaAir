@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <script type="text/javascript" src="/eel.js"></script>
+    <link rel="stylesheet" href="../homestyle.css" />
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DosaAir</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="head float">
+        <div class="logo-cont">
+          <img
+            class="logo-img"
+            src="../logo.png"
+            onclick="window.location.href = '../home.html'"
+            alt=""
+          />
+        </div>
+        <div class="links">
+          <!-- <a>Contact</a>
+          <a>Menu</a>
+          <a>Flights</a> -->
+          <div class="pages">
+            <a>Manage Bookings</a>
+            <a>Contact</a>
+            <a>Flight Routes</a>
+          </div>
+          <div class="acc-cont">
+            <div class="acc-inf">
+              <span class="acc-name" id="accountName">Aman</span>
+              <span class="acc-nat" id="ploc">Dubai</span>
+            </div>
+            <!-- <button class="acc-btn">
+              <img
+                class="acc-img"
+                src="https://cdn-icons-png.flaticon.com/512/3276/3276535.png"
+                alt=""
+              />
+            </button> -->
+          </div>
+        </div>
+      </div>
+      <div id="leave"></div>
+      <div class="hero">
+        <img class="hero-img" src="../airback3.png" alt="" />
+      </div>
+
+      <div class="cont">
+        <div class="top-menu-cont">
+          <div class="top-menu">
+            <button onclick="window.location.href = '../home.html'">
+              Smart Routes
+            </button>
+            <button onclick="window.location.href = '../searchflights/index.html'">
+              Search Flights
+            </button>
+            <button onclick="window.location.href = '../booked/index.html'">
+              Booked Flights
+            </button>
+          </div>
+        </div>
+
+        <span class="flight-head" style="margin: 0">Booked Flights</span>
+
+        <div class=""></div>
+        <div id="startkaro" class="waiting hid">
+          <h1 class="waiting-ms waiting-smart">Loading Data</h1>
+        </div>
+
+        <div class="ticket-passenger flight">
+          <div class="flight">
+            <div class="flight-dest-cont">
+              <span class="flight-date flight-time">Dubai</span>
+              <span class="flight-dest">DXB</span>
+            </div>
+            <div class="flight-take-off-icon"></div>
+            <hr class="custom-hr" />
+            <div class="flight-bk">
+              <div class="flight-inf">
+                <div class="flight-dt">
+                  <span class="flight-date">Monday 20 May</span>
+                  <span class="flight-date flight-time">02:22</span>
+
+                  <span class="flight-time">$700</span>
+                  <span class="flight-date flight-time">4H 15Mins</span>
+                </div>
+              </div>
+            </div>
+
+            <hr class="custom-hr" />
+            <div class="flight-take-in-icon"></div>
+            <div class="flight-dest-cont">
+              <span class="flight-date flight-time">Cochin</span>
+
+              <span class="flight-dest">COK</span>
+            </div>
+          </div>
+          <div class="passenger">
+            <div class="login-inf">
+              <span>Title</span>
+              <span class="login-text">Mr</span>
+            </div>
+            <div class="login-inf">
+              <span>First Name</span>
+              <span class="login-text" id="username" type="text" name="" id=""
+                >Ranga Shooja</span
+              >
+            </div>
+            <div class="login-inf">
+              <span>Food Choice</span>
+              <span class="login-text btn" onclick="showmenu(this)"
+                >Chicken Dosa</span
+              >
+            </div>
+            <div class="login-inf">
+              <span>Age group</span>
+              <span class="login-text"> Adult </span>
+            </div>
+          </div>
+          <div class="passenger">
+            <div class="login-inf">
+              <span>Title</span>
+              <span class="login-text">Mr</span>
+            </div>
+            <div class="login-inf">
+              <span>First Name</span>
+              <span class="login-text" id="username" type="text" name="" id=""
+                >Ranga Shooja</span
+              >
+            </div>
+            <div class="login-inf">
+              <span>Food Choice</span>
+              <span class="login-text btn" onclick="showmenu(this)"
+                >Chicken Dosa</span
+              >
+            </div>
+            <div class="login-inf">
+              <span>Age group</span>
+              <span class="login-text"> Adult </span>
+            </div>
+          </div>
+        
+            <h2 style="text-align: right; width: 100%">Total Price : $<span id="totprice">346324</span></h2>
+            <div id="passengers"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script src="script.js"></script>

@@ -7,8 +7,14 @@ async function showflights() {
   const to = document.querySelector("#to").value;
   const trip = document.querySelector("#trip").value;
   const date = document.querySelector("#date").value;
+  let flightdata;
+  if (trip == "one") {
+    flightdata = await eel.searchflight(from, to, date)();
+  } else if (trip == "round") {
+    const date2 = document.querySelector("#date2").value;
+    flightdata = await eel.searchroundflight(from, to, date, date2)();
+  }
 
-  const flightdata = await eel.searchflight(from, to, date)();
   console.log(flightdata);
   if (flightdata.length == 0) {
     htm = ` <div  class="flight">
@@ -81,3 +87,39 @@ document.getElementById("date").addEventListener("change", function () {
     const formattedDate = inputDate.toLocaleDateString("en-GB", options);
   }
 });
+
+document.querySelector("#trip").addEventListener("change", function () {
+  if (document.querySelector("#trip").value == "round") {
+    document.querySelector("#date2cont").classList.remove("hid");
+  } else {
+    document.querySelector("#date2cont").classList.add("hid");
+  }
+});
+
+function book(e) {
+  const flightContainer = e.closest(".flight");
+
+  const dateElement = flightContainer.querySelector(".flight-dt .flight-date");
+  const timeElement = flightContainer.querySelector(".flight-dt .flight-time");
+  const fnoelement = flightContainer.querySelector(".fno");
+
+  if (dateElement && timeElement) {
+    const date = dateElement.textContent;
+    const time = timeElement.textContent;
+    const fno = fnoelement.textContent;
+    const flightDetails = {
+      fno: fno,
+      date: date,
+      time: time,
+    };
+
+    eel.bookFlight(flightDetails)();
+    window.location.href = "../bookings/index.html";
+    // this object contains booking data 🐈
+    return flightDetails;
+  } else {
+    console.error(
+      "Date or time element not found within the flight container."
+    );
+  }
+}

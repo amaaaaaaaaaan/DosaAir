@@ -138,12 +138,59 @@ def ticketcalc(catlover): #calculation to be done here
     elif age=="old":
         f_price=(f_price*20)/100
     tiktprice=f_price+food_price
+    bkdFlight['totalprice'] = tiktprice
     return tiktprice
 
 
-def search(fro  , to , date):
+ 
+
+def search(fro  , to , date='none',date2 ='none'):
     dic_lst = []
-    cu.execute(f'SELECT * FROM flights f,Schedule s WHERE s.fno = f.fno and  FromDest="{fro}" and ToDest ="{to}" and new_date >= "{date}"')
+    if date !='none' and date2 == 'none':  
+        cu.execute(f'SELECT * FROM flights f,Schedule s WHERE s.fno = f.fno and  FromDest="{fro}" and ToDest ="{to}" and new_date >= "{date}"')
+    elif date =='none' :
+        cu.execute(f'SELECT * FROM flights f,Schedule s WHERE s.fno = f.fno and  FromDest="{fro}" and ToDest ="{to}"')
+    elif date != 'none' and date2 !='none':
+        cu.execute(f'SELECT * FROM flights f,Schedule s WHERE s.fno = f.fno and  FromDest="{fro}" and ToDest ="{to}" and new_date >= "{date}"')
+        x = cu.fetchall()
+        for i in x:
+            time = i[6]
+            time = time.split(':')
+            time.pop()
+            time = ":".join(time)
+            flight_dict = {
+                "Fno":i[0],
+                "FromDest":get_airport_code(i[1]) ,
+                "ToDest":get_airport_code(i[2]) ,
+                "from" : i[1],
+                "to" : i[2],
+                "Price": i[3],
+                'duration': i[4],
+                'date' : i[7],
+                'time' : time
+            }
+        dic_lst.append(flight_dict)
+        cu.execute(f'SELECT * FROM flights f,Schedule s WHERE s.fno = f.fno and  FromDest="{to}" and ToDest ="{fro}" and new_date >= "{date2}"')
+        x = cu.fetchall()
+        for i in x:
+            time = i[6]
+            time = time.split(':')
+            time.pop()
+            time = ":".join(time)
+            flight_dict = {
+                "Fno":i[0],
+                "FromDest":get_airport_code(i[1]) ,
+                "ToDest":get_airport_code(i[2]) ,
+                "from" : i[1],
+                "to" : i[2],
+                "Price": i[3],
+                'duration': i[4],
+                'date' : i[7],
+                'time' : time
+            }
+            dic_lst.append(flight_dict)
+        return dic_lst
+            
     x = cu.fetchall()
     print(x)
     for i in x:
@@ -167,33 +214,30 @@ def search(fro  , to , date):
 
 
 nonvegdosa = [
-    { "name": "Chicken Dosa", "price": 150 },
-    { "name": "Mutton Keema Dosa", "price": 200 },
-    { "name": "Egg Dosa", "price": 100 },
-    { "name": "Pepper Chicken Dosa", "price": 170 },
-    { "name": "Spicy Chicken Dosa", "price": 160 },
-    { "name": "Chicken Tikka Dosa", "price": 190 },
-    
+    { "name": "Chicken Dosa", "price": 1.83 },
+    { "name": "Mutton Keema Dosa", "price": 2.44 },
+    { "name": "Egg Dosa", "price": 1.22 },
+    { "name": "Pepper Chicken Dosa", "price": 2.07 },
+    { "name": "Spicy Chicken Dosa", "price": 1.95 },
+    { "name": "Chicken Tikka Dosa", "price": 2.32 }
 ]
 
-vegdosa = [
-    { "name": "Masala Dosa", "price": 80 },
-    { "name": "Paneer Dosa", "price": 120 },
-    { "name": "Mysore Masala Dosa", "price": 90 },
-    { "name": "Cheese Dosa", "price": 110 },
-    { "name": "Rava Dosa", "price": 70 },
-        { "name": "Ghee Dosa", "price": 90 }
-
+vegdosa =[
+    { "name": "Masala Dosa", "price": 0.98 },
+    { "name": "Paneer Dosa", "price": 1.46 },
+    { "name": "Mysore Masala Dosa", "price": 1.10 },
+    { "name": "Cheese Dosa", "price": 1.34 },
+    { "name": "Rava Dosa", "price": 0.85 },
+    { "name": "Ghee Dosa", "price": 1.10 }
 ]
 
 weirddosa = [
-    { "name": "Chocolate Dosa", "price": 150 },
-    { "name": "Avocado Dosa", "price": 180 },
-    { "name": "Pineapple Dosa", "price": 160 },
-    { "name": "Noodles Dosa", "price": 170 },
-    { "name": "Paneer Tikka Dosa", "price": 200 },
-    { "name": "Vegan Dosa", "price": 1200 }
-
+    { "name": "Chocolate Dosa", "price": 1.83 },
+    { "name": "Avocado Dosa", "price": 2.20 },
+    { "name": "Pineapple Dosa", "price": 1.95 },
+    { "name": "Noodles Dosa", "price": 2.07 },
+    { "name": "Paneer Tikka Dosa", "price": 2.44 },
+    { "name": "Vegan Dosa", "price": 14.63 }
 ]
 
 dosamenu = [weirddosa , nonvegdosa , vegdosa]
