@@ -1,3 +1,4 @@
+from calendar import c
 import glob
 import mysql.connector
 import hashlib
@@ -24,7 +25,7 @@ except:
 
 userdata ={}
 bkdFlight = {}
-
+passengerDetails = []
 
 def get_airport_code(city_name):
     airports = airportsdata.load("IATA")
@@ -123,6 +124,8 @@ def pullbooked():
     return bkdFlight
 
 def ticketcalc(catlover): #calculation to be done here
+    global passengerDetails
+    passengerDetails = catlover
     fn=bkdFlight["fno"]
     cu.execute(f"select Price from flights where Fno={fn}")
     f_price=cu.fetchone()[0]
