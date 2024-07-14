@@ -31,40 +31,17 @@
     <div class="overlay hid" onclick="hidemenu()"></div>
 
     <div class="main">
-      <div class="head ">
-        <div class="logo-cont">
-          <img class="logo-img" src="../logo.png" onclick="window.location.href = '../home.html'" alt="" />
-        </div>
-        <div class="links">
-       
-          <div class="pages">
-            <a>Manage Bookings</a>
-            <a>Contact</a>
-            <a>Flight Routes</a>
-          </div>
-          <div class="acc-cont">
-            <div class="acc-inf">
-              <span class="acc-name" id="accountName">Aman</span>
-              <span class="acc-nat" id="ploc">Dubai</span>
-            </div>
-            <button class="acc-btn">
-              <img
-                class="acc-img"
-                src="https://cdn-icons-png.flaticon.com/512/3276/3276535.png"
-                alt=""
-              />
-            </button>
-          </div>
-        </div>
-      </div>
+     
 
   
 
       <div class="cont">
+        <div id="passengers"></div>
+
         <div class="ticket">
            
                 <div class="ticket-passenger flight">
-                    <h2>Booking Confirmed</h2>
+                    <h2>Ticket</h2>
                     <div class="passenger">
                         <div class="login-inf">
                             <span>Title</span>
@@ -86,10 +63,12 @@
                           </div>
                     </div>
                     
-                    <div id="passengers"></div>
                    
                 </div>
-                <button class="login-btn" onclick="bookpassengers()">Go Back</button>
+                
+                <button class="login-btn" onclick="goback()">Go Back</button>
+                <button class="login-btn" onclick="printticket()">Print ticket</button>
+
         </div>
         
       </div>

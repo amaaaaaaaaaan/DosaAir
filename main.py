@@ -57,4 +57,12 @@ def searchflight(fro , to ,date ):
 def searchroundflight(fro , to ,date , date2):
   return back.search(fro , to , date ,date2)
 
+@eel.expose
+def saveTicket():
+  back.writeTicket()
+
+@eel.expose
+def pullTickets():
+  return back.readTicket()
+
 eel.start('login.html' ,size=(1024, 768) )

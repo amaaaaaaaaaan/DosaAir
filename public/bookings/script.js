@@ -1,5 +1,9 @@
 let activefood;
 async function dosamenuLoad() {
+  userdata = await eel.userdata()();
+  console.log();
+  document.querySelector(".acc-name").innerText = userdata.name;
+  document.querySelector("#ploc").innerText = userdata.ploc;
   const weirdcon = document.querySelector("#weird");
   const nonvegcont = document.querySelector("#non-veg");
   const vegcon = document.querySelector("#veg");
@@ -10,7 +14,7 @@ async function dosamenuLoad() {
   weird.forEach((dosa) => {
     const ht = `<div class="dosa" onclick='selectdosa(this)'>
           <span class="dosa-name">${dosa.name}</span>
-          <span class="dosa-price ">₹${dosa.price}</span>
+          <span class="dosa-price ">$${dosa.price}</span>
 
         </button>`;
     weirdcon.insertAdjacentHTML("beforeend", ht);
@@ -18,7 +22,7 @@ async function dosamenuLoad() {
   nonveg.forEach((dosa) => {
     const ht = `<div class="dosa" onclick='selectdosa(this)'>
           <span class="dosa-name">${dosa.name}</span>
-          <span class="dosa-price ">₹${dosa.price}</span>
+          <span class="dosa-price ">$${dosa.price}</span>
 
         </div>`;
     nonvegcont.insertAdjacentHTML("beforeend", ht);
@@ -26,7 +30,7 @@ async function dosamenuLoad() {
   veg.forEach((dosa) => {
     const ht = `<div class="dosa" onclick='selectdosa(this)'>
           <span class="dosa-name">${dosa.name}</span>
-          <span class="dosa-price ">₹${dosa.price}</span>
+          <span class="dosa-price ">$${dosa.price}</span>
 
         </div>`;
     vegcon.insertAdjacentHTML("beforeend", ht);
@@ -109,9 +113,9 @@ function addform() {
                             <span>Age group</span>
                             <select class="login-text" >
                               <option value="">Select</option>
-                                <option value="child">Child (0 - 13)</option>
-                                <option value="adult">Adult (14 - 60)</option>
-                                <option value="old">Senior Citizen (60+)</option>
+                                <option value="Child">Child (0 - 13)</option>
+                                <option value="Adult">Adult (14 - 60)</option>
+                                <option value="Senior Citizen">Senior Citizen (60+)</option>
 
                             </select>
                           </div>
@@ -126,7 +130,7 @@ async function bookpassengers() {
   passengers.forEach((passenger) => {
     const title = passenger.querySelector("select").value;
     var food = passenger.querySelector(".btn").innerText;
-    food = food.split("\n₹");
+    food = food.split("\n$");
     food[1] = Number(food[1]);
     const firstName = passenger.querySelector("input#username").value;
     const ageGroup = passenger.querySelectorAll("select")[1].value;
@@ -139,6 +143,10 @@ async function bookpassengers() {
     });
   });
   const totoalPrice = await eel.ticket(passengerDetails)();
-  console.log(totoalPrice);
+  if (totoalPrice != "all good") {
+    alert("please enter the data properly and try again");
+  }
+  eel.saveTicket()();
+  window.location.href = "../booked/index.html";
   return passengerDetails;
 }

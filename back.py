@@ -1,9 +1,11 @@
-from calendar import c
-import glob
+import csv
+import json
+import re
 import mysql.connector
 import hashlib
 import geocoder
 import airportsdata
+from datetime import datetime
 
 try: 
 
@@ -41,6 +43,7 @@ def get_current_city():
     return 'Sharjah' #will change this after testing 🐈
 
 def confirmlogin(cred,u):
+    global userdata
     sha256_hash = hashlib.sha256()
     cu.execute('select * from Users')
     k = cu.fetchall()
@@ -72,7 +75,14 @@ def register(u,p) :
             l =l + p[i]+u[i]
         else:
             l= l+ p[i]
-    print(l)
+    fieldnames = ['fno', 'from', 'to', 'price', 'duration', 'time', 'date', 'totalprice', 'passengerdetails']
+
+    csv_file = f"{u}.csv"
+
+    with open(csv_file, mode='w', newline='') as file:
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
+        writer.writeheader()
+
     try:
         cu.execute(f'insert into Users (Name , Pass) values("{u}" , "{l}")')
         db.commit()
@@ -82,9 +92,11 @@ def register(u,p) :
         return True
     
 def mk_dict():
+    today = datetime.today()
+    date = today.strftime('%Y-%m-%d')
     dic_lst = []
     ca = "Sharjah" #is this line used ?
-    cu.execute(f'SELECT * FROM flights f,Schedule s WHERE s.fno = f.fno and  FromDest="{get_current_city()}"')
+    cu.execute(f'SELECT * FROM flights f,Schedule s WHERE s.fno = f.fno and  FromDest="{get_current_city()}" and new_date >= "{date}"')
     x = cu.fetchall()
     for u, i in enumerate(x):
         time = i[6]
@@ -136,13 +148,14 @@ def ticketcalc(catlover): #calculation to be done here
         food_lst=i['food']
         food_price+=food_lst[1]
         age+=i['ageGroup']
-    if age=="child":
+    if age=="Child":
         f_price=(f_price*50)/100
-    elif age=="old":
-        f_price=(f_price*20)/100
+    elif age=="Senior Citizen":
+        f_price=(f_price*80)/100
     tiktprice=f_price+food_price
     bkdFlight['totalprice'] = tiktprice
-    return tiktprice
+    print(bkdFlight , passengerDetails)
+    return 'all good'
 
 
  
@@ -216,6 +229,41 @@ def search(fro  , to , date='none',date2 ='none'):
     return dic_lst
 
 
+def writeTicket():
+    bkdFlight['passengerdetails'] = json.dumps(passengerDetails)
+
+    csv_file = f"{userdata['name']}.csv"
+
+    with open(csv_file, mode='a', newline='') as file:
+        # Determine the fieldnames from the bkdflight dictionary keys
+        fieldnames = bkdFlight.keys()
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
+        writer.writerow(bkdFlight)
+
+
+def readTicket():
+    csv_file = f"{userdata['name']}.csv"
+    with open(csv_file, mode='r', newline='') as file:
+        reader = csv.DictReader(file)
+        data = []
+        for row in reader:
+            try:
+                row['passengerdetails'] = json.loads(row['passengerdetails'])
+            except json.JSONDecodeError as e:
+                print(f"Error parsing JSON in row: {row}")
+                print(f"Error details: {e}")
+            data.append(row)
+        return data
+
+    
+        # for row in reader:
+        #     print({k: v for k, v in row.items() if k != 'passengerdetails'})
+            
+        #     passengerdetails = json.loads(row['passengerdetails'])
+        #     for passenger in passengerdetails:
+        #         print(passenger)
+
+
 nonvegdosa = [
     { "name": "Chicken Dosa", "price": 1.83 },
     { "name": "Mutton Keema Dosa", "price": 2.44 },
@@ -247,5 +295,5 @@ dosamenu = [weirddosa , nonvegdosa , vegdosa]
 
 
 
-__all__ = ['confirmlogin' , 'register' , 'userdata' , 'mk_dict' , 'dosamenu' , 'pullbooked' , 'bkdFlight','ticketcalc','search']
+__all__ = ['confirmlogin' , 'register' , 'userdata' , 'mk_dict' , 'dosamenu' , 'pullbooked' , 'bkdFlight','ticketcalc','search' , 'readTicket' , 'readTicket' , 'writeTicket']
 
