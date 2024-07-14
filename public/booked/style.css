@@ -5,8 +5,7 @@
   width: 90%;
   border: 2px solid var(--ligh);
   margin: 0;
-  margin-bottom: 50px;
-  padding-top: 50px;
+  margin-top: 30px;
 }
 .destinations {
   display: flex;
@@ -272,4 +271,8 @@ option {
 
 .dosa:hover {
   background: rgb(177, 254, 255);
+}
+
+.tto {
+  margin-top: 50px;
 }

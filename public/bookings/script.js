@@ -134,7 +134,14 @@ async function bookpassengers() {
     food[1] = Number(food[1]);
     const firstName = passenger.querySelector("input#username").value;
     const ageGroup = passenger.querySelectorAll("select")[1].value;
-
+    if (
+      firstName == "" ||
+      title == "Select" ||
+      food == "Menu" ||
+      ageGroup == "Select"
+    ) {
+      alert("Please enter data properly");
+    }
     passengerDetails.push({
       title: title,
       firstName: firstName,
@@ -142,9 +149,11 @@ async function bookpassengers() {
       food: food,
     });
   });
+
   const totoalPrice = await eel.ticket(passengerDetails)();
+
   if (totoalPrice != "all good") {
-    alert("please enter the data properly and try again");
+    alert("Form not filled properly");
   }
   eel.saveTicket()();
   window.location.href = "../booked/index.html";

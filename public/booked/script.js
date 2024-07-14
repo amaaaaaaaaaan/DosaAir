@@ -33,7 +33,7 @@ async function ticketLoad() {
       pash += pshtml;
     });
     htm = `<div class="ticket-passenger flight">
-          <div class="flight">
+          <div class="flight tto">
             <div class="flight-dest-cont">
               <span class="flight-dest">${ticket.from}</span>
             </div>
