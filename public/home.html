@@ -8,6 +8,7 @@
     <title>DosaAir</title>
   </head>
   <body>
+  
     <div class="main">
       <div class="head float">
         <div class="logo-cont">
@@ -39,10 +40,13 @@
       </div>
 <div id="leave"></div>
       <div class="hero">
-        <img class="hero-img" src="airback.png" alt="" />
+        <!-- <img class="hero-img" src="airback.png" alt="" /> -->
+        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.0/build/spline-viewer.js"></script>
+        <spline-viewer class="hero-img" url="https://prod.spline.design/Jl87HRGbreiCvUmH/scene.splinecode"></spline-viewer>
       </div>
 
       <div class="cont">
+       
         <div class="top-menu-cont">
           <div class="top-menu">
             <button >Smart Routes</button>
@@ -52,7 +56,7 @@
         </div>
 
         <span class="flight-head waiting-smart" style="margin: 0;"> Smart Routes </span>
-        <div class="flight" style="display: none;">
+        <div class="flight" >
           <div class="flight-dest-cont">
             <span class="flight-date flight-time">Dubai</span>
             <span class="flight-dest">DXB</span>

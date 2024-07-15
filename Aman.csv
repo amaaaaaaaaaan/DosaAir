@@ -2,3 +2,5 @@ fno,from,to,price,duration,time,date,totalprice,passengerdetails
 
 1,SHJ,YXU,1200,7H 30Mins,08:00,Sunday 14 July,1202.44,"[{""title"": ""Mr"", ""firstName"": ""Aman"", ""ageGroup"": ""Adult"", ""food"": [""Mutton Keema Dosa"", 2.44]}]"
 9,YQY,YTZ,1450,16H 25Mins,18:45,Tuesday 16 July,1466.7,"[{""title"": ""Mr"", ""firstName"": ""Aman"", ""ageGroup"": ""Adult"", ""food"": [""Pepper Chicken Dosa"", 2.07]}, {""title"": ""Mr"", ""firstName"": ""Bobby Chemmanur"", ""ageGroup"": ""Adult"", ""food"": [""Vegan Dosa"", 14.63]}]"
+2,SHJ,ISP,1400,12H 45Mins,09:45,Monday 15 July,1401.83,"[{""title"": ""Mr"", ""firstName"": ""Aman"", ""ageGroup"": ""Adult"", ""food"": [""Chicken Dosa"", 1.83]}]"
+9,YQY,YTZ,1450,16H 25Mins,18:45,Tuesday 16 July,1452.44,"[{""title"": ""Mr"", ""firstName"": ""Aman"", ""ageGroup"": ""Adult"", ""food"": [""Mutton Keema Dosa"", 2.44]}]"

@@ -14,8 +14,18 @@
     <title>Document</title>
   </head>
   <body>
+    <div class="logo-hider"></div>
     <div class="main">
-      <img class="bg-img" src="loginbg.png" alt="" />
+      <!-- <img class="bg-img" src="loginbg.png" alt="" /> -->
+      <script
+        type="module"
+        src="https://unpkg.com/@splinetool/viewer@1.9.0/build/spline-viewer.js"
+      ></script>
+      <spline-viewer
+        class="bg-img"
+        loading-anim-type="spinner-small-dark"
+        url="https://prod.spline.design/YEpTtvpeZM0KRVkh/scene.splinecode"
+      ></spline-viewer>
       <div class="logo-side">
         <div class="logo-tag">
           <img class="logo-img" src="logo.png" alt="" />
