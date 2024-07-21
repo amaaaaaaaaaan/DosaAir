@@ -28,9 +28,19 @@
           <a>Menu</a>
           <a>Flights</a> -->
           <div class="pages">
-            <a>Manage Bookings</a>
-            <a>Contact</a>
-            <a>Flight Routes</a>
+            <div class="top-menu-cont">
+              <div class="top-menu">
+                <button onclick="window.location.href = '../home.html'">
+                  Smart Routes
+                </button>
+                <button onclick="window.location.href = '../searchflights/index.html'">
+                  Search Flights
+                </button>
+                <button onclick="window.location.href = '../booked/index.html'">
+                  Booked Flights
+                </button>
+              </div>
+            </div>
           </div>
           <div class="acc-cont">
             <div class="acc-inf">
@@ -53,24 +63,13 @@
       </div>
 
       <div class="cont">
-        <div class="top-menu-cont">
-          <div class="top-menu">
-            <button onclick="window.location.href = '../home.html'">
-              Smart Routes
-            </button>
-            <button onclick="window.location.href = '../searchflights/index.html'">
-              Search Flights
-            </button>
-            <button onclick="window.location.href = '../booked/index.html'">
-              Booked Flights
-            </button>
-          </div>
-        </div>
+        
 
         <span class="flight-head" style="margin: 0">Booked Flights</span>
 
         <div class=""></div>
         <div id="startkaro" class="waiting hid">
+          
           <h1 class="waiting-ms waiting-smart">Loading Data</h1>
         </div>
 

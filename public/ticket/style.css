@@ -1,0 +1,139 @@
+.ticket {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ticket-head {
+  color: var(--org);
+  text-align: center;
+  font-size: 3vw;
+  margin: 0;
+}
+
+.ticket-logo {
+  width: 20vw;
+}
+
+.ticket-name {
+  color: var(--sec);
+  font-weight: 800;
+  margin: 4vh 0 0 0;
+  font-size: 3vw;
+}
+
+.ticket-num {
+  color: var(--sec);
+  font-weight: 100;
+}
+
+.tick-main {
+  height: 100vh;
+  background: rgb(31, 0, 57) !important;
+}
+
+.flight-dest-cont > span {
+  color: var(--sec);
+}
+
+.flight {
+  display: flex;
+  flex-direction: row;
+}
+
+.ticket-flight {
+  padding: 2vh 2vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  color: rgb(140, 0, 255);
+  font-size: 0.4vw;
+}
+
+.ticket-body {
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 2vh 0vw;
+  border: 1px solid var(--sec);
+  overflow: hidden;
+}
+
+.ticket-date {
+  font-size: 2vw;
+}
+
+.flight-inf {
+  /* align-items: flex-start !important; */
+  flex-direction: row !important;
+  justify-content: space-between;
+  border-radius: 0 !important;
+  border-bottom: 1px solid var(--sec);
+}
+
+.flight-timing {
+  display: flex;
+  flex-direction: column;
+}
+
+.flight-time {
+  font-size: 2vw !important;
+}
+
+.ticket-footer {
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ticket-para {
+  color: var(--sec);
+  text-align: center;
+  /* font-family: air; */
+  font-size: 1.3vw;
+}
+
+.ticket-inf-cont {
+  display: flex;
+  padding: 20px 20px;
+  justify-content: space-evenly;
+}
+
+.ticket-inf {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ticket-inf-head {
+  color: var(--sec);
+  font-weight: 800;
+  font-family: air;
+  font-size: 1.4vw;
+}
+
+.ticket-inf-detail {
+  color: var(--sec);
+  font-family: air;
+  font-size: 0.9vw;
+}
+
+.ticket-cont {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.print-btn {
+  padding: 10px;
+  border-radius: 12px;
+}

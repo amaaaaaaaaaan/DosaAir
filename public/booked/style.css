@@ -60,7 +60,7 @@ select:focus {
 }
 
 .show-btn {
-  background: rgb(3, 77, 93);
+  background: rgb(53, 3, 93);
   border: none;
   border-radius: 7px;
   padding: 10px;
@@ -88,13 +88,6 @@ select:focus {
 body {
   margin: 0;
   font-family: "Instrument Sans", sans-serif;
-  background: var(--ligh);
-}
-
-:root {
-  --ligh: rgb(23, 112, 137);
-  --org: rgb(226, 250, 255);
-  --sec: rgb(154, 231, 244);
 }
 
 .ticket {

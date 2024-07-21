@@ -9,12 +9,14 @@ body {
   margin: 0;
   font-family: "Instrument Sans", sans-serif;
   background: var(--ligh);
+  background: rgb(21, 0, 36);
+  /* box-shadow: inset 0 0 50px #2d057e; */
 }
 
 :root {
   --ligh: rgb(84, 23, 137);
   --org: rgb(220, 176, 255);
-  --sec: rgb(229, 202, 255);
+  --sec: rgb(161, 120, 233);
 }
 
 .logo-img {
@@ -74,13 +76,13 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 70vh;
+  height: 50vh;
   text-align: center;
 }
 
 .hero-img {
   position: absolute;
-  height: 90vh;
+  height: 50vh;
   width: 100vw;
   z-index: -1;
   object-fit: cover;
@@ -108,14 +110,19 @@ body {
 .flight {
   background: linear-gradient(
     to top left,
-    rgb(224, 171, 255),
-    rgb(255, 255, 255),
-    white
+    rgb(103, 10, 157),
+    rgb(17, 0, 39),
+    rgb(19, 0, 34)
   );
   padding: 10px 50px;
   color: var(--org);
   border-radius: 15px;
   margin: 50px;
+  border: 2px solid rgb(103, 10, 157);
+}
+
+.flight > * {
+  color: white;
 }
 
 .acc-btn {
@@ -123,7 +130,7 @@ body {
   aspect-ratio: 1/1;
   border-radius: 50%;
   border: none;
-  background: var(--sec);
+  background: var(--ligh);
 }
 
 .acc-img {
@@ -156,7 +163,7 @@ body {
 
 .cont {
   background: rgb(21, 0, 36);
-  box-shadow: inset 0 0 50px #2d057e;
+  /* box-shadow: inset 0 0 50px #2d057e; */
 }
 
 .flight {
@@ -172,7 +179,7 @@ body {
   padding: 20px;
   border-radius: 15px;
   display: flex;
-
+  color: #2d057e;
   gap: 0.6vw;
   align-items: center;
   position: relative;
@@ -238,7 +245,7 @@ body {
 
 .custom-hr {
   border: none;
-  border-top: 2px dashed #000;
+  border-top: 2px dashed var(--org);
   width: 25%;
   margin: 0;
 }
@@ -253,27 +260,28 @@ body {
   flex-direction: row;
   justify-content: center;
   gap: 1.8vw;
-  background: rgba(100, 0, 118, 0.458);
+  background: rgba(100, 0, 118, 0.286);
+  border: 1px solid rgba(206, 0, 242, 0.334);
   padding: 10px;
   width: max-content;
   border-radius: 15px;
 }
 
 .top-menu > button {
-  border-radius: 15px;
-  background: var(--ligh);
-  /* box-shadow: 5px 5px 9px #c4d5d9, -5px -5px 9px #ffffff; */
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0);
+  border: 2px solid rgba(206, 0, 242, 0.418); /* box-shadow: 5px 5px 9px #c4d5d9, -5px -5px 9px #ffffff; */
   border: none;
   /* font-weight: 800; */
   font-family: air;
-  font-size: 1.5vw;
+  /* font-size: 1.5vw; */
   color: rgb(255, 255, 255);
   padding: 10px;
   transition: width 2s;
 }
 
 .top-menu > button:hover {
-  background: rgb(209, 173, 230);
+  background: rgb(86, 2, 134);
 }
 
 .flight-dest-cont {
@@ -306,12 +314,7 @@ body {
 
 .waiting-smart {
   text-transform: capitalize;
-  background: linear-gradient(
-    to top left,
-    rgb(81, 0, 255),
-    rgb(37, 0, 97),
-    rgb(106, 0, 162)
-  );
+  background: linear-gradient(to top left, rgb(81, 0, 255), rgb(238, 207, 255));
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

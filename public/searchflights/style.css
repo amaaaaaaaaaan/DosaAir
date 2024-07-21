@@ -14,8 +14,9 @@ select {
   /* width: 200px; */
   border: none;
   text-align: center;
-  color: var(--ligh);
+  color: var(--sec);
   appearance: none;
+  background: transparent;
 }
 
 .book-inf {
@@ -26,7 +27,7 @@ select {
 
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 800, "GRAD" 0, "opsz" 24;
-  color: var(--ligh);
+  color: var(--sec);
 }
 
 input:focus,
@@ -51,23 +52,25 @@ select:focus {
 .book-date > input {
   font-size: 1.5vw;
   font-family: air;
-  color: var(--ligh);
+  color: var(--sec);
   border: none;
+  background: transparent;
 }
 
 .show-btn {
-  background: rgb(3, 77, 93);
+  background: linear-gradient(to top right, rgb(25, 0, 50) 60%, var(--ligh));
   border: none;
   border-radius: 7px;
-  padding: 10px;
+  padding: 20px;
   /* font-weight: 900; */
   font-family: air;
   font-size: 1vw;
-  color: rgb(255, 255, 255);
+  color: var(--sec);
+  border: 1px solid var(--ligh);
 }
 
 .show-btn:hover {
-  background: rgb(9, 92, 120);
+  background: var(--org);
 }
 
 .hid {

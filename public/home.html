@@ -19,9 +19,13 @@
           <a>Menu</a>
           <a>Flights</a> -->
           <div class="pages">
-            <a href="payment/index.html">Manage Bookings</a>
-            <a>Contact</a>
-            <a>Flight Routes</a>
+            <div class="top-menu-cont">
+              <div class="top-menu">
+                <button >Smart Routes</button>
+                <button onclick="window.location.href = 'searchflights/index.html'" >Search Flights</button>
+                <button onclick="window.location.href = 'booked/index.html'" >Booked Flights</button>
+              </div>
+            </div>
           </div>
           <div class="acc-cont">
             <div class="acc-inf">
@@ -40,23 +44,16 @@
       </div>
 <div id="leave"></div>
       <div class="hero">
-        <!-- <img class="hero-img" src="airback.png" alt="" /> -->
-        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.0/build/spline-viewer.js"></script>
-        <spline-viewer class="hero-img" url="https://prod.spline.design/Jl87HRGbreiCvUmH/scene.splinecode"></spline-viewer>
+        <img class="hero-img" src="airback.png" alt="" />
+       
       </div>
 
       <div class="cont">
        
-        <div class="top-menu-cont">
-          <div class="top-menu">
-            <button >Smart Routes</button>
-            <button onclick="window.location.href = 'searchflights/index.html'" >Search Flights</button>
-            <button onclick="window.location.href = 'booked/index.html'" >Booked Flights</button>
-          </div>
-        </div>
+        
 
         <span class="flight-head waiting-smart" style="margin: 0;"> Smart Routes </span>
-        <div class="flight" >
+        <div class="flight" style="display: none;">
           <div class="flight-dest-cont">
             <span class="flight-date flight-time">Dubai</span>
             <span class="flight-dest">DXB</span>
