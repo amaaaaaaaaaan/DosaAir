@@ -98,7 +98,7 @@ def mk_dict():
     cu.execute(f'SELECT * FROM flights f,Schedule s WHERE s.fno = f.fno and  FromDest="{get_current_city()}" and new_date >= "{date}"')
     x = cu.fetchall()
     for u, i in enumerate(x):
-        time = i[6]
+        time = i[7]
         time = time.split(':')
         time.pop()
         time = ":".join(time)
@@ -169,7 +169,7 @@ def search(fro  , to , date='none',date2 ='none'):
         cu.execute(f'SELECT * FROM flights f,Schedule s WHERE s.fno = f.fno and  FromDest="{fro}" and ToDest ="{to}" and new_date >= "{date}"')
         x = cu.fetchall()
         for i in x:
-            time = i[6]
+            time = i[7]
             time = time.split(':')
             time.pop()
             time = ":".join(time)
@@ -188,7 +188,7 @@ def search(fro  , to , date='none',date2 ='none'):
         cu.execute(f'SELECT * FROM flights f,Schedule s WHERE s.fno = f.fno and  FromDest="{to}" and ToDest ="{fro}" and new_date >= "{date2}"')
         x = cu.fetchall()
         for i in x:
-            time = i[6]
+            time = i[7]
             time = time.split(':')
             time.pop()
             time = ":".join(time)
@@ -209,7 +209,7 @@ def search(fro  , to , date='none',date2 ='none'):
     x = cu.fetchall()
     print(x)
     for i in x:
-        time = i[6]
+        time = i[7]
         time = time.split(':')
         time.pop()
         time = ":".join(time)
