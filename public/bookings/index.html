@@ -66,36 +66,83 @@
                 <div class="ticket-passenger flight">
                     <h2>PASSENGER DETAILS</h2>
                     <div class="passenger">
+                      <h1 class="passenger-head">Passport details</h1>
+                      <div class="passenger-cont">
                         <div class="login-inf">
-                            <span>Title</span>
-                            <select class="login-text" >
-                              <option value="">Select</option>
+                          <span>Title</span>
+                          <select class="login-text" >
+                            <option value="">Select</option>
 
-                                <option value="Mr">Mr</option>
-                                <option value="Mrs">Mrs</option>
-                                <option value="Ms">Ms</option>
-                                <option value="Miss">Miss</option>
+                              <option value="Mr">Mr</option>
+                              <option value="Mrs">Mrs</option>
+                              <option value="Ms">Ms</option>
+                              <option value="Miss">Miss</option>
 
-                            </select>
-                          </div>
+                          </select>
+                        </div>
                         <div class="login-inf">
-                            <span>First Name</span>
-                            <input class="login-text" id="username" type="text" name="" id="" />
-                          </div>
-                          <div class="login-inf">
-                            <span>Food Choice</span>
-                            <button class="login-text btn" onclick="showmenu(this)" >Menu</button>
-                          </div>
-                          <div class="login-inf">
-                            <span>Age group</span>
-                            <select class="login-text" >
-                              <option value="">Select</option>
-                                <option value="Child">Child (0 - 13)</option>
-                                <option value="Adult">Adult (14 - 60)</option>
-                                <option value="Senior Citizen">Senior Citizen (60+)</option>
-
-                            </select>
-                          </div>
+                          <span>First Name</span>
+                          <input class="login-text" id="username" type="text" name="" id="" />
+                        </div>
+                        <div class="login-inf">
+                          <span>Last Name</span>
+                          <input class="login-text" id="lasname" type="text" name="" id="" />
+                        </div>
+                       
+                      </div>
+                      <div class="passenger-cont">
+                        <div class="login-inf">
+                          <span>Age group</span>
+                          <select class="login-text" >
+                            <option value="">Select</option>
+                              <option value="Child">Child (0 - 13)</option>
+                              <option value="Adult">Adult (14 - 60)</option>
+                              <option value="Senior Citizen">Senior Citizen (60+)</option>
+                          </select>
+                        </div>
+                        <div class="login-inf">
+                          <span>Nationality</span>
+                          <select class="login-text" >
+                            <option value="">Select</option>
+                            <option value="afghan">Afghan</option>
+                            <option value="albanian">Albanian</option>
+                            <option value="algerian">Algerian</option>
+                            <option value="american">American</option>
+                            <option value="argentine">Argentine</option>
+                            <option value="australian">Australian</option>
+                            <option value="austrian">Austrian</option>
+                            <option value="bangladeshi">Bangladeshi</option>
+                            <option value="belgian">Belgian</option>
+                            <option value="brazilian">Brazilian</option>
+                            <option value="british">British</option>
+                            <option value="canadian">Canadian</option>
+                            <option value="chinese">Chinese</option>
+                            <option value="danish">Danish</option>
+                            <option value="egyptian">Egyptian</option>
+                            <option value="french">French</option>
+                            <option value="german">German</option>
+                            <option value="indian">Indian</option>
+                            <option value="indonesian">Indonesian</option>
+                            <option value="iranian">Iranian</option>
+                          </select>
+                        </div>
+                      </div>
+                        <h1 class="passenger-head">Contact Details</h1>
+                        <div class="passenger-cont">
+                         
+                        </div>
+                        <h1 class="passenger-head">Extras</h1>
+<div class="passenger-cont">
+  <div class="login-inf">
+    <span>Food Choice</span>
+    <button class="login-text btn" onclick="showmenu(this)" >Show Menu</button>
+  </div>
+  <div class="login-inf">
+    <span>Seat</span>
+    <button class="login-text btn" onclick="showseat(this)" >Seating plan</button>
+  </div>
+</div>
+                         
                     </div>
                     
                     <div id="passengers"></div>

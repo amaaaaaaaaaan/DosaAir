@@ -38,17 +38,28 @@ h3 {
 }
 
 .passenger {
-  border: 1px solid rgba(0, 86, 132, 0.41);
-  padding: 20px 30px;
+  border: 1px solid rgb(123, 0, 255);
+  padding: 30px;
   border-radius: 12px;
   display: flex;
+  flex-direction: column;
   gap: 10px;
   justify-content: space-between;
   width: 100%;
-  background: rgba(11, 113, 134, 0.36);
+  background: rgba(48, 11, 134, 0.36);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
+}
+
+.passenger-cont {
+  display: flex;
+  gap: 4vw;
+  /* width: 90%; */
+}
+
+.passenger-head {
+  color: var(--sec);
 }
 
 .login-text {
@@ -63,22 +74,19 @@ h3 {
 }
 
 .login-text {
-  background: linear-gradient(
-    to top left,
-    rgb(177, 254, 255),
-    rgb(255, 255, 255),
-    white
-  );
+  background: rgb(39, 0, 117);
+  border: 1px solid rgb(119, 0, 255);
+  color: #ffffff;
 }
 
 .login-inf {
   display: flex;
   flex-direction: column;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .login-btn {
-  background: rgb(3, 77, 93);
+  background: var(--ligh);
   border: none;
   border-radius: 7px;
   padding: 10px;
@@ -104,8 +112,7 @@ option {
   height: 100%;
   position: fixed;
   z-index: 999;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+
   transition: 2s;
   opacity: 0;
 }
@@ -113,12 +120,10 @@ option {
 .menu {
   position: fixed;
   z-index: 9999;
-  background: linear-gradient(
-    to top left,
-    rgb(177, 254, 255),
-    rgb(255, 255, 255),
-    white
-  );
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  background: rgba(47, 0, 112, 0.754);
+  border: 0.5px solid rgb(149, 87, 255);
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
@@ -134,33 +139,25 @@ option {
 .menu-top {
   width: 100%;
   font-size: 3vw !important;
-  margin: 0;
-  background: linear-gradient(120deg, rgb(37, 196, 228), rgb(0, 0, 0));
-  background-clip: text;
-  font-family: air;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: rgb(201, 171, 255);
+  font-family: "Instrument Sans", sans-serif;
 }
 
 .menu-head {
   text-align: left;
   width: 100%;
-  font-weight: 800;
-  font-size: 1.4vw;
-  background: linear-gradient(120deg, rgb(37, 196, 228), rgb(0, 0, 0));
-  background-clip: text;
-  background-size: 40% 10%;
-  font-family: air;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-top: 10px;
+  font-weight: 200;
+  font-size: 1.5vw;
+  font-family: "Instrument Sans";
+  color: rgb(201, 171, 255);
+  margin: 10px;
 }
 
 .menu-cat {
-  border: 2px solid var(--sec);
+  border: 0.5px solid var(--sec);
   padding: 10px 30px;
   border-radius: 10px;
-  background: linear-gradient(120deg, rgb(2, 188, 255), rgb(23, 90, 223));
+  background: rgba(102, 0, 255, 0.471);
   font-family: air;
   display: flex;
   flex-wrap: wrap;
@@ -172,12 +169,8 @@ option {
 
 .dosa {
   border: none;
-  background: linear-gradient(
-    to top left,
-    rgb(177, 254, 255),
-    rgb(255, 255, 255),
-    white
-  );
+  background: rgba(41, 0, 91, 0.525);
+  color: white;
   padding: 10px;
   border-radius: 10px;
   font-family: air;
@@ -190,5 +183,10 @@ option {
 }
 
 .dosa:hover {
-  background: rgb(177, 254, 255);
+  background: rgb(215, 177, 255);
+}
+
+.flight {
+  border: none !important;
+  background: transparent !important;
 }
