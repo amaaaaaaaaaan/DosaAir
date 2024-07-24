@@ -65,4 +65,11 @@ def saveTicket():
 def pullTickets():
   return back.readTicket()
 
+@eel.expose
+def seatchange(no):
+  back.seat(no)
+@eel.expose
+def checkon_seats():
+  return back.check_seats()
+
 eel.start('login.html' ,size=(1024, 768) )

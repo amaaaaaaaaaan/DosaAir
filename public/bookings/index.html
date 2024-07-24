@@ -4,7 +4,7 @@
     <script type="text/javascript" src="/eel.js"></script>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="../homestyle.css" />
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DosaAir</title>
@@ -28,6 +28,50 @@
             
                     </div>
     </div>
+    <div class="seats-cont hid">
+      <div class="seats-des">
+        <h1 class="seats-des-head">Choose Your Seat</h1>
+        <div class="seats-details plus">
+          <span class="seats-detail-head">Economy Plus</span>
+          <span class="seats-detail">Experience unparalleled comfort with our Economy Plus. Enjoy extra legroom, access to the exclusive our Lounge, and our complimentary chauffeur service.</span>
+        </div>
+        <div class="seats-details">
+          <span class="seats-detail-head">Economy</span>
+          <span class="seats-detail">Travel comfortably and affordably with our Economy Class. Enjoy excellent service, complimentary in-flight meals, and a wide selection of entertainment options. </span>
+        </div>
+      </div>
+      <div class="seats-layout-cont">
+        <div class="seats-layout">
+          <span class="layout-name">Beechcraft King Air 350</span>
+          <div class="seat-cont plus">
+            <button class="seat"></button>
+            <button class="seat"></button>
+          </div>
+          <div class="seat-cont plus">
+            <button class="seat"></button>
+            <button class="seat"></button>
+          </div>
+          <div class="seat-cont">
+            <button class="seat"></button>
+            <button class="seat"></button>
+          </div>
+          <div class="seat-cont">
+            <button class="seat"></button>
+            <button class="seat"></button>
+          </div>
+          <div class="seat-cont">
+            <button class="seat"></button>
+            <button class="seat"></button>
+          </div>
+
+        </div>
+      </div>
+      <!-- <span class="material-symbols-outlined seat-close" onclick="hidemenu()">
+        radio_button_checked
+        </span> -->
+    </div>
+    <div class="overlay seatings hid" onclick="hideseat()"></div>
+
     <div class="overlay hid" onclick="hidemenu()"></div>
 
     <div class="main">
@@ -63,7 +107,7 @@
       <div class="cont">
         <div class="ticket">
            
-                <div class="ticket-passenger flight">
+                <div class="ticket-passenger">
                     <h2>PASSENGER DETAILS</h2>
                     <div class="passenger">
                       <h1 class="passenger-head">Passport details</h1>
@@ -95,9 +139,9 @@
                           <span>Age group</span>
                           <select class="login-text" >
                             <option value="">Select</option>
-                              <option value="Child">Child (0 - 13)</option>
+                              <option value="Child">Child (0 - 13) 50% fare</option>
                               <option value="Adult">Adult (14 - 60)</option>
-                              <option value="Senior Citizen">Senior Citizen (60+)</option>
+                              <option value="Senior Citizen">Senior Citizen (60+) 80% fare</option>
                           </select>
                         </div>
                         <div class="login-inf">
@@ -129,7 +173,14 @@
                       </div>
                         <h1 class="passenger-head">Contact Details</h1>
                         <div class="passenger-cont">
-                         
+                          <div class="login-inf">
+                            <span>Email</span>
+                            <input class="login-text" id="email" type="email" name="" id="" />
+                          </div>
+                          <div class="login-inf">
+                            <span>Contact Number</span>
+                            <input class="login-text" id="pho" type="tel" name="" id="" />
+                          </div>
                         </div>
                         <h1 class="passenger-head">Extras</h1>
 <div class="passenger-cont">
@@ -139,14 +190,24 @@
   </div>
   <div class="login-inf">
     <span>Seat</span>
-    <button class="login-text btn" onclick="showseat(this)" >Seating plan</button>
+    <button class="login-text ste" onclick="showseat(this)" >Seating plan</button>
+  </div>
+  <div class="login-inf">
+    <span>Baggage</span>
+    <select class="login-text" >
+
+        <option value="def">10Kg</option>
+        <option value="premium">20Kg [+2% fare]</option>
+        <option value="premium plus">40Kg [+4% fare]</option>
+
+    </select>
   </div>
 </div>
                          
                     </div>
                     
                     <div id="passengers"></div>
-                    <button class="login-btn" onclick="addform()">Add Passenger</button>
+                    <button class="login-btn" onclick="addform()">Add More Passengers</button>
                 </div>
                 <button class="login-btn" onclick="bookpassengers()">Confirm</button>
         </div>

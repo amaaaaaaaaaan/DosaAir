@@ -34,7 +34,17 @@ h3 {
 .ticket-passenger {
   flex-direction: column;
   gap: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* margin-top: 3vh; */
+  color: black;
   /* align-items: flex-start !important; */
+
+  padding: 10px 50px;
+  color: var(--org);
+  border-radius: 15px;
+  /* margin: 50px; */
 }
 
 .passenger {
@@ -55,7 +65,6 @@ h3 {
 .passenger-cont {
   display: flex;
   gap: 4vw;
-  /* width: 90%; */
 }
 
 .passenger-head {
@@ -66,9 +75,8 @@ h3 {
   padding: 10px;
   border-radius: 7px;
   border: none;
-  margin-top: 10px;
-  text-align: center;
-  font-size: 20px;
+  margin-top: 5px;
+  font-size: 1.5vw;
   background: rgb(255, 255, 255);
   /* border: 2px solid rgba(16, 179, 204, 0.27); */
 }
@@ -122,7 +130,7 @@ option {
   z-index: 9999;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  background: rgba(47, 0, 112, 0.754);
+  background: rgba(47, 0, 112, 0.426);
   border: 0.5px solid rgb(149, 87, 255);
   top: 50%;
   left: 50%;
@@ -187,6 +195,131 @@ option {
 }
 
 .flight {
-  border: none !important;
-  background: transparent !important;
+  /* border: none !important; */
+  /* background: transparent !important; */
+  margin: 0 !important;
+}
+
+.seats-cont {
+  background: rgba(75, 0, 205, 0.35);
+  position: fixed;
+  z-index: 9999;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 15px;
+  display: flex;
+  border: 1px solid rgba(121, 44, 255, 1);
+  overflow: hidden;
+}
+
+.seats-des {
+  padding: 20px;
+}
+
+.seats-des-head {
+  color: white;
+  font-family: "Instrument Sans", sans-serif;
+  font-weight: 900;
+}
+
+.seats-details {
+  padding: 5px 20px;
+  display: flex;
+  flex-direction: column;
+  color: rgb(233, 233, 233);
+}
+
+.seats-detail-head {
+  font-weight: 600;
+  font-size: 1.5vw;
+  font-family: air;
+}
+
+.seats-detail {
+  padding: 10px;
+  font-size: 1vw;
+}
+
+.seats-details.plus {
+  background: linear-gradient(
+    to top left,
+    rgb(255, 255, 255),
+    rgba(121, 44, 255, 1)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.seats-layout {
+  background: rgba(75, 0, 205, 0.56);
+  border-left: 1px solid rgba(155, 97, 255, 1);
+  border-right: 1px solid rgba(155, 97, 255, 1);
+  padding: 20px;
+  width: 20vw;
+  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.layout-name {
+  color: white;
+}
+
+.seat-cont.plus {
+  padding: 20px;
+}
+
+.seat-cont.plus > .seat {
+  background: rgba(121, 44, 255, 1);
+  border: 1px solid rgba(193, 157, 255, 1);
+}
+.seat-cont.plus > .seat:hover {
+  background: rgba(193, 157, 255, 1);
+  border: 1px solid rgba(121, 44, 255, 1);
+}
+
+.seat-cont {
+  display: flex;
+  gap: 3vw;
+  padding: 5px 20px;
+}
+
+.seat {
+  height: 4vw;
+  aspect-ratio: 1/1;
+  border-radius: 7px;
+  border: 1px solid transparent;
+}
+
+.seat:hover {
+  background: #9d9d9d;
+}
+
+.bkd {
+  background: rgb(0, 0, 0) !important;
+  color: #a9a9a9;
+  border: none;
+}
+
+.plus > .bkd {
+  background: rgb(61, 0, 70) !important;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  margin: 10px;
+  color: white;
+}
+
+.layout-btn {
+  padding: 10px;
+  margin: 10px;
+  color: white;
+  background: var(--sec);
 }

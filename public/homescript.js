@@ -26,6 +26,8 @@ async function updateUserData() {
                            <span class="flight-date flight-time">${flight.time}</span>      
   <span class="flight-time">$${flight.Price}</span>
   <span class="flight-date flight-time">${flight.duration}</span>
+    <span class="booking_id" style="display:none">${flight.booking_id}</span>
+
             </div>
             
             
@@ -54,7 +56,7 @@ function book(e) {
   const dateElement = flightContainer.querySelector(".flight-dt .flight-date");
   const timeElement = flightContainer.querySelector(".flight-dt .flight-time");
   const fnoelement = flightContainer.querySelector(".fno");
-
+  const booking_id = flightContainer.querySelector(".booking_id").textContent;
   if (dateElement && timeElement) {
     const date = dateElement.textContent;
     const time = timeElement.textContent;
@@ -63,6 +65,7 @@ function book(e) {
       fno: fno,
       date: date,
       time: time,
+      booking_id: booking_id,
     };
 
     eel.bookFlight(flightDetails)();

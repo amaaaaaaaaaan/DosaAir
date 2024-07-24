@@ -35,6 +35,10 @@ def get_airport_code(city_name):
             return code
     return None
 
+def get_number_of_seats_booked():
+    cu.execute(f"select count(seat_number) from seats_booked where status = 'bkd' and booking_id = {bkdFlight['booking_id']};")
+    k = cu.fetchone()
+    return int(k[0])
 
 def get_current_city():
     g = geocoder.ip('me')
@@ -97,7 +101,7 @@ def mk_dict():
     ca = "Sharjah" #is this line used ?
     cu.execute(f'SELECT * FROM flights f,Schedule s WHERE s.fno = f.fno and  FromDest="{get_current_city()}" and new_date >= "{date}"')
     x = cu.fetchall()
-    for u, i in enumerate(x):
+    for u, i in enumerate(x): #what does enumerate do ???
         time = i[7]
         time = time.split(':')
         time.pop()
@@ -110,31 +114,37 @@ def mk_dict():
             "to" : i[2],
             "Price": i[3],
             'duration': i[4],
-            'date' : i[7],
-            'time' : time
+            'date' : i[8],
+            'time' : time,
+            'booking_id' : i[10]
         }
         dic_lst.append(flight_dict)
     return dic_lst
 
 
 def book(data):
-    cu.execute(f'select * from flights where Fno = {data["fno"]}') 
+    cu.execute(f'select * from flights f where f.Fno = {data["fno"]}') 
     i = cu.fetchone()
+    print(i)
     global bkdFlight #stores the currently selected flight data
     bkdFlight = {
-        "fno":i[0],
+            "fno":i[0],
             "from":get_airport_code(i[1]) ,
             "to":get_airport_code(i[2]) ,
             "price": i[3],
             'duration': i[4],
             "time" : data['time'],
-            "date" : data['date']
+            "date" : data['date'],
+            "booking_id" : data['booking_id']
+
     }
+    print(bkdFlight)
     
 def pullbooked():
     return bkdFlight
 
 def ticketcalc(catlover): #calculation to be done here
+    #🐔🐔🐔👉👉👉👉👉 mr.aman go to bookings folder script.js file line 215🐈🐈
     global passengerDetails
     passengerDetails = catlover
     fn=bkdFlight["fno"]
@@ -181,7 +191,7 @@ def search(fro  , to , date='none',date2 ='none'):
                 "to" : i[2],
                 "Price": i[3],
                 'duration': i[4],
-                'date' : i[7],
+                'date' : i[8],
                 'time' : time
             }
         dic_lst.append(flight_dict)
@@ -200,8 +210,10 @@ def search(fro  , to , date='none',date2 ='none'):
                 "to" : i[2],
                 "Price": i[3],
                 'duration': i[4],
-                'date' : i[7],
-                'time' : time
+                'date' : i[8],
+                'time' : time,
+                'booking_id' : i[10]
+
             }
             dic_lst.append(flight_dict)
         return dic_lst
@@ -221,11 +233,30 @@ def search(fro  , to , date='none',date2 ='none'):
             "to" : i[2],
             "Price": i[3],
             'duration': i[4],
-            'date' : i[7],
-            'time' : time
+            'date' : i[8],
+            'time' : time,
+            'booking_id' : i[10]
+
         }
         dic_lst.append(flight_dict)
     return dic_lst
+
+def check_seats():
+    cu.execute(f'select seat_number from seats_booked  where booking_id = {bkdFlight["booking_id"]} and status = "bkd"')
+    seat_layout = cu.fetchall()
+    return(seat_layout)
+
+
+def seat(no):
+    print(no , bkdFlight['booking_id'])
+    cu.execute(f'select status from seats_booked  where seat_number="{no}" and booking_id = {bkdFlight["booking_id"]}')
+    if_seat = cu.fetchone()
+    if if_seat == None:
+        cu.execute(f'insert into seats_booked values({bkdFlight["booking_id"]} , "{no}" , "bkd")')
+        db.commit()
+    else:
+        print('sold')
+
 
 
 def writeTicket():
@@ -234,11 +265,9 @@ def writeTicket():
     csv_file = f"{userdata['name']}.csv"
 
     with open(csv_file, mode='a', newline='') as file:
-        # Determine the fieldnames from the bkdflight dictionary keys
         fieldnames = bkdFlight.keys()
         writer = csv.DictWriter(file, fieldnames=fieldnames)
         writer.writerow(bkdFlight)
-
 
 def readTicket():
     csv_file = f"{userdata['name']}.csv"
@@ -294,5 +323,5 @@ dosamenu = [weirddosa , nonvegdosa , vegdosa]
 
 
 
-__all__ = ['confirmlogin' , 'register' , 'userdata' , 'mk_dict' , 'dosamenu' , 'pullbooked' , 'bkdFlight','ticketcalc','search' , 'readTicket' , 'readTicket' , 'writeTicket']
+__all__ = ['confirmlogin' , 'register' , 'userdata' , 'mk_dict' , 'dosamenu' , 'pullbooked' , 'bkdFlight','ticketcalc','search' , 'readTicket' , 'readTicket' , 'writeTicket', 'seat' , 'check_seats']
 

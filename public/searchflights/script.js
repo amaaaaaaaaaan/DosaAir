@@ -50,6 +50,8 @@ async function showflights() {
                                <span class="flight-date flight-time">${flight.time}</span>      
       <span class="flight-time">$${flight.Price}</span>
       <span class="flight-date flight-time">${flight.duration}</span>
+          <span class="booking_id" style="display:none">${flight.booking_id}</span>
+
                 </div>
                 
                 
@@ -111,6 +113,7 @@ function book(e) {
       fno: fno,
       date: date,
       time: time,
+      booking_id: flightContainer.querySelector(".booking_id").textContent,
     };
 
     eel.bookFlight(flightDetails)();
