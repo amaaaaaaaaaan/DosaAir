@@ -1,12 +1,16 @@
-.flight {
+.lilac .flight {
   display: flex;
   justify-content: space-evenly !important;
   /* padding: 50px 30px; */
   width: 90%;
   border: 2px solid var(--ligh);
   margin: 0;
-  margin-top: 30px;
 }
+
+.flight-marg {
+  margin: 30px !important;
+}
+
 .destinations {
   display: flex;
   align-items: center;
@@ -107,55 +111,48 @@ h3 {
 .ticket-passenger {
   flex-direction: column;
   gap: 20px;
+  background: #1c0041;
   /* align-items: flex-start !important; */
 }
 
 .passenger {
-  border: 1px solid rgba(0, 86, 132, 0.41);
+  border: 1px solid rgba(46, 0, 132, 0.41);
   padding: 20px 30px;
   border-radius: 12px;
   display: flex;
   gap: 10px;
   justify-content: space-between;
   width: 100%;
-  background: rgba(11, 113, 134, 0.36);
+  background: rgb(51, 18, 113);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
 }
 
 .login-text {
-  padding: 10px;
+  padding: 0px;
   border-radius: 7px;
   border: none;
-  margin-top: 10px;
-  color: #000;
-  text-align: center;
+  font-weight: 800;
+  text-transform: capitalize;
+  /* margin-top: 10px; */
+  color: var(--sec);
   font-size: 20px;
-  background: rgb(255, 255, 255);
+  background: transparent;
   /* border: 2px solid rgba(16, 179, 204, 0.27); */
-}
-
-.login-text {
-  background: linear-gradient(
-    to top left,
-    rgb(177, 254, 255),
-    rgb(255, 255, 255),
-    white
-  );
 }
 
 .login-inf {
   display: flex;
   flex-direction: column;
-  text-align: center;
+  padding: 10px;
 }
 
 .login-btn {
   background: rgb(3, 77, 93);
   border: none;
   border-radius: 7px;
-  padding: 10px;
+
   /* font-weight: 900; */
   font-family: air;
   font-size: 1vw;
@@ -269,8 +266,32 @@ option {
 
 .tto {
   margin-top: 50px;
+  width: 90%;
 }
 
 .float {
   top: 0;
+}
+
+.price-cont {
+  color: var(--sec);
+  font-size: 1vw;
+  text-align: right;
+  width: 100%;
+  font-family: "Instrument Sans";
+  font-weight: 100;
+}
+
+.price {
+  font-weight: 800;
+  color: var(--org);
+  font-size: 3vw;
+}
+
+.indi {
+  font-size: 1vw !important;
+}
+
+.indi > .price {
+  font-size: 1.3vw;
 }
