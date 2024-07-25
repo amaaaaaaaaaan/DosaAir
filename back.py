@@ -5,7 +5,7 @@ import hashlib
 import geocoder
 import airportsdata
 from datetime import datetime
-
+import pandas as pd
 try: 
 
     db = mysql.connector.connect(
@@ -101,7 +101,7 @@ def mk_dict():
     ca = "Sharjah" #is this line used ?
     cu.execute(f'SELECT * FROM flights f,Schedule s WHERE s.fno = f.fno and  FromDest="{get_current_city()}" and new_date >= "{date}"')
     x = cu.fetchall()
-    for u, i in enumerate(x): #what does enumerate do ???
+    for u, i in enumerate(x): #what does enumerate do ??? enumarate is unpacking the list of tuples and giving me just the value in i
         time = i[7]
         time = time.split(':')
         time.pop()
@@ -244,10 +244,27 @@ def search(fro  , to , date='none',date2 ='none'):
     return dic_lst
 
 def check_seats():
-    cu.execute(f'select seat_number from seats_booked  where booking_id = {bkdFlight["booking_id"]} and status = "bkd"')
+    cu.execute(f"select seat_number from seats_booked where booking_id = {bkdFlight['booking_id']} and status = 'bkd'")
     seat_layout = cu.fetchall()
     return(seat_layout)
 
+def carbon_emission():
+    df= pd.read_csv('Aman.csv')
+    lst_no=[]
+    lst_dst=[]
+    l=[]
+    fno=df['fno']
+    for i in fno:
+        lst_no.append(i)
+        cu.execute(f"select Distance from flights where fno={i}")
+        x=cu.fetchall()
+        l.append(x)
+    lst_dst = [item[0][0] for item in l]
+    tot_dst=sum(lst_dst)
+    no=get_number_of_seats_booked()
+    em_fact=0.2
+    em=int(tot_dst*(no/no+em_fact**100)*em_fact)
+    return em
 
 def seat(no):
     print(no , bkdFlight['booking_id'])
@@ -328,3 +345,4 @@ dosamenu = [weirddosa , nonvegdosa , vegdosa]
 
 __all__ = ['confirmlogin' , 'register' , 'userdata' , 'mk_dict' , 'dosamenu' , 'pullbooked' , 'bkdFlight','ticketcalc','search' , 'readTicket' , 'readTicket' , 'writeTicket', 'seat' , 'check_seats']
 
+print(carbon_emission())
