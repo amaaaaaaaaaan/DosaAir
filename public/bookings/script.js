@@ -231,7 +231,7 @@ async function bookpassengers() {
     alert("Form not filled properly");
   }
   eel.saveTicket()();
-  window.location.href = "../booked/index.html";
+  window.location.href = "../carbon/index.html";
   return passengerDetails;
 }
 

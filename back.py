@@ -150,18 +150,20 @@ def ticketcalc(catlover): #calculation to be done here
     fn=bkdFlight["fno"]
     cu.execute(f"select Price from flights where Fno={fn}")
     f_price=cu.fetchone()[0]
-    age=""
-    food_price=0
     tiktprice=0
     for i in catlover:
+        passprice = 0
+        food_price=0
         food_lst=i['food']
         food_price+=food_lst[1]
-        age+=i['ageGroup']
-    if age=="Child":
-        f_price=(f_price*50)/100
-    elif age=="Senior Citizen":
-        f_price=(f_price*80)/100
-    tiktprice=f_price+food_price
+        age =i['ageGroup']
+        if age=="Child":
+            f_price=(f_price*50)/100
+        elif age=="Senior Citizen":
+            f_price=(f_price*80)/100
+        passprice = f_price + food_price
+        i['indi_price'] = passprice
+        tiktprice+=f_price+food_price
     bkdFlight['totalprice'] = tiktprice
     print(bkdFlight , passengerDetails)
     return 'all good'
@@ -261,6 +263,7 @@ def seat(no):
 
 def writeTicket():
     bkdFlight['passengerdetails'] = json.dumps(passengerDetails)
+    del bkdFlight['booking_id']
 
     csv_file = f"{userdata['name']}.csv"
 
