@@ -280,7 +280,7 @@ def seat(no):
 
 def writeTicket():
     bkdFlight['passengerdetails'] = json.dumps(passengerDetails)
-    del bkdFlight['booking_id']
+    l = bkdFlight.pop('booking_id')
 
     csv_file = f"{userdata['name']}.csv"
 
@@ -288,6 +288,7 @@ def writeTicket():
         fieldnames = bkdFlight.keys()
         writer = csv.DictWriter(file, fieldnames=fieldnames)
         writer.writerow(bkdFlight)
+    bkdFlight['booking_id'] = l
 
 def readTicket():
     csv_file = f"{userdata['name']}.csv"
