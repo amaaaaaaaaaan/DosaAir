@@ -154,22 +154,28 @@ def ticketcalc(catlover): #calculation to be done here
     for i in catlover:
         passprice = 0
         food_price=0
+        st=['A1','B1']
         food_lst=i['food']
         food_price+=food_lst[1]
         age =i['ageGroup']
+        seat=i['seat']
+        bgg=i['bgg']
         if age=="Child":
             f_price=(f_price*50)/100
         elif age=="Senior Citizen":
             f_price=(f_price*80)/100
+        if seat in st:
+            f_price+=(f_price*10)/100
+        if bgg=='premium':
+            f_price+=(f_price*2)/100
+        elif bgg=='premium plus':
+            f_price+=(f_price*4)/100
         passprice = f_price + food_price
         i['indi_price'] = passprice
         tiktprice+=f_price+food_price
     bkdFlight['totalprice'] = tiktprice
     print(bkdFlight , passengerDetails)
     return 'all good'
-
-
- 
 
 def search(fro  , to , date='none',date2 ='none'):
     dic_lst = []
@@ -345,5 +351,3 @@ dosamenu = [weirddosa , nonvegdosa , vegdosa]
 
 
 __all__ = ['confirmlogin' , 'register' , 'userdata' , 'mk_dict' , 'dosamenu' , 'pullbooked' , 'bkdFlight','ticketcalc','search' , 'readTicket' , 'readTicket' , 'writeTicket', 'seat' , 'check_seats']
-
-print(carbon_emission())
