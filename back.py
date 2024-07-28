@@ -143,6 +143,18 @@ def book(data):
 def pullbooked():
     return bkdFlight
 
+def carbon_emission():
+    fno=bkdFlight['fno']
+    cu.execute(f"select Distance from flights where fno={fno}")
+    x=cu.fetchall()
+    no=get_number_of_seats_booked()
+    em_fact=0.2
+    em=int(x*(no/no+em_fact**100)*em_fact)
+    return em
+def no_trees():
+    no=int(carbon_emission()*0.35)
+    return no
+
 def ticketcalc(catlover): #calculation to be done here
     #🐔🐔🐔👉👉👉👉👉 mr.aman go to bookings folder script.js file line 215🐈🐈
     global passengerDetails
@@ -154,7 +166,7 @@ def ticketcalc(catlover): #calculation to be done here
     for i in catlover:
         passprice = 0
         food_price=0
-        st=['A1','B1']
+        st=['A1','B1','A2','B2']
         food_lst=i['food']
         food_price+=food_lst[1]
         age =i['ageGroup']
@@ -254,23 +266,6 @@ def check_seats():
     seat_layout = cu.fetchall()
     return(seat_layout)
 
-def carbon_emission():
-    df= pd.read_csv('Aman.csv')
-    lst_no=[]
-    lst_dst=[]
-    l=[]
-    fno=df['fno']
-    for i in fno:
-        lst_no.append(i)
-        cu.execute(f"select Distance from flights where fno={i}")
-        x=cu.fetchall()
-        l.append(x)
-    lst_dst = [item[0][0] for item in l]
-    tot_dst=sum(lst_dst)
-    no=get_number_of_seats_booked()
-    em_fact=0.2
-    em=int(tot_dst*(no/no+em_fact**100)*em_fact)
-    return em
 
 def seat(no):
     print(no , bkdFlight['booking_id'])
