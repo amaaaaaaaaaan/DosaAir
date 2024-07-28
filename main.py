@@ -19,6 +19,10 @@ def getdata(u,p):
 @eel.expose
 def ticket(nambiar):
   return back.ticketcalc(nambiar)
+
+@eel.expose
+def carboncalc():
+  return back.carbon_emission()
   
 @eel.expose
 def regdata(u,p):
