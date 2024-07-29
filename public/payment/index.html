@@ -1,77 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
     <script type="text/javascript" src="/eel.js"></script>
-    <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="../homestyle.css" />
-
+    <link rel="stylesheet" href="style.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DosaAir</title>
   </head>
   <body>
-    <div class="menu hid">
-      <h1 class='menu-top'>Menu</h1>
-      <span class="menu-head">Signature Dosas</span>
-
-      <div class="menu-cat" id="weird">
- 
-      </div>
-      <span class="menu-head">Non-Veg</span>
-
-      <div class="menu-cat" id="non-veg">
-     
-             </div>
-             <span class="menu-head">Veg</span>
-
-             <div class="menu-cat" id="veg">
-            
-                    </div>
-    </div>
-    <div class="overlay hid" onclick="hidemenu()"></div>
-
     <div class="main">
-     
-
-  
-
-      <div class="cont">
-        <div id="passengers"></div>
-
-        <div class="ticket">
-           
-                <div class="ticket-passenger flight">
-                    <h2>Ticket</h2>
-                    <div class="passenger">
-                        <div class="login-inf">
-                            <span>Title</span>
-                            <span class="login-text">Mr</span>
-                          </div>
-                        <div class="login-inf">
-                            <span>First Name</span>
-                            <span class="login-text" id="username" type="text" name="" id="" >Ranga Shooja</span>
-                          </div>
-                          <div class="login-inf">
-                            <span>Food Choice</span>
-                            <span class="login-text btn" onclick="showmenu(this)" >Chicken Dosa</span>
-                          </div>
-                          <div class="login-inf">
-                            <span>Age group</span>
-                            <span class="login-text" >
-                                Adult
-                            </span>
-                          </div>
-                    </div>
-                    
-                   
-                </div>
-                
-                <button class="login-btn" onclick="goback()">Go Back</button>
-                <button class="login-btn" onclick="printticket()">Print ticket</button>
-
+      <div class="head float">
+        <div class="logo-cont">
+          <img
+            class="logo-img"
+            src="../logo.png"
+            onclick="window.location.href = '../home.html'"
+            alt=""
+          />
         </div>
-        
+        <div class="links">
+          <!-- <a>Contact</a>
+          <a>Menu</a>
+          <a>Flights</a> -->
+          <div class="pages">
+            <div class="top-menu-cont">
+              <div class="top-menu">
+                <button onclick="window.location.href = '../home.html'">
+                  Smart Routes
+                </button>
+                <button onclick="window.location.href = '../searchflights/index.html'">
+                  Search Flights
+                </button>
+                <button onclick="window.location.href = '../booked/index.html'">
+                  Booked Flights
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="acc-cont">
+            <div class="acc-inf">
+              <span class="acc-name" id="accountName">Aman</span>
+              <span class="acc-nat" id="ploc">Dubai</span>
+            </div>
+            <!-- <button class="acc-btn">
+              <img
+                class="acc-img"
+                src="https://cdn-icons-png.flaticon.com/512/3276/3276535.png"
+                alt=""
+              />
+            </button> -->
+          </div>
+        </div>
       </div>
+      <div id="leave"></div>
+      
+<div class="mess-cont">
+  <h1 class="nature">Payment</h1>
+  <img class="card-logo" src="https://dpogroup.com/wp-content/uploads/2021/07/Asset-1@4x.png" alt="">
+  <span class="mess-para">We only accept MasterCard payment</span>
+  
+  <div class="card-body gwak p-5 text-center">
+    <input class="inp-b" type="text" placeholder="Card Number">
+    <span class="mess-para">Pin</span>
+
+    <div class="otp-field mb-4">
+      <input type="text" />
+      <input type="text" disabled />
+      <input type="text" disabled />
+      <input type="text" disabled />
+    </div>
+  </div>
+
+    <button class="mess-btn">Confirm</button>
+</div>
 
       </div>
     </div>

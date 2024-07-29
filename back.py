@@ -81,6 +81,8 @@ def register(u,p) :
             l =l + p[i]+u[i]
         else:
             l= l+ p[i]
+    userdata['name'] = u
+    userdata['ploc'] = get_current_city()
     fieldnames = ['fno', 'from', 'to', 'price', 'duration', 'time', 'date', 'totalprice', 'passengerdetails']
 
     csv_file = f"{u}.csv"
@@ -353,7 +355,7 @@ def mailconfirmation(passdetails):
           style="max-width: 600px !important"
         >
           <img
-            src="https://media.discordapp.net/attachments/844436240447176724/1267059862052012053/image.png?ex=66a768f3&is=66a61773&hm=cd154fda0dcf57bb18a11e5a790c526b1de2577566aec85662137745a46469dc&=&width=1102&height=1102"
+            src="https://media.discordapp.net/attachments/844436240447176724/1267539264032342056/image.png?ex=66a9276e&is=66a7d5ee&hm=d0fada2c0730b3a0eeb3c5f71762b43875d9e8e488218860aba6488e2b89ed1b&=&width=1102&height=1102"
             width="100%"
             style="
               filter: brightness(0);

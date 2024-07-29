@@ -1,5 +1,5 @@
 document.querySelector(".mess-btn").addEventListener("click", function () {
-  window.location.href = "../booked/index.html";
+  window.location.href = "../payment/index.html";
 });
 
 document.addEventListener("DOMContentLoaded", async function () {
