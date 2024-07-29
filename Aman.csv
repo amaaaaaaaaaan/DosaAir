@@ -1,2 +1,3 @@
 fno,from,to,price,duration,time,date,totalprice,passengerdetails
 
+3,SHJ,BOM,700,2H 50Mins,21:35,Tuesday 30 July,787.23,"[{""title"": ""Mr"", ""firstName"": ""Aman Shooja"", ""ageGroup"": ""Adult"", ""food"": [""Chicken Dosa"", 1.83], ""email"": ""mahadevmaneeshm@gmail.com"", ""national"": ""indian"", ""phone"": ""050100222"", ""seat"": ""A2"", ""bgg"": ""premium"", ""indi_price"": 787.23}]"

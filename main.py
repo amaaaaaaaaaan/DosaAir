@@ -22,7 +22,7 @@ def ticket(nambiar):
 
 @eel.expose
 def carboncalc():
-  return back.carbon_emission()
+  return [back.carbon_emission(),back.no_trees()]
   
 @eel.expose
 def regdata(u,p):

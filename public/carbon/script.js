@@ -4,5 +4,6 @@ document.querySelector(".mess-btn").addEventListener("click", function () {
 
 document.addEventListener("DOMContentLoaded", async function () {
   const carbon = await eel.carboncalc()();
-  document.querySelector("#carbs").innerHTML = carbon;
+  document.querySelector("#carbs").innerHTML = carbon[0];
+  document.querySelector("#plnt").innerHTML = carbon[1];
 });

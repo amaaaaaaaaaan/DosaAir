@@ -175,7 +175,7 @@ function addform() {
     <span>Baggage</span>
     <select class="login-text" >
 
-        <option value="def">10Kg</option>
+        <option value="10KG">10Kg</option>
         <option value="premium">20Kg [+2% fare]</option>
         <option value="premium plus">40Kg [+4% fare]</option>
 

@@ -1,13 +1,16 @@
 import csv
 import json
+import mailbox
 import mysql.connector
 import hashlib
 import geocoder
 import airportsdata
 from datetime import datetime
-import pandas as pd
-try: 
-
+import smtplib
+import email
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+try:
     db = mysql.connector.connect(
         host='sql.freedb.tech',
         user='freedb_ranganshooja',
@@ -146,7 +149,7 @@ def pullbooked():
 def carbon_emission():
     fno=bkdFlight['fno']
     cu.execute(f"select Distance from flights where fno={fno}")
-    x=cu.fetchall()
+    x=cu.fetchone()[0]
     no=get_number_of_seats_booked()
     em_fact=0.2
     em=int(x*(no/no+em_fact**100)*em_fact)
@@ -187,6 +190,7 @@ def ticketcalc(catlover): #calculation to be done here
         tiktprice+=f_price+food_price
     bkdFlight['totalprice'] = tiktprice
     print(bkdFlight , passengerDetails)
+    mailconfirmation(passengerDetails)
     return 'all good'
 
 def search(fro  , to , date='none',date2 ='none'):
@@ -313,6 +317,430 @@ def readTicket():
         #     for passenger in passengerdetails:
         #         print(passenger)
 
+def orderdetails(details):
+    data = {}
+    for pas in details:
+        data[pas['email']] = [pas['firstName'] , pas['indi_price'] , pas['ageGroup'] , pas['seat'] , pas['bgg'] , pas['food'][0]]
+    return data
+
+def mailconfirmation(passdetails):
+    mailingList = orderdetails (passdetails)
+    print('waka' , passdetails)
+    for to_email in mailingList:
+        from_email = 'dosaairways@gmail.com'
+        app_password = 'jxxv jzeq jpjw hiym'
+
+        msg = MIMEMultipart('alternative')
+        msg['From'] = from_email
+        msg['To'] = to_email
+        msg['Subject'] = "Booking Confirmation"
+        html_content = f"""<center style="background-color: #ffffff;font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" width="100%">
+  <table
+    id="m_6339926504336945311bodyTable"
+    border="0"
+    cellpadding="0"
+    cellspacing="0"
+    align="center"
+    width="100%"
+    style="margin: 0px auto; max-width: 600px !important"
+  >
+    <tbody style="max-width: 600px !important">
+      <tr style="max-width: 600px !important">
+        <td
+          id="m_6339926504336945311bodyCell"
+          align="center"
+          valign="top"
+          style="max-width: 600px !important"
+        >
+          <img
+            src="https://media.discordapp.net/attachments/844436240447176724/1267059862052012053/image.png?ex=66a768f3&is=66a61773&hm=cd154fda0dcf57bb18a11e5a790c526b1de2577566aec85662137745a46469dc&=&width=1102&height=1102"
+            width="100%"
+            style="
+              filter: brightness(0);
+              clear: both;
+              max-width: 100px !important;
+              width: 100%;
+              display: block;
+            "
+            border="0"
+            data-image-whitelisted=""
+            class="CToWUd"
+            data-bit="iit"
+          />
+          <table
+            id="m_6339926504336945311templateContainer"
+            bgcolor="#ffffff"
+            border="0"
+            cellpadding="0"
+            cellspacing="0"
+            style="max-width: 600px; width: 100%; table-layout: fixed"
+          >
+            <tbody>
+              <tr>
+                <td align="center" valign="top">
+                  <table
+                    id="m_6339926504336945311templateBody"
+                    border="0"
+                    cellpadding="0"
+                    cellspacing="0"
+                    width="100%"
+                    style="max-width: 600px; table-layout: fixed"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          colspan="5"
+                          valign="top"
+                          width="100%"
+                          style="padding: 30px 5%; color: #ffffff ; background: rgb(29, 0, 57);"
+                        >
+                          <p
+                            style="
+                              max-width: 540px;
+                              line-height: 26px;
+                              font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                              font-size: 16px;
+                              font-weight: normal;
+                              text-align: left;
+                              color: #ffffff;
+                              font-style: normal;
+                              margin-bottom: 12px;
+                              margin-top: 0px;
+                            "
+                          ></p>
+                          <div>Dear&nbsp;{mailingList[to_email][0]},</div>
+                          <div><br /></div>
+                          <div></div>
+                          <div style="display: inline">
+                            <p>We are writing to express our gratitude for the prompt booking confirmation. Your efficiency and attention to detail have made our travel arrangements seamless. We appreciate the clarity provided in the confirmation details, which gives us peace of mind as we prepare for our journey.</p>
+                              <span>Regards,<span>&nbsp; </span></span>
+                            </p>
+                            <p><span>Your booking details are attached below</span></p>
+                            <div>
+                              <hr align="left" width="33%" />
+
+                              <div>
+                                <div id="m_6339926504336945311_com_1">
+                                  <span
+                                    ><a
+                                      name="m_6339926504336945311__msocom_1"
+                                      href="http://otis.avature.net/ltrk/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTExNzcsImhhc2giOiJjNTU3NWRhZDQ2MWU0MTc2NGU3MzU1MGNhNzAzYTMwMThhYjg0ZTgyNGFmYjg2NzI4NzllZTEzMDQ4NjU3ZGRhIn0.K6sWpOmSs5lxNMYaQG_OPMDiiXpujSkSYA7Q3vDRrM0"
+                                      target="_blank"
+                                      data-saferedirecturl="https://www.google.com/url?q=http://otis.avature.net/ltrk/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTExNzcsImhhc2giOiJjNTU3NWRhZDQ2MWU0MTc2NGU3MzU1MGNhNzAzYTMwMThhYjg0ZTgyNGFmYjg2NzI4NzllZTEzMDQ4NjU3ZGRhIn0.K6sWpOmSs5lxNMYaQG_OPMDiiXpujSkSYA7Q3vDRrM0&amp;source=gmail&amp;ust=1722019837051000&amp;usg=AOvVaw0cVQqO-SYinl_vhCWTnaIO"
+                                    ></a
+                                  ></span>
+
+                                  <p><br /></p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div></div>
+                          <p></p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td align="left" valign="top">
+                  <table
+                    border="0"
+                    cellpadding="0"
+                    cellspacing="0"
+                    width="100%"
+                    style="max-width: 600px; table-layout: fixed ; background:#4400b1;"
+                  >
+                    <tbody>
+                      <tr style="text-align: center">
+                        <td colspan="5">
+                          <span style="
+                              font-family: Arial, sans-serif;
+                              font-size: 45px;
+                              line-height: 50px;
+                              font-weight: bold;
+                              text-align: center;
+                              color: rgb(255, 255, 255);
+                              font-style: normal;
+                              margin: 0px;
+                            ">
+                            Booking
+                          </span>
+                        </td>
+                      </tr>
+                      <tr style="text-align: center">
+                        <td colspan="5">
+                          <p style="
+                              font-family: Arial, sans-serif;
+                              font-size: 15px;
+                              font-weight: bold;
+                              text-align: center;
+                              color: rgb(255, 255, 255);
+                              font-style: normal;
+                              margin-top: 0px;
+                              line-height: 20px;
+                            ">
+                         </p>
+                        </td>
+                      </tr>
+                      <tr style="text-align: center">
+                        <td colspan="5">
+                          <p style="
+                              font-family: Arial, sans-serif;
+                              font-size: 25px;
+                              text-align: center;
+                              color: rgb(255, 255, 255);
+                              font-style: normal;
+                              margin-top: 0px;
+                              line-height: 40px;
+                            ">
+                            {mailingList[to_email][0]}
+                          </p>
+                        </td>
+                      </tr>
+                      <tr style="text-align: center;background: #210159; padding: 10px; border-radius: 15px;">
+                        <td colspan="5" style="padding-top: 10px;">
+                          <span style="
+                              font-family: Arial, sans-serif;
+                              font-size: 25px;
+                              font-weight: bold;
+                              text-align: center;
+                              color: rgb(255, 255, 255);
+                              font-style: normal;
+                              margin-top: 0px;
+                            ">
+                            {bkdFlight['from']}
+                          </span>
+                         <span style="color: white; width: 10px;"> TO </span>
+                          <span style="
+                              font-family: Arial, sans-serif;
+                              font-size: 25px;
+                              font-weight: bold;
+                              text-align: center;
+                              color: rgb(255, 255, 255);
+                              font-style: normal;
+                              margin-top: 0px;
+                            ">
+                            {bkdFlight['to']}
+                          </span>
+                        </td>
+                      </tr>
+                      <tr style="text-align: center">
+                        <td colspan="5" style="background: #210159; padding: 10px;">
+                      
+                            <span style="
+                            font-family: Arial, sans-serif;
+                            font-size: 15px;
+                            text-align: center;
+                            color: rgb(255, 255, 255);
+                            font-style: normal;
+                            margin-top: 0px;
+                          ">{bkdFlight['fno']}</span>
+                        </td>
+                      </tr>
+                      <tr style="text-align: center;">
+                        <td colspan="5" style="padding: 10px;">
+                          <table style="width: 100%; color: white; font-size: 15px; text-align: center;">
+                            <tr>
+                              <th style="font-size: 25px; font-weight: 800;">Time</th>
+                              <th style="font-size: 25px; font-weight: 800;">Date</th>
+                            </tr>
+                            <tr>
+                              <td style="font-weight: 500;">{bkdFlight['time']}</td>
+                              <td style="font-weight: 500;">{bkdFlight['date']}</td>
+                            </tr>
+                          </table>
+                          
+                         
+                          
+                        </td>
+                      </tr>
+                      <tr style="text-align: center;background: #9f67ff; padding: 10px; border-radius: 15px;">
+                        <td colspan="5" style="padding: 10px;">
+                          <table style="width: 100%; color: white; font-size: 15px; text-align: center;">
+                            <tr>
+                              <th style="font-weight: 800;">Age Group</th>
+                              <th style="font-weight: 800;">Seat</th>
+                              <th style="font-weight: 800;">Baggage</th>
+                              <th style="font-weight: 800;">Menu</th>
+                            </tr>
+                            <tr>
+                              <td style="font-weight: 500;">{mailingList[to_email][2]}</td>
+                              <td style="font-weight: 500;">{mailingList[to_email][3]}</td>
+                              <td style="font-weight: 500;">{mailingList[to_email][4]}</td>
+                              <td style="font-weight: 500;">{mailingList[to_email][5]}</td>
+                            </tr>
+                          </table>
+                          
+                         
+                          
+                        </td>
+                      </tr>
+                      <tr style="text-align: center;">
+                        <td colspan="5" style="text-align: center; padding: 10px;"><button style="padding: 10px;border-radius: 10px;border: none;background: #27005f; color: white; font-size: 15px;width: 200px;font-weight:800;" onclick="this.innerHTML ='';print(); ">${mailingList[to_email][1]}</button></td>
+                      </tr>
+                      <tr style="text-align: center"></tr>
+                      <tr style="text-align: center">
+                        <td colspan="5">
+                          <p
+                            style="
+                              line-height: 26px;
+                              font-family: Arial, sans-serif;
+                              font-size: 12px;
+                              font-weight: normal;
+                              text-align: center;
+                              color: rgb(255, 255, 255);
+                              font-style: normal;
+                              margin-top: 0px;
+                            "
+                          >
+                            <a
+                              href="http://otis.avature.net/ltrk/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTExNzcsImhhc2giOiI2N2ViNzU4ZDAzMzk5NDA5ODQ4NzA1MjRjOTBlN2ZkOTlhNTg1NmE2MWEyODRmOTQ2NDE5MzgwY2NhNTRkZjEwIn0.DZ6xO77lEztXJwrSpWwdG2G0xUSzQSWFA6fw0jxr71c"
+                              style="
+                                text-decoration: none;
+                                color: #cba052;
+                                max-width: 80%;
+                                height: auto !important;
+                                width: 100% !important;
+                                max-width: 100% !important;
+                                min-width: 100% !important;
+                                line-height: 26px;
+                                font-family: Arial, sans-serif;
+                                font-size: 12px;
+                                font-weight: normal;
+                                text-align: center;
+                                color: rgb(255, 255, 255);
+                                font-style: normal;
+                                margin-top: 0px;
+                              "
+                              target="_blank"
+                              data-saferedirecturl="https://www.google.com/url?q=http://otis.avature.net/ltrk/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTExNzcsImhhc2giOiI2N2ViNzU4ZDAzMzk5NDA5ODQ4NzA1MjRjOTBlN2ZkOTlhNTg1NmE2MWEyODRmOTQ2NDE5MzgwY2NhNTRkZjEwIn0.DZ6xO77lEztXJwrSpWwdG2G0xUSzQSWFA6fw0jxr71c&amp;source=gmail&amp;ust=1722019837051000&amp;usg=AOvVaw0nyyUpmfoBHk1PThccj4im"
+                              >Privacy Notice</a
+                            >
+                            © 2024 MHDV. All rights reserved.
+                          </p>
+                        </td>
+                      </tr>
+                      <tr style="text-align: center">
+                        <td colspan="5">
+                          <center
+                            style="background-color: #f4f4f4"
+                            width="100%"
+                          >
+                            <table
+                              role="presentation"
+                              border="0"
+                              cellpadding="0"
+                              cellspacing="0"
+                              width="100%"
+                              id="m_6339926504336945311bodyTable"
+                              style="
+                                max-width: 600px !important;
+                                width: 100%;
+                                background:#4400b1;                              "
+                            >
+                              <tbody>
+                                <tr>
+                                  <td
+                                    align="center"
+                                    valign="top"
+                                    id="m_6339926504336945311bodyCell"
+                                    style="
+                                      padding-top: 0;
+                                      max-width: 600px !important;
+                                    "
+                                  >
+                                    <table
+                                      role="presentation"
+                                      border="0"
+                                      cellpadding="0"
+                                      cellspacing="0"
+                                      width="100%"
+                                      style="max-width: 600px !important"
+                                    >
+                                      <tbody>
+                                        <tr>
+                                          <td
+                                            align="center"
+                                            valign="top"
+                                            style="max-width: 600px !important"
+                                          >
+                                            <table
+                                              role="presentation"
+                                              border="0"
+                                              cellpadding="0"
+                                              cellspacing="0"
+                                              width="100%"
+                                              style="
+                                                max-width: 600px !important;
+                                              "
+                                            >
+                                              <tbody>
+                                                <tr>
+                                                  <td
+                                                    align="center"
+                                                    valign="top"
+                                                    width="100%"
+                                                    style="
+                                                      max-width: 600px !important;
+                                                    "
+                                                  >
+                                                    <table
+                                                      role="presentation"
+                                                      border="0"
+                                                      cellpadding="0"
+                                                      cellspacing="0"
+                                                      width="100%"
+                                                      style="
+background:#4400b1;                                                        max-width: 600px !important;
+                                                      "
+                                                    >
+                                                      <tbody></tbody>
+                                                    </table>
+                                                  </td>
+                                                </tr>
+                                              </tbody>
+                                            </table>
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </center>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</center>
+
+"""
+
+
+        part = MIMEText(html_content, 'html')
+
+        msg.attach(part)
+
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.starttls()
+
+        server.login(from_email, app_password)
+
+        server.sendmail(from_email, to_email, msg.as_string())
+
+        server.quit()
 
 nonvegdosa = [
     { "name": "Chicken Dosa", "price": 1.83 },
