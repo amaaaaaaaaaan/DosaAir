@@ -1,13 +1,11 @@
 import csv
 import json
-import mailbox
 import mysql.connector
 import hashlib
 import geocoder
 import airportsdata
 from datetime import datetime
 import smtplib
-import email
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 try:
@@ -104,7 +102,7 @@ def mk_dict():
     date = today.strftime('%Y-%m-%d')
     dic_lst = []
     ca = "Sharjah" #is this line used ?
-    cu.execute(f'SELECT * FROM flights f,Schedule s WHERE s.fno = f.fno and  FromDest="{get_current_city()}" and new_date >= "{date}"')
+    cu.execute(f'SELECT * FROM flights f,Schedule s WHERE s.fno = f.fno and  FromDest="{get_current_city()}" and new_date > "{date}"')
     x = cu.fetchall()
     for u, i in enumerate(x): #what does enumerate do ??? enumarate is unpacking the list of tuples and giving me just the value in i
         time = i[7]
@@ -168,32 +166,36 @@ def ticketcalc(catlover): #calculation to be done here
     cu.execute(f"select Price from flights where Fno={fn}")
     f_price=cu.fetchone()[0]
     tiktprice=0
-    for i in catlover:
-        passprice = 0
-        food_price=0
-        st=['A1','B1','A2','B2']
-        food_lst=i['food']
-        food_price+=food_lst[1]
-        age =i['ageGroup']
-        seat=i['seat']
-        bgg=i['bgg']
-        if age=="Child":
-            f_price=(f_price*50)/100
-        elif age=="Senior Citizen":
-            f_price=(f_price*80)/100
-        if seat in st:
-            f_price+=(f_price*10)/100
-        if bgg=='premium':
-            f_price+=(f_price*2)/100
-        elif bgg=='premium plus':
-            f_price+=(f_price*4)/100
-        passprice = f_price + food_price
-        i['indi_price'] = passprice
-        tiktprice+=f_price+food_price
-    bkdFlight['totalprice'] = tiktprice
-    print(bkdFlight , passengerDetails)
-    mailconfirmation(passengerDetails)
-    return 'all good'
+    try:
+        for i in catlover:
+            passprice = 0
+            food_price=0
+            st=['A1','B1','A2','B2']
+            food_lst=i['food']
+            food_price+=food_lst[1]
+            age =i['ageGroup']
+            seat=i['seat']
+            bgg=i['bgg']
+            if age=="Child":
+                f_price=(f_price*50)/100
+            elif age=="Senior Citizen":
+                f_price=(f_price*80)/100
+            if seat in st:
+                f_price+=(f_price*10)/100
+            if bgg=='premium':
+                f_price+=(f_price*2)/100
+            elif bgg=='premium plus':
+                f_price+=(f_price*4)/100
+            passprice = f_price + food_price
+            i['indi_price'] = passprice
+            tiktprice+=f_price+food_price
+        bkdFlight['totalprice'] = tiktprice
+        print(bkdFlight , passengerDetails)
+        mailconfirmation(passengerDetails)
+    except:
+        return 'data-error'
+    else:
+        return 'all good'
 
 def search(fro  , to , date='none',date2 ='none'):
     dic_lst = []
@@ -321,9 +323,13 @@ def readTicket():
 
 def orderdetails(details):
     data = {}
-    for pas in details:
-        data[pas['email']] = [pas['firstName'] , pas['indi_price'] , pas['ageGroup'] , pas['seat'] , pas['bgg'] , pas['food'][0]]
-    return data
+    try:
+        for pas in details:
+            data[pas['email']] = [pas['firstName'] , pas['indi_price'] , pas['ageGroup'] , pas['seat'] , pas['bgg'] , pas['food'][0]]
+        return data
+    except:
+        print('Passenger-Detail Error')
+        return None
 
 def mailconfirmation(passdetails):
     mailingList = orderdetails (passdetails)
@@ -730,19 +736,29 @@ background:#4400b1;                                                        max-w
 
 """
 
+        try:
+            part = MIMEText(html_content, 'html')
 
-        part = MIMEText(html_content, 'html')
+            msg.attach(part)
 
-        msg.attach(part)
+            server = smtplib.SMTP('smtp.gmail.com', 587)
+            server.starttls()
 
-        server = smtplib.SMTP('smtp.gmail.com', 587)
-        server.starttls()
+            server.login(from_email, app_password)
 
-        server.login(from_email, app_password)
+            server.sendmail(from_email, to_email, msg.as_string())
 
-        server.sendmail(from_email, to_email, msg.as_string())
-
-        server.quit()
+            server.quit()
+        except:
+            print('mailing error')
+def readfeed():
+    with open('feed.csv') as f:
+        feeds = csv.reader(f)
+        return list(feeds)
+def writefeed(feeback):
+    with open('feed.csv' , 'a') as f:
+        feedw = csv.writer(f)
+        feedw.writerow([userdata['name'],feeback])
 
 nonvegdosa = [
     { "name": "Chicken Dosa", "price": 1.83 },

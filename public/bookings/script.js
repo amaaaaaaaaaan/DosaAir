@@ -225,13 +225,20 @@ async function bookpassengers() {
       bgg: bgg,
     });
   });
+  document.querySelector(".waitup-cont").classList.remove("hid");
   const totoalPrice = await eel.ticket(passengerDetails)();
-
+  alert(totoalPrice);
   if (totoalPrice != "all good") {
-    alert("Form not filled properly");
+    document.querySelector(".waitup-mess").innerHTML = "Form Data not Proper";
+    setTimeout(function () {
+      document.querySelector(".waitup-cont").classList.add("hid");
+    }, 3000);
   }
-  eel.saveTicket()();
-  window.location.href = "../carbon/index.html";
+  document.querySelector(".waitup-cont").classList.remove("hid");
+  if (totoalPrice == "all good") {
+    eel.saveTicket()();
+    window.location.href = "../carbon/index.html";
+  }
   return passengerDetails;
 }
 

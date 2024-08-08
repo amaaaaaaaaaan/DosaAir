@@ -8,7 +8,7 @@ async function ticketLoad() {
   ticketsdata.forEach((ticket) => {
     pash = "";
     ticket.passengerdetails.forEach((passenger) => {
-      pshtml = `<link rel="stylesheet" href="bookings/style.css">
+      pshtml = `
 <div class="passenger">
     <div class="passenger-cont">
       <div class="login-inf">

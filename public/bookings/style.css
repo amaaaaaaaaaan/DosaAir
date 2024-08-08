@@ -323,3 +323,55 @@ option {
   color: white;
   background: var(--sec);
 }
+
+.waitup-cont {
+  height: 500px;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.carbon {
+  font-size: 4vw;
+  font-weight: 900;
+  background: linear-gradient(
+    to top left,
+    rgb(119, 0, 255),
+    rgb(186, 152, 255)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 400% 400%;
+  animation: gradient 2s ease infinite;
+}
+
+.waitup-mess {
+  font-size: 4vw;
+  font-weight: 900;
+  background: linear-gradient(to top left, rgb(167, 135, 255), rgb(23, 0, 68));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 400% 400%;
+  animation: gradient 2s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  font-size: 14vw !important;
+}

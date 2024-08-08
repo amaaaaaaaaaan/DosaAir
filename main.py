@@ -76,4 +76,12 @@ def seatchange(no):
 def checkon_seats():
   return back.check_seats()
 
+@eel.expose
+def getfeedback():
+  return back.readfeed()
+
+@eel.expose
+def writefeedback(message):
+    back.writefeed(message)
+
 eel.start('login.html' ,size=(1024, 768) )
