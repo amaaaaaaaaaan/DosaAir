@@ -34,7 +34,7 @@ db = mysql.connector.connect(
 cu=db.cursor()
 cu.execute(f"select * from Schedule where new_date >'{today}'")
 x=cu.fetchall()
-l = 83
+l = 100
 if x==[]:
     for i in range(10):
         fno=random.randint(1,10)

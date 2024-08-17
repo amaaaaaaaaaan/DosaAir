@@ -760,6 +760,22 @@ def writefeed(feeback):
         feedw = csv.writer(f)
         feedw.writerow([userdata['name'],feeback])
 
+def getTop():
+    airports = airportsdata.load("IATA")
+    cu.execute(f'Select ToDest From flights where FromDest = "{userdata["ploc"]}"')
+    fromdests = cu.fetchall()
+    dest =[]
+    for i in fromdests:
+           l = ''
+           for o,k in airports.items():
+              if k['city'] == i[0]:
+                l =  k['name']
+           dest.append({'name' : i[0] , 'air' : l})
+    return dest
+
+def getDesc(dest):
+    with open(f'public/dest-data/desc/{dest}.txt') as f:
+        return f.read()
 nonvegdosa = [
     { "name": "Chicken Dosa", "price": 1.83 },
     { "name": "Mutton Keema Dosa", "price": 2.44 },

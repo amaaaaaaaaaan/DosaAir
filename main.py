@@ -84,4 +84,12 @@ def getfeedback():
 def writefeedback(message):
     back.writefeed(message)
 
+@eel.expose
+def getTop():
+  return back.getTop()
+
+@eel.expose
+def destDesc(dest):
+  return back.getDesc(dest)
+
 eel.start('login.html' ,size=(1024, 768) )
