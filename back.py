@@ -751,14 +751,23 @@ background:#4400b1;                                                        max-w
             server.quit()
         except:
             print('mailing error')
+# def readfeed():
+#     with open('feed.csv') as f:
+#         feeds = csv.reader(f)
+#         return list(feeds)
+# def writefeed(feeback):
+#     with open('feed.csv' , 'a') as f:
+#         feedw = csv.writer(f)
+#         feedw.writerow([userdata['name'],feeback])
+
 def readfeed():
-    with open('feed.csv') as f:
-        feeds = csv.reader(f)
-        return list(feeds)
-def writefeed(feeback):
-    with open('feed.csv' , 'a') as f:
-        feedw = csv.writer(f)
-        feedw.writerow([userdata['name'],feeback])
+    cu.execute('select * from feeds')
+    feeds = cu.fetchall()
+    return (feeds)
+
+def writefeed(feed):
+    cu.execute(f'insert into feeds values ("{userdata["name"]}" , "{feed}")')
+    db.commit()
 
 def getTop():
     airports = airportsdata.load("IATA")

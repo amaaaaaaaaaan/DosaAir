@@ -21,7 +21,7 @@ def get_formatted_date(days_offset=0):
     
     return formatted_date,non_formatted_date
 
-n=3
+n=1
 _day,_date=get_formatted_date(n)# change n for how many days later from today the schedule has to be added
 
 today=datetime.today().date()
@@ -34,7 +34,7 @@ db = mysql.connector.connect(
 cu=db.cursor()
 cu.execute(f"select * from Schedule where new_date >'{today}'")
 x=cu.fetchall()
-l = 100
+l = 120
 if x==[]:
     for i in range(10):
         fno=random.randint(1,10)

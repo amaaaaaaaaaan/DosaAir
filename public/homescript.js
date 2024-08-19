@@ -78,3 +78,19 @@ function book(e) {
     );
   }
 }
+
+document.querySelector(".acc-log-btn").addEventListener("click", function () {
+  window.location.href = "login.html";
+});
+
+document.querySelector(".acc-log").addEventListener("mouseover", function () {
+  document.querySelector(".acc-log-btn").style.opacity = 100;
+  document.querySelector(".acc-log-btn").style.opacity = "25px";
+  document.querySelector(".acc-log-btn").style.display = "inherit";
+});
+
+document.querySelector(".acc-log").addEventListener("mouseout", function () {
+  document.querySelector(".acc-log-btn").style.opacity = 0;
+  // document.querySelector(".acc-log-btn").style.height = "0px";
+  document.querySelector(".acc-log-btn").style.display = "none";
+});

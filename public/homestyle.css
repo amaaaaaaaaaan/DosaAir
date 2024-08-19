@@ -71,6 +71,32 @@ body {
   /* margin-right: 10px; */
 }
 
+.acc-log {
+  color: var(--ligh) !important;
+  /* border: 1px solid var(--org); */
+  background: var(--sec);
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.acc-log-btn {
+  margin: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 15px;
+  background-color: #cfb7ff;
+  font-weight: 800;
+  display: none;
+}
+
+.acc-log-btn:hover {
+  background-color: #5500ff;
+  font-weight: 800;
+}
+
 .hero {
   display: flex;
   flex-direction: column;
