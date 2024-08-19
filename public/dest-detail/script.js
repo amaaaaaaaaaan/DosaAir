@@ -132,3 +132,14 @@ document.addEventListener("DOMContentLoaded", async function () {
   const desc = await eel.destDesc(l.name)();
   document.querySelector(".dest-desc").innerHTML = desc;
 });
+
+async function updateUserData() {
+  userdata = await eel.userdata()();
+  console.log();
+  document.querySelector(".acc-name").innerText = userdata.name;
+  document.querySelector("#ploc").innerText = userdata.ploc;
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  updateUserData();
+});

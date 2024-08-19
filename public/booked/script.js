@@ -102,3 +102,14 @@ async function ticketLoad() {
 }
 
 document.addEventListener("DOMContentLoaded", ticketLoad());
+
+async function updateUserData() {
+  userdata = await eel.userdata()();
+  console.log();
+  document.querySelector(".acc-name").innerText = userdata.name;
+  document.querySelector("#ploc").innerText = userdata.ploc;
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  updateUserData();
+});
