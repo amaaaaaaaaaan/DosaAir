@@ -8,6 +8,13 @@ async function updateUserData() {
     document.querySelector(".waiting").classList.add("hid");
   }
   console.log(smartRoutes);
+  if (smartRoutes.length == 0) {
+    htm = ` <div  class="flight">
+        <h1 class="waiting-ms waiting-smart">Sorry SmartRoutes couldn't be initiated</h1>
+                  </div>
+      </div>`;
+    document.querySelector("#startkaro").insertAdjacentHTML("beforebegin", htm);
+  }
   smartRoutes.forEach((flight) => {
     const htm = `<div class="flight" >
     <span class='fno' style='display:none'>${flight.Fno}</span>
