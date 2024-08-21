@@ -363,3 +363,14 @@ body {
 .hid {
   display: none;
 }
+
+.ft-txt {
+  color: var(--org);
+  text-align: center;
+  width: 100vw;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+}
