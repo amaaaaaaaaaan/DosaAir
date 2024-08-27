@@ -197,77 +197,69 @@ def ticketcalc(catlover): #calculation to be done here
     else:
         return 'all good'
 
-def search(fro  , to , date='none',date2 ='none'):
+def search(fro, to, date='none', date2='none'):
     dic_lst = []
-    if date !='none' and date2 == 'none':  
-        cu.execute(f'SELECT * FROM flights f,Schedule s WHERE s.fno = f.fno and  FromDest="{fro}" and ToDest ="{to}" and new_date >= "{date}"')
-    elif date =='none' :
-        cu.execute(f'SELECT * FROM flights f,Schedule s WHERE s.fno = f.fno and  FromDest="{fro}" and ToDest ="{to}"')
-    elif date != 'none' and date2 !='none':
-        cu.execute(f'SELECT * FROM flights f,Schedule s WHERE s.fno = f.fno and  FromDest="{fro}" and ToDest ="{to}" and new_date >= "{date}"')
-        x = cu.fetchall()
-        for i in x:
-            time = i[7]
-            time = time.split(':')
-            time.pop()
-            time = ":".join(time)
-            flight_dict = {
-                "Fno":i[0],
-                "FromDest":get_airport_code(i[1]) ,
-                "ToDest":get_airport_code(i[2]) ,
-                "from" : i[1],
-                "to" : i[2],
-                "Price": i[3],
-                'duration': i[4],
-                'date' : i[8],
-                'time' : time
-            }
-        dic_lst.append(flight_dict)
-        cu.execute(f'SELECT * FROM flights f,Schedule s WHERE s.fno = f.fno and  FromDest="{to}" and ToDest ="{fro}" and new_date >= "{date2}"')
-        x = cu.fetchall()
-        for i in x:
-            time = i[7]
-            time = time.split(':')
-            time.pop()
-            time = ":".join(time)
-            flight_dict = {
-                "Fno":i[0],
-                "FromDest":get_airport_code(i[1]) ,
-                "ToDest":get_airport_code(i[2]) ,
-                "from" : i[1],
-                "to" : i[2],
-                "Price": i[3],
-                'duration': i[4],
-                'date' : i[8],
-                'time' : time,
-                'booking_id' : i[10]
-
-            }
-            dic_lst.append(flight_dict)
-        return dic_lst
-            
+    
+    # Base query
+    query = f'SELECT * FROM flights f, Schedule s WHERE s.fno = f.fno and FromDest="{fro}" and ToDest="{to}"'
+    
+    # Adjust query based on date and date2
+    if date != 'none' and date2 == 'none':
+        query += f' and new_date >= "{date}"'
+    elif date != 'none' and date2 != 'none':
+        query += f' and new_date >= "{date}"'
+    
+    # Execute the query
+    cu.execute(query)
     x = cu.fetchall()
-    print(x)
+
+    # Process the results
     for i in x:
-        time = i[7]
-        time = time.split(':')
+        time = i[7].split(':')
         time.pop()
         time = ":".join(time)
+        
         flight_dict = {
-            "Fno":i[0],
-            "FromDest":get_airport_code(i[1]) ,
-            "ToDest":get_airport_code(i[2]) ,
-            "from" : i[1],
-            "to" : i[2],
+            "Fno": i[0],
+            "FromDest": get_airport_code(i[1]),
+            "ToDest": get_airport_code(i[2]),
+            "from": i[1],
+            "to": i[2],
             "Price": i[3],
             'duration': i[4],
-            'date' : i[8],
-            'time' : time,
-            'booking_id' : i[10]
-
+            'date': i[8],
+            'time': time
         }
         dic_lst.append(flight_dict)
+    
+    # Check if a return flight (date2) is required
+    if date != 'none' and date2 != 'none':
+        query_return = f'SELECT * FROM flights f, Schedule s WHERE s.fno = f.fno and FromDest="{to}" and ToDest="{fro}" and new_date >= "{date2}"'
+        
+        cu.execute(query_return)
+        x_return = cu.fetchall()
+
+        for i in x_return:
+            time = i[7].split(':')
+            time.pop()
+            time = ":".join(time)
+            
+            flight_dict = {
+                "Fno": i[0],
+                "FromDest": get_airport_code(i[1]),
+                "ToDest": get_airport_code(i[2]),
+                "from": i[1],
+                "to": i[2],
+                "Price": i[3],
+                'duration': i[4],
+                'date': i[8],
+                'time': time,
+                'booking_id': i[10]
+            }
+            dic_lst.append(flight_dict)
+    
     return dic_lst
+
 
 def check_seats():
     cu.execute(f"select seat_number from seats_booked where booking_id = {bkdFlight['booking_id']} and status = 'bkd'")

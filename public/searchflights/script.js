@@ -14,26 +14,24 @@ async function showflights() {
     const date2 = document.querySelector("#date2").value;
     flightdata = await eel.searchroundflight(from, to, date, date2)();
   }
+  document.getElementById("startkaro").innerHTML = "";
 
   console.log(flightdata);
+
   if (flightdata.length == 0) {
     htm = ` <div  class="flight">
         <h1 class="waiting-ms waiting-smart">Sorry no flights matching</h1>
                   </div>
       </div>`;
     document.querySelectorAll(".flight").forEach((o, i) => {
-      console.log(i);
-
       if (i == 0) {
         return;
       }
-      console.log(-i);
-      o.classList.add("hid");
     });
-    document.querySelector("#startkaro").insertAdjacentHTML("beforebegin", htm);
+    document.querySelector("#startkaro").insertAdjacentHTML("afterbegin", htm);
   } else {
     flightdata.forEach((flight) => {
-      const htm = `<div class="flight" >
+      const htm = `<div class="flight l" >
         <span class='fno' style='display:none'>${flight.Fno}</span>
     <div class="flight-dest-cont">
                 <span class="flight-date flight-time" style='text-align:left'>${flight.from}</span>
@@ -73,11 +71,10 @@ async function showflights() {
           return;
         }
         console.log(-i);
-        o.classList.add("hid");
       });
       document
         .querySelector("#startkaro")
-        .insertAdjacentHTML("beforebegin", htm);
+        .insertAdjacentHTML("afterbegin", htm);
     });
   }
 }

@@ -5,6 +5,14 @@ async function ticketLoad() {
   document.querySelector("#ploc").innerText = userdata.ploc;
   const ticketsdata = await eel.pullTickets()();
   console.log(ticketsdata);
+  if (ticketsdata.length == 0) {
+    htm = ` <div  class="flight" style="padding-top:20px !important">
+        <h1 class="waiting-ms waiting-smart">Sorry no flights booked</h1>
+                  </div>
+      </div>`;
+    document.querySelector("#startkaro").insertAdjacentHTML("beforebegin", htm);
+    return;
+  }
   ticketsdata.forEach((ticket) => {
     pash = "";
     ticket.passengerdetails.forEach((passenger) => {

@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
 async function showflights(qw) {
   const from = "Sharjah";
   const to = qw;
-  const trip = "one";
+  const trip = "round";
   const today = new Date();
   const year = today.getFullYear();
   const month = String(today.getMonth() + 1).padStart(2, "0"); // Months are zero-based, so add 1
@@ -28,8 +28,7 @@ async function showflights(qw) {
   if (trip == "one") {
     flightdata = await eel.searchflight(from, to, date)();
   } else if (trip == "round") {
-    const date2 = document.querySelector("#date2").value;
-    flightdata = await eel.searchroundflight(from, to, date, date2)();
+    flightdata = await eel.searchroundflight(from, to, date, date)();
   }
 
   console.log(flightdata);

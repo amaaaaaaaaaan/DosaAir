@@ -365,12 +365,24 @@ body {
 }
 
 .ft-txt {
-  color: var(--org);
+  color: var(--ligh);
   text-align: center;
   width: 100vw;
+}
+
+.ft-txt.b {
+  color: var(--org);
+  font-size: 15px;
+}
+
+.ft-txt:not(.b):hover {
+  font-size: 45px;
+  transition: 2s;
 }
 
 footer {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  padding: 20px;
 }
