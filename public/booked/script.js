@@ -100,9 +100,13 @@ async function ticketLoad() {
             
           </div>
           ${pash}
+        <div class="ticket-foot">
+        <button class="show-btn" onclick="cancelbooking('${
+          ticket.booking_id
+        }')">Cancel Booking</button>
         <h2 class="price-cont">Total Price<br> <span class="price" id="totprice">${
           "$" + ticket.totalprice
-        }</span></h2>
+        }</span></h2></div>
           </div>`;
 
     document.querySelector("#startkaro").insertAdjacentHTML("afterend", htm);
@@ -121,3 +125,12 @@ async function updateUserData() {
 document.addEventListener("DOMContentLoaded", function () {
   updateUserData();
 });
+
+async function cancelbooking(booking_id) {
+  const cancelConfirm = await eel.cancel(booking_id);
+  if (!cancelConfirm) {
+    alert("Sorry Ticket Cannot be Cancelled");
+  } else {
+    alert("Please check your mail to confirm your cancellation");
+  }
+}

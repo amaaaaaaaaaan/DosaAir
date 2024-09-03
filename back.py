@@ -81,7 +81,7 @@ def register(u,p) :
             l= l+ p[i]
     userdata['name'] = u
     userdata['ploc'] = get_current_city()
-    fieldnames = ['fno', 'from', 'to', 'price', 'duration', 'time', 'date', 'totalprice', 'passengerdetails']
+    fieldnames = ['fno', 'from', 'to', 'price', 'duration', 'time', 'date', 'booking_id','totalprice', 'passengerdetails']
 
     csv_file = f"{u}.csv"
 
@@ -281,15 +281,12 @@ def seat(no):
 
 def writeTicket():
     bkdFlight['passengerdetails'] = json.dumps(passengerDetails)
-    l = bkdFlight.pop('booking_id')
-
     csv_file = f"{userdata['name']}.csv"
 
     with open(csv_file, mode='a', newline='') as file:
         fieldnames = bkdFlight.keys()
         writer = csv.DictWriter(file, fieldnames=fieldnames)
         writer.writerow(bkdFlight)
-    bkdFlight['booking_id'] = l
 
 def readTicket():
     csv_file = f"{userdata['name']}.csv"
@@ -353,7 +350,7 @@ def mailconfirmation(passdetails):
           style="max-width: 600px !important"
         >
           <img
-            src="https://media.discordapp.net/attachments/844436240447176724/1267539264032342056/image.png?ex=66a9276e&is=66a7d5ee&hm=d0fada2c0730b3a0eeb3c5f71762b43875d9e8e488218860aba6488e2b89ed1b&=&width=1102&height=1102"
+            src="https://lh3.googleusercontent.com/chat_attachment/AP1Ws4vDqyKP0rfxqS-MI6_z_yab8TOT3pD7s2WEZ8qPjvuqVK_u-w3eReMKMFWdISF3PKdZN_6avDFx2pk6GmJTm1fBFvtoKtZp2h4kQiqCfqJMUvThXyhiUlXM9tSq5CPzSovwwODw8vx3vXXvSA4iqAbyLfuVAGTZDoyDxeNLVBprSIXoOvCXp5lCFtcJPXg1HcVLdw4eJtiu_XefQ13VGcFs00SGiWQRwOz-CR8vuWqPIaC7z6_bY6X4KY4hQirgmz2qNSuwSc8DGbFc-dMC_bwyO6Jb3Doi2iBEC33KV3HArlafjGdCjWYo55_mHftCsHU=w2880-h1696"
             width="100%"
             style="
               filter: brightness(0);
@@ -412,7 +409,8 @@ def mailconfirmation(passdetails):
                           <div><br /></div>
                           <div></div>
                           <div style="display: inline">
-                            <p>We are writing to express our gratitude for the prompt booking confirmation. Your efficiency and attention to detail have made our travel arrangements seamless. We appreciate the clarity provided in the confirmation details, which gives us peace of mind as we prepare for our journey.</p>
+                            <p>We are writing to express our gratitude for the prompt booking confirmation. Your efficiency and attention to detail have made our travel arrangements seamless. We appreciate the clarity provided in the confirmation details, which gives us peace of mind as we prepare for our journey.
+                            </br> You are required to bring this along for an entry to the airport </br> Your credit will be refunded if not checked into hotel 2 hours before the flight and your ticket shall be cancelled</p>
                               <span>Regards,<span>&nbsp; </span></span>
                             </p>
                             <p><span>Your booking details are attached below</span></p>
@@ -761,6 +759,8 @@ def writefeed(feed):
     cu.execute(f'insert into feeds values ("{userdata["name"]}" , "{feed}")')
     db.commit()
 
+# def cancel 
+
 def getTop():
     airports = airportsdata.load("IATA")
     cu.execute(f'Select ToDest From flights where FromDest = "{userdata["ploc"]}"')
@@ -777,31 +777,98 @@ def getTop():
 def getDesc(dest):
     with open(f'public/dest-data/desc/{dest}.txt') as f:
         return f.read()
+    
+def cancelMail(ester):
+    from_email = 'dosaairways@gmail.com'
+    app_password = 'jxxv jzeq jpjw hiym'
+    msg = MIMEMultipart('alternative')
+    msg['From'] = from_email
+    msg['To'] = 'mahadevmaneeshm@gmail.com'
+    msg['Subject'] = "Your Flight Cancellation Confirmation"
+    html_content = f"""Dear {userdata['name']},
+
+We have received and processed your request to cancel your flight. Below are the details of your canceled booking:
+<br>
+Flight Details:
+<br>
+Flight Number: {ester['fno']}<br>
+
+Departure Date: {ester['date']}<br>
+
+Departure City: {ester['from']}<br>
+
+Destination City: {ester['to']}<br>
+
+Booking Reference: {ester['booking_id']}<br>
+
+Refund Information: Your refund amount of <b> ${int(ester['price'])*80/100} </b>(exclusive of 20% booking charge) will be processed within 24 hours after the scheduled departure time of your canceled flight. The amount will be credited back to your original method of payment. Please note that it may take additional time for the refund to appear in your account depending on your bank or payment provider’s processing times.
+
+If you have any questions or require further assistance, please feel free to reach out to our customer service team at dosaairways@gmail.com.
+
+Thank you for choosing NAMI Airways. We hope to serve you again in the future."""
+    try:
+            part = MIMEText(html_content, 'html')
+
+            msg.attach(part)
+
+            server = smtplib.SMTP('smtp.gmail.com', 587)
+            server.starttls()
+
+            server.login(from_email, app_password)
+
+            server.sendmail(from_email, 'mahadevmaneeshm@gmail.com', msg.as_string())
+
+            server.quit()
+    except:
+            print('mailing error')
+def cancelbooking(tid):
+    index= 0
+    field = ''
+    data = []
+    filepath = f'{userdata["name"]}.csv'
+    with open(filepath) as f :
+        k = csv.DictReader(f)
+        field = k.fieldnames
+        for i in k:
+            if i['booking_id'] != tid:
+                data.append(i)
+            else:
+                cancelMail(i)
+    with open(filepath,'w') as f:
+        writer = csv.DictWriter(f , fieldnames=field)
+        writer.writeheader()
+        writer.writerows(data)
+            
+        return True
+        
+                
+        
+
 nonvegdosa = [
-    { "name": "Chicken Dosa", "price": 1.83 },
-    { "name": "Mutton Keema Dosa", "price": 2.44 },
-    { "name": "Egg Dosa", "price": 1.22 },
-    { "name": "Pepper Chicken Dosa", "price": 2.07 },
-    { "name": "Spicy Chicken Dosa", "price": 1.95 },
-    { "name": "Chicken Tikka Dosa", "price": 2.32 }
+    { "name": "Beef Burger", "price": 5.99 },
+    { "name": "Grilled Salmon", "price": 12.50 },
+    { "name": "Lamb Chops", "price": 15.00 },
+    { "name": "BBQ Ribs", "price": 14.75 },
+    { "name": "Chicken Wings", "price": 8.25 },
+    { "name": "Shrimp Tacos", "price": 10.00 }
 ]
 
 vegdosa =[
-    { "name": "Masala Dosa", "price": 0.98 },
-    { "name": "Paneer Dosa", "price": 1.46 },
-    { "name": "Mysore Masala Dosa", "price": 1.10 },
-    { "name": "Cheese Dosa", "price": 1.34 },
-    { "name": "Rava Dosa", "price": 0.85 },
-    { "name": "Ghee Dosa", "price": 1.10 }
+    { "name": "Quinoa Salad", "price": 7.00 },
+    { "name": "Vegan Burrito", "price": 9.50 },
+    { "name": "Stuffed Bell Peppers", "price": 8.25 },
+    { "name": "Vegan Mushroom Burger", "price": 10.00 },
+    { "name": "Chickpea Curry", "price": 9.00 },
+    { "name": "Avocado Toast", "price": 6.50 }
 ]
 
 weirddosa = [
-    { "name": "Chocolate Dosa", "price": 1.83 },
-    { "name": "Avocado Dosa", "price": 2.20 },
-    { "name": "Pineapple Dosa", "price": 1.95 },
-    { "name": "Noodles Dosa", "price": 2.07 },
-    { "name": "Paneer Tikka Dosa", "price": 2.44 },
-    { "name": "Vegan Dosa", "price": 14.63 }
+    { "name": "Wagyu Beef Steak", "price": 120.00 },
+    { "name": "Fugu", "price": 200.00 },
+    { "name": "Saffron Risotto", "price": 45.00 },
+    { "name": "Bluefin Tuna Sushi", "price": 150.00 },
+    { "name": "Almas Caviar", "price": 250.00 },
+    { "name": "White Truffle Pasta", "price": 90.00 }
 ]
 
 dosamenu = [weirddosa , nonvegdosa , vegdosa]

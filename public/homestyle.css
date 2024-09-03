@@ -365,7 +365,7 @@ body {
 }
 
 .ft-txt {
-  color: var(--ligh);
+  color: var(--org);
   text-align: center;
   width: 100vw;
 }
@@ -385,4 +385,13 @@ footer {
   justify-content: center;
   flex-direction: column;
   padding: 20px;
+}
+
+@keyframes bloom {
+  0% {
+    opacity: 100;
+  }
+  100% {
+    opacity: 0;
+  }
 }

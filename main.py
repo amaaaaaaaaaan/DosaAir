@@ -92,4 +92,8 @@ def getTop():
 def destDesc(dest):
   return back.getDesc(dest)
 
+@eel.expose
+def cancel(tid):
+  return back.cancelbooking(tid)
+
 eel.start('login.html' ,size=(1024, 768) )

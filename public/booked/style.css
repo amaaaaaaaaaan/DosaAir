@@ -295,3 +295,31 @@ option {
 .indi > .price {
   font-size: 1.3vw;
 }
+
+.ticket-foot {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+
+.show-btn {
+  background: linear-gradient(to top right, rgb(20, 0, 50) 60%, var(--ligh));
+  border: none;
+  border-radius: 7px;
+  padding: 20px;
+  /* font-weight: 900; */
+  font-family: air;
+  font-size: 1.6vw;
+  color: var(--org);
+  border: 1px solid var(--ligh);
+  /* height: 70px; */
+  width: 22vw;
+  transition: 1s;
+}
+
+.show-btn:hover {
+  background: rgb(171, 34, 77);
+  color: rgb(255, 173, 173);
+  width: 30vw;
+}
