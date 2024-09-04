@@ -133,4 +133,5 @@ async function cancelbooking(booking_id) {
   } else {
     alert("Please check your mail to confirm your cancellation");
   }
+  location.reload();
 }
