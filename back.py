@@ -3,6 +3,7 @@ import json
 import mysql.connector
 import hashlib
 import geocoder
+import math
 import airportsdata
 from datetime import datetime
 import smtplib
@@ -189,7 +190,7 @@ def ticketcalc(catlover): #calculation to be done here
             passprice = f_price + food_price
             i['indi_price'] = passprice
             tiktprice+=f_price+food_price
-        bkdFlight['totalprice'] = tiktprice
+        bkdFlight['totalprice'] = math.ceil(tiktprice) 
         print(bkdFlight , passengerDetails)
         mailconfirmation(passengerDetails)
     except:
@@ -350,7 +351,7 @@ def mailconfirmation(passdetails):
           style="max-width: 600px !important"
         >
           <img
-            src="https://lh3.googleusercontent.com/chat_attachment/AP1Ws4vDqyKP0rfxqS-MI6_z_yab8TOT3pD7s2WEZ8qPjvuqVK_u-w3eReMKMFWdISF3PKdZN_6avDFx2pk6GmJTm1fBFvtoKtZp2h4kQiqCfqJMUvThXyhiUlXM9tSq5CPzSovwwODw8vx3vXXvSA4iqAbyLfuVAGTZDoyDxeNLVBprSIXoOvCXp5lCFtcJPXg1HcVLdw4eJtiu_XefQ13VGcFs00SGiWQRwOz-CR8vuWqPIaC7z6_bY6X4KY4hQirgmz2qNSuwSc8DGbFc-dMC_bwyO6Jb3Doi2iBEC33KV3HArlafjGdCjWYo55_mHftCsHU=w2880-h1696"
+            src="https://i.pinimg.com/736x/80/f4/52/80f4520fe78d52cbde99c4d36fc4c92d.jpg"
             width="100%"
             style="
               filter: brightness(0);
@@ -409,8 +410,8 @@ def mailconfirmation(passdetails):
                           <div><br /></div>
                           <div></div>
                           <div style="display: inline">
-                            <p>We are writing to express our gratitude for the prompt booking confirmation. Your efficiency and attention to detail have made our travel arrangements seamless. We appreciate the clarity provided in the confirmation details, which gives us peace of mind as we prepare for our journey.
-                            </br> You are required to bring this along for an entry to the airport </br> Your credit will be refunded if not checked into hotel 2 hours before the flight and your ticket shall be cancelled</p>
+                            <p>Thank you for choosing Nami Air! We are excited to confirm your booking. Attached, you will find your booking confirmation with all the details you need. Please review the document at your convenience. If you have any questions or require assistance, feel free to contact our customer service team at dosaairways@gmail.com . We look forward to welcoming you on board and wish you a pleasant journey!
+                            </br> You are required to bring this along for an entry to the airport </br> Your credit will be refunded if you don't check-in online <b>24 hours</b> before the flight and your ticket shall be cancelled</p>
                               <span>Regards,<span>&nbsp; </span></span>
                             </p>
                             <p><span>Your booking details are attached below</span></p>
@@ -801,9 +802,9 @@ Destination City: {ester['to']}<br>
 
 Booking Reference: {ester['booking_id']}<br>
 
-Refund Information: Your refund amount of <b> ${int(ester['price'])*80/100} </b>(exclusive of 20% booking charge) will be processed within 24 hours after the scheduled departure time of your canceled flight. The amount will be credited back to your original method of payment. Please note that it may take additional time for the refund to appear in your account depending on your bank or payment provider’s processing times.
+Refund Information: Your refund amount of <b> ${int(ester['price'])*80/100} </b>(exclusive of 20% booking charge) will be processed within 24 hours after the scheduled departure time of your canceled flight. The amount will be credited back to your original method of payment. Please note that it may take additional time for the refund to appear in your account depending on your bank or payment provider’s processing times.<br><br>
 
-If you have any questions or require further assistance, please feel free to reach out to our customer service team at dosaairways@gmail.com.
+If you have any questions or require further assistance, please feel free to reach out to our customer service team at dosaairways@gmail.com.<br><br>
 
 Thank you for choosing NAMI Airways. We hope to serve you again in the future."""
     try:

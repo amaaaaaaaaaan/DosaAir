@@ -1,7 +1,6 @@
 import eel 
 import back 
 
-
 eel.init('public')
 
 @eel.expose
