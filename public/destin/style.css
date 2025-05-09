@@ -1,0 +1,379 @@
+.lilac .flight {
+  display: flex;
+  justify-content: space-evenly !important;
+  /* padding: 50px 30px; */
+  width: 90%;
+  border: 2px solid var(--ligh);
+  margin: 0;
+}
+
+.flight-marg {
+  margin: 30px !important;
+}
+
+.destinations {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 1vw;
+}
+
+select {
+  /* width: 200px; */
+  border: none;
+  text-align: center;
+  color: var(--ligh);
+  appearance: none;
+}
+
+.book-inf {
+  padding: 10px 20px;
+  display: flex;
+  gap: 1.5vw;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 800, "GRAD" 0, "opsz" 24;
+  color: var(--ligh);
+}
+
+input:focus,
+select:focus {
+  outline: none;
+}
+
+.book-inf > select {
+  font-size: 1vw;
+  font-family: air;
+}
+
+.book-date {
+  display: flex;
+  flex-direction: column;
+}
+
+.inf-label {
+  font-size: 1vw;
+}
+
+.book-date > input {
+  font-size: 1.5vw;
+  font-family: air;
+  color: var(--ligh);
+  border: none;
+}
+
+.show-btn {
+  background: rgb(53, 3, 93);
+  border: none;
+  border-radius: 7px;
+  padding: 10px;
+  /* font-weight: 900; */
+  font-family: air;
+  font-size: 1vw;
+  color: rgb(255, 255, 255);
+}
+
+.show-btn:hover {
+  background: rgb(9, 92, 120);
+}
+
+.hid {
+  display: none;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap");
+
+@font-face {
+  font-family: air;
+  src: url(air.woff2);
+}
+
+body {
+  margin: 0;
+  font-family: "Instrument Sans", sans-serif;
+}
+
+.ticket {
+  display: flex;
+  flex-direction: column;
+}
+
+h2,
+h1,
+h3 {
+  font-family: air;
+  color: var(--ligh);
+  font-weight: 900;
+  font-size: 2vw !important;
+}
+
+.ticket-passenger {
+  flex-direction: column;
+  gap: 20px;
+  background: #1c0041;
+  /* align-items: flex-start !important; */
+}
+
+.passenger {
+  border: 1px solid rgba(46, 0, 132, 0.41);
+  padding: 20px 30px;
+  border-radius: 12px;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  width: 100%;
+  background: rgb(51, 18, 113);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.cont {
+  margin-bottom: 100px;
+}
+
+.login-text {
+  padding: 0px;
+  border-radius: 7px;
+  border: none;
+  font-weight: 800;
+  text-transform: capitalize;
+  /* margin-top: 10px; */
+  color: var(--sec);
+  font-size: 20px;
+  background: transparent;
+  /* border: 2px solid rgba(16, 179, 204, 0.27); */
+}
+
+.login-inf {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.login-btn {
+  background: rgb(3, 77, 93);
+  border: none;
+  border-radius: 7px;
+
+  /* font-weight: 900; */
+  font-family: air;
+  font-size: 1vw;
+  color: rgb(255, 255, 255);
+}
+
+.login-btn:hover {
+  background: rgb(6, 83, 108);
+}
+
+select,
+option {
+  appearance: none;
+  text-align: center;
+}
+
+.overlay {
+  background: #0000008f;
+  width: 100vw;
+  height: 100%;
+  position: fixed;
+  z-index: 999;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  transition: 2s;
+  opacity: 0;
+}
+
+.menu {
+  position: fixed;
+  z-index: 9999;
+  background: linear-gradient(
+    to top left,
+    rgb(177, 254, 255),
+    rgb(255, 255, 255),
+    white
+  );
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  padding: 20px 50px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+  max-height: 90vh;
+}
+
+.menu-top {
+  width: 100%;
+  font-size: 3vw !important;
+  margin: 0;
+  background: linear-gradient(120deg, rgb(37, 196, 228), rgb(0, 0, 0));
+  background-clip: text;
+  font-family: air;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.menu-head {
+  text-align: left;
+  width: 100%;
+  font-weight: 800;
+  font-size: 1.4vw;
+  background: linear-gradient(120deg, rgb(37, 196, 228), rgb(0, 0, 0));
+  background-clip: text;
+  background-size: 40% 10%;
+  font-family: air;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 10px;
+}
+
+.menu-cat {
+  border: 2px solid var(--sec);
+  padding: 10px 30px;
+  border-radius: 10px;
+  background: linear-gradient(120deg, rgb(2, 188, 255), rgb(23, 90, 223));
+  font-family: air;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* overflow: scroll;
+  width: 75vw; */
+  gap: 10px;
+}
+
+.dosa {
+  border: none;
+  background: linear-gradient(
+    to top left,
+    rgb(177, 254, 255),
+    rgb(255, 255, 255),
+    white
+  );
+  padding: 10px;
+  border-radius: 10px;
+  font-family: air;
+  width: 10vw;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dosa:hover {
+  background: rgb(177, 254, 255);
+}
+
+.tto {
+  margin-top: 50px;
+  width: 90%;
+}
+
+.float {
+  top: 0;
+}
+
+.price-cont {
+  font-size: 1vw;
+  width: 100%;
+  font-family: "Instrument Sans";
+  font-weight: 800;
+  color: var(--sec);
+}
+
+.price {
+  font-weight: 100;
+  font-size: 1.8vw;
+  color: var(--org);
+}
+
+.indi {
+  font-size: 1vw !important;
+}
+
+.indi > .price {
+  font-size: 1.3vw;
+}
+
+.blot {
+  top: initial;
+  bottom: 20px;
+  width: 80vw;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 15px;
+  align-items: start;
+  padding: 20px;
+  border: 1px solid rgb(106, 0, 255);
+}
+
+.feeds {
+  resize: none;
+  /* height: 10vh; */
+  background: hsla(0, 100%, 93%, 0);
+  text-anchor: start;
+  color: white;
+  font-size: 1.5vw;
+  border: none;
+  width: 90%;
+}
+
+.feeds:focus {
+  outline: none;
+}
+.feeds-btn {
+  background: transparent;
+  border: none;
+}
+
+.feeds-btn > .material-symbols-outlined {
+  font-size: 2vw !important;
+}
+
+.dest-main {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2vw;
+  align-items: center;
+  justify-content: center;
+}
+
+.dest-cont {
+  width: 40vw;
+  height: 30vh;
+  overflow: hidden;
+  border-radius: 20px;
+  position: relative;
+}
+
+.dest-img {
+  width: 100%;
+  object-fit: cover;
+  filter: brightness(50%);
+  height: 100%;
+}
+
+.dest-desc {
+  position: absolute;
+  bottom: 0;
+  color: white;
+  z-index: 9;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 100%;
+}
+
+.dest-name {
+  font-weight: 700;
+  font-size: 3vw;
+}
+
+.dest-air {
+  font-family: air;
+}

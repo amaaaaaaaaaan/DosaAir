@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script type="text/javascript" src="/eel.js"></script>
+    <link rel="stylesheet" href="../homestyle.css" />
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DosaAir</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="head float">
+        <div class="logo-cont">
+          <img class="logo-img" src="../logo.png" onclick="window.location.href = '../home.html'" alt="" />        </div>
+        <div class="links">
+          <!-- <a>Contact</a>
+          <a>Menu</a>
+          <a>Flights</a> -->
+          <div class="pages">
+            <div class="top-menu-cont">
+              <div class="top-menu">
+                <button onclick="window.location.href = '../home.html'" >Smart Routes</button>
+                <button onclick="window.location.href = '../searchflights/index.html'" >Search Flights</button>
+                <button onclick="window.location.href = '../booked/index.html'" >Booked Flights</button>
+              </div>
+            </div>
+          </div>
+          <div class="acc-cont">
+            <div class="acc-inf">
+              <span class="acc-name" id="accountName">Aman</span>
+              <span class="acc-nat" id="ploc">Dubai</span>
+            </div>
+            <!-- <button class="acc-btn">
+              <img
+                class="acc-img"
+                src="https://cdn-icons-png.flaticon.com/512/3276/3276535.png"
+                alt=""
+              />
+            </button> -->
+          </div>
+        </div>
+      </div>
+<div id="leave"></div>
+      <div class="hero">
+        <img class="hero-img" src="../airback2.png" alt="" />
+      </div>
+
+      <div class="cont">
+       
+
+        <span class="flight-head" style="margin: 0;"> Routes </span>
+        
+          <div class="flight" style="display: none;">
+            <div class="flight-dest-cont">
+              <span class="flight-date flight-time">Dubai</span>
+              <span class="flight-dest">DXB</span>
+  
+            </div>
+            <div class="flight-take-off-icon"></div>
+            <hr class="custom-hr">
+            <div class="flight-bk">
+              <div class="flight-inf dw">
+              
+              
+                <div class="flight-dt">
+                  <span class="flight-date">Monday 20 May</span>
+                  <span class="flight-date flight-time">02:22</span>
+  
+    <span class="flight-time">$700</span>
+    <span class="flight-date flight-time">4H 15Mins</span>
+              </div>
+              
+              
+            </div>
+            <button class="flight-booking">BOOK</button>
+            </div>
+            
+            <hr class="custom-hr">
+            <div class="flight-take-in-icon"></div>
+            <div class="flight-dest-cont">
+              <span class="flight-date flight-time" >Cochin</span>
+  
+              <span class="flight-dest">COK</span>
+  
+            </div>
+            </div>
+      <div class="flight" style="display: flex !important;">
+        <div class="destinations">
+          <select class="flight-dest" type="text" name="" id="from" >
+            <option value="">From</option>
+              <option value="Sharjah">Sharjah</option>
+              <option value="Dubai">Dubai</option>
+              <option value="Paris">Paris</option>
+              <option value="New York">New York</option>
+              <option value="Cairo">Cairo</option>
+              <option value="London">London</option>
+              <option value="Sydney">Sydney</option>
+              <option value="Tokyo">Tokyo</option>
+            </select>
+                      </select>
+          <span class="material-symbols-outlined">
+            swap_horiz
+            </span>
+          <select type="text" class="flight-dest" name="" id="to" >
+            <option value="">To</option>
+            <option value="London">London</option>
+  <option value="New York">New York</option>
+  <option value="Mumbai">Mumbai</option>
+  <option value="Delhi">Delhi</option>
+  <option value="Tokyo">Tokyo</option>
+  <option value="Bangkok">Bangkok</option>
+  <option value="Sydney">Sydney</option>
+  <option value="Toronto">Toronto</option>
+  <option value="Paris">Paris</option>
+          </select>
+        </div>
+        <div class="book-inf">
+          <select name="" id="trip"> 
+            <option value="one">One Way</option>
+            <option value="round">Round Trip</option>
+            
+          </select>
+        <div class="book-date">
+          <span class="inf-label">Flight Date</span>
+          <input type="date" id="date">
+        </div>
+        <div class="book-date hid"  id="date2cont">
+          <span class="inf-label">Return Date</span>
+          <input type="date" id="date2" >
+        </div>
+        </div>
+        <button class="show-btn" onclick="showflights()"> Show Flights</button>
+      </div>
+      <div class=""></div>
+      <div id="startkaro" class=" ">
+        
+      </div>
+
+      </div>
+    </div>
+  </body>
+</html>
+<script src="script.js"></script>
+
+
+
+
+
+

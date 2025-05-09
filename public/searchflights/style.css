@@ -1,0 +1,78 @@
+.flight {
+  display: flex;
+  justify-content: space-evenly !important;
+  /* padding: 50px 30px; */
+}
+.destinations {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 1vw;
+}
+
+select {
+  /* width: 200px; */
+  border: none;
+  text-align: center;
+  color: var(--sec);
+  appearance: none;
+  background: transparent;
+}
+
+.book-inf {
+  padding: 10px 20px;
+  display: flex;
+  gap: 1.5vw;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 800, "GRAD" 0, "opsz" 24;
+  color: var(--sec);
+}
+
+input:focus,
+select:focus {
+  outline: none;
+}
+
+.book-inf > select {
+  font-size: 1vw;
+  font-family: air;
+}
+
+.book-date {
+  display: flex;
+  flex-direction: column;
+}
+
+.inf-label {
+  font-size: 1vw;
+}
+
+.book-date > input {
+  font-size: 1.5vw;
+  font-family: air;
+  color: var(--sec);
+  border: none;
+  background: transparent;
+}
+
+.show-btn {
+  background: linear-gradient(to top right, rgb(25, 0, 50) 60%, var(--ligh));
+  border: none;
+  border-radius: 7px;
+  padding: 20px;
+  /* font-weight: 900; */
+  font-family: air;
+  font-size: 1vw;
+  color: var(--sec);
+  border: 1px solid var(--ligh);
+}
+
+.show-btn:hover {
+  background: var(--org);
+}
+
+.hid {
+  display: none;
+}

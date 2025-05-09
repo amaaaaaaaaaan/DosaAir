@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap");
+
+@font-face {
+  font-family: air;
+  src: url(air.woff2);
+}
+
+:root {
+  --sec: rgb(0, 0, 0);
+  --nature: rgb(0, 179, 80);
+}
+
+body {
+  margin: 0;
+  font-family: "Instrument Sans", sans-serif;
+  background: linear-gradient(to bottom, #eeeeee, var(--nature));
+  height: 100vh;
+}
+
+select,
+option {
+  appearance: none;
+  text-align: center;
+}
+
+.logo-img {
+  filter: saturate(0) brightness(0);
+}
+
+.head {
+  background: white;
+}
+
+.top-menu {
+  background: #e4e4e4;
+  border: none;
+}
+
+.top-menu > button {
+  color: black;
+  background: white;
+}
+
+.mess-cont {
+  background: rgba(240, 240, 240, 0.969);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: 10px;
+  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.mess-head {
+  background: linear-gradient(
+    to bottom right,
+    rgb(11, 191, 101),
+    var(--nature)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 400% 400%;
+  animation: gradient 2s ease infinite;
+}
+
+.carbon {
+  font-size: 4vw;
+  font-weight: 900;
+  background: linear-gradient(to top left, rgb(191, 191, 191), rgb(67, 67, 67));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 400% 400%;
+  animation: gradient 2s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.mess-para {
+  text-align: center;
+}
+
+.nature {
+  font-size: 4vw;
+  font-weight: 900;
+  background: linear-gradient(
+    to bottom right,
+    rgb(11, 191, 101),
+    var(--nature)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 400% 400%;
+  animation: gradient 2s ease infinite;
+}
+
+.mess-btn {
+  padding: 15px;
+  margin: 20px;
+  font-size: 1vw;
+  font-weight: 800;
+  background: #ffffff;
+  border: 0px solid rgb(190, 190, 190);
+  border-radius: 13px;
+  color: var(--nature);
+}
+
+.mess-btn:hover {
+  background: rgb(229, 229, 229);
+}
